@@ -4,6 +4,6 @@
     <title>ContactsPage</title>
 </head>
 <body>
-
+<jsp:include page="general/header.jsp" />
 </body>
 </html>

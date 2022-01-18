@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 public class LogInCommand implements Command {
-    Logger logger = Logger.getLogger(LogInCommand.class);
+    private final Logger logger = Logger.getLogger(LogInCommand.class);
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

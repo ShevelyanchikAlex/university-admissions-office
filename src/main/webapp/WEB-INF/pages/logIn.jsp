@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/logInStyle.css">
 </head>
 <body>
+<jsp:include page="general/header.jsp"/>
 <div class="container">
     <form action="" class="form">
         <h1><fmt:message key="login.welcome_back"/></h1>

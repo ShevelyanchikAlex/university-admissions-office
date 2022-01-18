@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+}
+
+.upper-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #10599D;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+
+.university-logo-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.university-name {
+    font-size: 30px;
+    margin: 10px;
+    padding: 5px;
+    color: #fff;
+}
+
+.university-image {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+}
+
+.change-locale-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.change-locale-block div:first-child {
+    margin-left: 40px;
+}
+
+.change-locale-icon {
+    font-size: 22px;
+    margin: 10px;
+    padding: 5px;
+    color: #fff;
+}
+
+.change-locale-text {
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.change-locale-text:hover {
+    color: #45B39D;
+}
+
+
+.social-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.social-block div:first-child {
+    margin-right: 40px;
+}
+
+.social-btn a i {
+    font-size: 22px;
+    margin: 10px;
+    padding: 5px;
+    color: #fff;
+}
+
+.social-btn a i:hover {
+    color: #45B39D;
+}
+
+
+.header {
+    height: 105px;
+    width: 100%;
+    padding: 0 2%;
+    background: #10599D;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.nav-links {
+    padding: 28px 0;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links li a:hover {
+    color: #45B39D;
+}
+
+.nav-links li a::after {
+    content: '';
+    background: #45B39D;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.5s;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.log-in-btn {
+    color: white;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.log-in-btn:hover {
+    color: #45B39D;
+}
+
+.sign-up-btn {
+    text-align: left;
+    text-decoration: none;
+    background: #2460da;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.sign-up-btn:hover {
+    background: #45B39D;
+}
