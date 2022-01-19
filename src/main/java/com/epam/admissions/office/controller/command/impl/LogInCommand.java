@@ -22,11 +22,12 @@ public class LogInCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        UserService userService = ServiceFactory.getInstance().getUserService();
 
-        String email = request.getParameter(RequestParameter.EMAIL);
-        String password = request.getParameter((RequestParameter.PASSWORD));
+        String email = request.getParameter(RequestParameter.USER_EMAIL);
+        String password = request.getParameter((RequestParameter.USER_PASSWORD));
+
         try {
+            UserService userService = ServiceFactory.getInstance().getUserService();
             User user = userService.login(email, password);
             if (user != null) {
                 session.setAttribute(SessionAttribute.USER_ID, user.getUserId());
@@ -37,6 +38,7 @@ public class LogInCommand implements Command {
                 session.setAttribute(SessionAttribute.USER_PASSPORT_ID, user.getPassportId());
                 session.setAttribute(SessionAttribute.USER_STATUS, user.getUserStatus());
                 session.setAttribute(SessionAttribute.USER_ROLE, user.getUserRole());
+                logger.info("User " + user.getEmail() + "was log in.");
             } else {
                 session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_LOG_IN_PAGE);
 
@@ -48,9 +50,7 @@ public class LogInCommand implements Command {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.HOME_PAGE);
             requestDispatcher.forward(request, response);
         } catch (ServiceException e) {
-            logger.error("Unable check user date in log-in.", e);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_404_PAGE);
-            requestDispatcher.forward(request, response);
+            logger.error("It is not possible to check user data at login.", e);
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
