@@ -26,7 +26,7 @@ public class SignUpCommand implements Command {
             if (userService.getByEmail(email) != null) {
             //TODO
             }
-            userService.register(firstName, lastName, email, password);
+//            userService.signUp(firstName, lastName, email, password);
             request.setAttribute("EMAIL", email);
 //            logger.info("User" + email + "is registered.");
         } catch (ServiceException e) {

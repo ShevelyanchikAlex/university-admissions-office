@@ -7,6 +7,10 @@ import com.epam.admissions.office.entity.user.UserRole;
 import java.util.List;
 
 public interface UserDao {
+    int createUser(User user) throws DaoException;
+
+    int updateUser(User user) throws DaoException;
+
     User getUserById(int id) throws DaoException;
 
     User getByEmail(String email) throws DaoException;
@@ -15,9 +19,9 @@ public interface UserDao {
 
     List<User> getAllUsers() throws DaoException;
 
-    List<User> getUsersListByRoleId(int roleId) throws DaoException;
+    List<User> getUsersByRoleId(int roleId) throws DaoException;
 
-    List<User> getUsersListByStatus(String status) throws DaoException;
+    List<User> getUsersByStatus(String status) throws DaoException;
 
     int deleteById(int id) throws DaoException;
 

@@ -20,6 +20,33 @@ public class MySqlUserDaoImpl implements UserDao {
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }
 
+    @Override
+    public int createUser(User user) throws DaoException {
+        return queryOperator.executeUpdate(
+                DBRequest.INSERT_USER_QUERY,
+                user.getUserId(),
+                user.getPasswordHash(),
+                user.getEmail(),
+                user.getName(),
+                user.getSurname(),
+                user.getPassportId(),
+                user.getUserStatus(),
+                user.getUserRole());
+    }
+
+    @Override
+    public int updateUser(User user) throws DaoException {
+        return queryOperator.executeUpdate(
+                DBRequest.UPDATE_USER_QUERY,
+                user.getPasswordHash(),
+                user.getEmail(),
+                user.getName(),
+                user.getSurname(),
+                user.getPassportId(),
+                user.getUserStatus(),
+                user.getUserRole(),
+                user.getUserId());
+    }
 
     @Override
     public User getUserById(int id) throws DaoException {
@@ -44,12 +71,12 @@ public class MySqlUserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getUsersListByRoleId(int roleId) throws DaoException {
+    public List<User> getUsersByRoleId(int roleId) throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_USER_BY_USER_ROLE_ID_QUERY, roleId);
     }
 
     @Override
-    public List<User> getUsersListByStatus(String status) throws DaoException {
+    public List<User> getUsersByStatus(String status) throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_ALL_USERS_QUERY, status);
     }
 
