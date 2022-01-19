@@ -11,6 +11,6 @@ import java.io.IOException;
 public class LogOutCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO
+        //TODO remake
     }
 }
