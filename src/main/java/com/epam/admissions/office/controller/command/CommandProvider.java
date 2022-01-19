@@ -1,6 +1,9 @@
 package com.epam.admissions.office.controller.command;
 
 import com.epam.admissions.office.controller.command.impl.ChangeLocaleCommand;
+import com.epam.admissions.office.controller.command.impl.LogInCommand;
+import com.epam.admissions.office.controller.command.impl.LogOutCommand;
+import com.epam.admissions.office.controller.command.impl.SignUpCommand;
 import com.epam.admissions.office.controller.command.impl.go_to_command.*;
 import com.epam.admissions.office.controller.constant.CommandName;
 
@@ -18,6 +21,9 @@ public final class CommandProvider {
         commands.put(CommandName.GO_TO_PROFILE_PAGE, new GoToProfilePageCommand());
         commands.put(CommandName.GO_TO_ERROR_404_PAGE, new GoToError404PageCommand());
         commands.put(CommandName.CHANGE_LOCALE, new ChangeLocaleCommand());
+        commands.put(CommandName.LOG_IN, new LogInCommand());
+        commands.put(CommandName.LOG_OUT, new LogOutCommand());
+        commands.put(CommandName.SIGN_UP, new SignUpCommand());
     }
 
     public Command getCommand(String commandName) {
