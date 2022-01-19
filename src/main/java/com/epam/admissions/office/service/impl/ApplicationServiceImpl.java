@@ -53,6 +53,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public List<Application> getApplicationsByApplyDate(Date applyDate) throws ServiceException {
+        //TODO Validation
         try {
             ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
             return applicationDao.getApplicationsByApplyDate(applyDate);
@@ -63,6 +64,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public List<Application> getApplicationsByDecisionDate(Date decisionDate) throws ServiceException {
+        //TODO Validation
         try {
             ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
             return applicationDao.getApplicationsByDecisionDate(decisionDate);

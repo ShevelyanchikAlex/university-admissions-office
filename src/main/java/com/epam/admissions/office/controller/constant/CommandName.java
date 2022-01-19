@@ -7,6 +7,7 @@ public final class CommandName {
     public static final String GO_TO_CONTACTS_PAGE = "go_to_contacts_page";
     public static final String GO_TO_PROFILE_PAGE = "go_to_profile_page";
     public static final String GO_TO_ERROR_404_PAGE = "go_to_error_404_page";
+    public static final String GO_TO_ERROR_500_PAGE = "go_to_error_500_page";
     public static final String CHANGE_LOCALE = "change_locale";
 
     private CommandName() {

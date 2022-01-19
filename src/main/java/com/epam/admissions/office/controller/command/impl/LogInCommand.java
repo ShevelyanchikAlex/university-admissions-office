@@ -38,16 +38,22 @@ public class LogInCommand implements Command {
                 session.setAttribute(SessionAttribute.USER_STATUS, user.getUserStatus());
                 session.setAttribute(SessionAttribute.USER_ROLE, user.getUserRole());
             } else {
-                session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_SIGN_UP_PAGE);
+                session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_LOG_IN_PAGE);
 
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.SIGN_UP_PAGE);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.LOG_IN_PAGE);
                 requestDispatcher.forward(request, response);
             }
+            session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_HOME_PAGE);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.HOME_PAGE);
+            requestDispatcher.forward(request, response);
         } catch (ServiceException e) {
-            logger.error("Unable check user log-in data.", e);
+            logger.error("Unable check user date in log-in.", e);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_404_PAGE);
             requestDispatcher.forward(request, response);
         }
 
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
+        requestDispatcher.forward(request, response);
     }
 }
