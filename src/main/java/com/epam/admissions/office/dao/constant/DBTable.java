@@ -1,7 +1,6 @@
 package com.epam.admissions.office.dao.constant;
 
 public final class DBTable {
-
     public static final String ROLE_TABLE = "roles";
     public static final String USER_TABLE = "users";
     public static final String APPLICATION_TABLE = "applications";

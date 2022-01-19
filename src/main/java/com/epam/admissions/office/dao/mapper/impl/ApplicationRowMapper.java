@@ -1,7 +1,5 @@
 package com.epam.admissions.office.dao.mapper.impl;
 
-
-
 import com.epam.admissions.office.dao.constant.DBColumn;
 import com.epam.admissions.office.dao.mapper.RowMapper;
 import com.epam.admissions.office.entity.Application;

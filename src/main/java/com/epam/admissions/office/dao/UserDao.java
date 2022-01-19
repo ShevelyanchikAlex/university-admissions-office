@@ -1,30 +1,29 @@
 package com.epam.admissions.office.dao;
 
-
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.entity.user.User;
+import com.epam.admissions.office.entity.user.UserRole;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserDao {
-
-    int create(User user) throws DaoException;
-
-    int update(User user) throws DaoException;
-
-    int delete(int id) throws DaoException;
-
-    int getMaxId() throws DaoException;
-
-    Optional<User> getUserById(int id) throws DaoException;
+    User getUserById(int id) throws DaoException;
 
     User getByEmail(String email) throws DaoException;
 
-    List<User> getUsersList() throws DaoException;
+    User getByUserRole(UserRole userRole) throws DaoException;
+
+    List<User> getAllUsers() throws DaoException;
 
     List<User> getUsersListByRoleId(int roleId) throws DaoException;
 
     List<User> getUsersListByStatus(String status) throws DaoException;
 
+    int deleteById(int id) throws DaoException;
+
+    int restoreById(int id) throws DaoException;
+
+    int countAllUsers() throws DaoException;
+
+    int countByUserRole(UserRole userRole) throws DaoException;
 }

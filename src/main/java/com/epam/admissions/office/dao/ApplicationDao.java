@@ -4,19 +4,23 @@ package com.epam.admissions.office.dao;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.entity.Application;
 
+import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 
 public interface ApplicationDao {
-    int create(Application application) throws DaoException;
+    Application getApplicationById(int id) throws DaoException;
 
-    int update(int id) throws DaoException;
+    Application getApplicationByUserId(int userId) throws DaoException;
 
-    int delete(int id) throws DaoException;
+    List<Application> getAllApplications() throws DaoException;
 
-    Optional<Application> getApplicationById(int id) throws DaoException;
+    List<Application> getApplicationsByFacultyId(int facultyId) throws DaoException;
 
-    Optional<Application> getApplicationByUserId(int userId) throws DaoException;
+    List<Application> getApplicationsByApplyDate(Date applyDate) throws DaoException;
 
-    List<Application> getApplicationsList() throws DaoException;
+    List<Application> getApplicationsByDecisionDate(Date decisionDate) throws DaoException;
+
+    int deleteById(int id) throws DaoException;
+
+    int countAllApplication() throws DaoException;
 }

@@ -1,25 +1,20 @@
 package com.epam.admissions.office.dao;
 
-
-
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.entity.Result;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ResultDao {
-    int create(Result result) throws DaoException;
+    Result getResultById(int id) throws DaoException;
 
-    int update(int id) throws DaoException;
+    List<Result> getResultsByScore(double score) throws DaoException;
 
-    int delete(int id) throws DaoException;
+    List<Result> getResultsBySubjectId(int subjectId) throws DaoException;
 
-    Optional<Result> getResultById(int id) throws DaoException;
+    List<Result> getAllResults() throws DaoException;
 
-    Optional<Result> getResultByCertificateId(int certificateId) throws DaoException;
+    int deleteById(int id) throws DaoException;
 
-    Optional<Result> getResultByApplicationId(int applicationId) throws DaoException;
-
-    List<Result> getResultsList() throws DaoException;
+    int countAllResults() throws DaoException;
 }

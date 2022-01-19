@@ -1,12 +1,13 @@
 package com.epam.admissions.office.dao.queryoperator;
 
-public class ParametrizedQuery {
+public class ParamQuery {
     private String query;
     private Object[] params;
 
-    public ParametrizedQuery(){}
+    public ParamQuery() {
+    }
 
-    public ParametrizedQuery(String query, Object... params) {
+    public ParamQuery(String query, Object... params) {
         this.query = query;
         this.params = params;
     }

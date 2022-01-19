@@ -1,13 +1,12 @@
 package com.epam.admissions.office.dao.queryoperator.impl;
 
 
-
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.dao.connection.ConnectionPool;
-import com.epam.admissions.office.dao.connection.ConnectionPoolException;
+import com.epam.admissions.office.dao.connection.exception.ConnectionPoolException;
 import com.epam.admissions.office.dao.mapper.RowMapper;
 import com.epam.admissions.office.dao.queryoperator.QueryOperator;
-import com.epam.admissions.office.dao.queryoperator.ParametrizedQuery;
+import com.epam.admissions.office.dao.queryoperator.ParamQuery;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,39 +20,22 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
     }
 
     @Override
-    public void setStatementParams(PreparedStatement statement, Object... params) throws SQLException {
-        for (int i = 0; i < params.length; i++) {
-            statement.setObject(i + 1, params[i]);
-        }
-    }
-
-    @Override
     public List<T> executeQuery(String query, Object... params) throws DaoException {
-        List<T> result = new ArrayList<>();
+        List<T> resultList = new ArrayList<>();
         try (Connection connection = ConnectionPool.getInstance().takeConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             setStatementParams(statement, params);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 T entity = mapper.map(resultSet);
-                result.add(entity);
+                resultList.add(entity);
             }
         } catch (SQLException e) {
             throw new DaoException("Unable to execute select query.", e);
         } catch (ConnectionPoolException e) {
             throw new DaoException("Unable to get connection.", e);
         }
-        return result;
-    }
-
-    @Override
-    public T executeSingleEntityQuery(String query, Object... params) throws DaoException {
-        List<T> result = executeQuery(query, params);
-        if (result.size() > 0) {
-            return result.get(0);
-        } else {
-            return null;
-        }
+        return resultList;
     }
 
     @Override
@@ -75,36 +57,57 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         }
     }
 
+    @Override
+    public int executeCountQuery(String query, Object... params) throws DaoException {
+        try (Connection connection = ConnectionPool.getInstance().takeConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            setStatementParams(statement, params);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("COUNT(*)");
+        } catch (SQLException e) {
+            throw new DaoException("Unable to execute select query.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("Unable to get connection.", e);
+        }
+    }
+
+    @Override
+    public void setStatementParams(PreparedStatement statement, Object... params) throws SQLException {
+        for (int i = 0; i < params.length; i++) {
+            statement.setObject(i + 1, params[i]);
+        }
+    }
+
+    @Override
+    public T executeSingleEntityQuery(String query, Object... params) throws DaoException {
+        List<T> result = executeQuery(query, params);
+        if (result.size() > 0) {
+            return result.get(0);
+        } else {
+            return null;
+        }
+    }
+
     private void rollbackTransaction(Connection connection) throws DaoException {
         if (connection != null) {
             try {
                 connection.rollback();
-            } catch (SQLException sqlException) {
-                throw new DaoException(sqlException);
-            }
-        }
-    }
-
-    private void releaseConnection(Connection connection) throws DaoException {
-        if (connection != null) {
-            try {
-                connection.setAutoCommit(true);
-                connection.close();
             } catch (SQLException e) {
-                throw new DaoException("Unable to return connection to connection pool.", e);
+                throw new DaoException(e);
             }
         }
     }
 
     @Override
-    public int executeTransaction(List<ParametrizedQuery> queries) throws DaoException {
+    public int executeTransaction(List<ParamQuery> queries) throws DaoException {
         Connection connection = null;
         try {
             connection = ConnectionPool.getInstance().takeConnection();
             connection.setAutoCommit(false);
             int firstQueryGeneratedKey = -1;
             boolean idSet = false;
-            for (ParametrizedQuery query : queries) {
+            for (ParamQuery query : queries) {
                 PreparedStatement statement = connection.prepareStatement(query.getQuery(), Statement.RETURN_GENERATED_KEYS);
                 setStatementParams(statement, query.getParams());
                 statement.executeUpdate();
@@ -123,6 +126,17 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
             throw new DaoException("Unable to retrieve connection.", e);
         } finally {
             releaseConnection(connection);
+        }
+    }
+
+    private void releaseConnection(Connection connection) throws DaoException {
+        if (connection != null) {
+            try {
+                connection.setAutoCommit(true);
+                connection.close();
+            } catch (SQLException e) {
+                throw new DaoException("Unable to return connection to connection pool.", e);
+            }
         }
     }
 }

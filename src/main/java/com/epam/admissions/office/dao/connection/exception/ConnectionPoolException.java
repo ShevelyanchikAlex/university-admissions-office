@@ -1,4 +1,4 @@
-package com.epam.admissions.office.dao.connection;
+package com.epam.admissions.office.dao.connection.exception;
 
 public class ConnectionPoolException extends Exception {
     public ConnectionPoolException() {

@@ -1,19 +1,33 @@
 package com.epam.admissions.office.dao.mapper;
 
-
-import com.epam.admissions.office.dao.mapper.impl.ApplicationRowMapper;
-import com.epam.admissions.office.dao.mapper.impl.SubjectRowMapper;
-import com.epam.admissions.office.dao.mapper.impl.UserRowMapper;
-import com.epam.admissions.office.dao.mapper.impl.ResultRowMapper;
+import com.epam.admissions.office.dao.mapper.impl.*;
 
 public class RowMapperFactory {
     public static final UserRowMapper userRowMapper = new UserRowMapper();
-    public static final ApplicationRowMapper applicationRowMapper = new ApplicationRowMapper();
+    public static final FacultiesAdmissionInfoRowMapper facultiesAdmissionInfoRowMapper = new FacultiesAdmissionInfoRowMapper();
+    public static final FacultiesHasSubjectsRowMapper facultiesHasSubjectsRowMapper = new FacultiesHasSubjectsRowMapper();
+    public static final FacultyRowMapper facultyRowMapper = new FacultyRowMapper();
     public static final ResultRowMapper resultRowMapper = new ResultRowMapper();
+    public static final ApplicationRowMapper applicationRowMapper = new ApplicationRowMapper();
     public static final SubjectRowMapper subjectRowMapper = new SubjectRowMapper();
+
+    private RowMapperFactory() {
+    }
 
     public static UserRowMapper getUserRowMapper() {
         return userRowMapper;
+    }
+
+    public static FacultiesAdmissionInfoRowMapper getFacultiesAdmissionInfoRowMapper() {
+        return facultiesAdmissionInfoRowMapper;
+    }
+
+    public static FacultiesHasSubjectsRowMapper getFacultiesHasSubjectsRowMapper() {
+        return facultiesHasSubjectsRowMapper;
+    }
+
+    public static FacultyRowMapper getFacultyRowMapper() {
+        return facultyRowMapper;
     }
 
     public static ApplicationRowMapper getApplicationRowMapper() {
@@ -27,6 +41,4 @@ public class RowMapperFactory {
     public static SubjectRowMapper getSubjectRowMapper() {
         return subjectRowMapper;
     }
-
-
 }
