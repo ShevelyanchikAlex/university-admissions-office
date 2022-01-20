@@ -43,29 +43,31 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-left: 40px;
 }
 
-.change-locale-block div:first-child {
-    margin-left: 40px;
-}
-
-.change-locale-icon {
-    font-size: 22px;
-    margin: 10px;
-    padding: 5px;
-    color: #fff;
+.change-locale-button {
+    padding-right: 10px;
 }
 
 .change-locale-text {
+    padding-right: 10px;
     font-size: 20px;
     text-decoration: none;
-    color: #fff;
+    color: white;
+    background: transparent;
+    border: none;
 }
 
 .change-locale-text:hover {
+    cursor: pointer;
     color: #45B39D;
 }
 
+.locale-image {
+    width: 20px;
+    height: 20px;
+}
 
 .social-block {
     display: flex;

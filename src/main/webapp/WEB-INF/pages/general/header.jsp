@@ -15,8 +15,16 @@
 
 <section class="upper-header">
     <div class="change-locale-block">
-        <a href="#" class="change-locale-text"><i class="fas fa-globe change-locale-icon"></i><fmt:message
-                key="header.change_locale"/></a>
+        <form class="change-locale-button" action="${pageContext.request.contextPath}/controller?command=change_locale" method="post">
+            <input type="hidden" name="local" value="en"/>
+            <img src="${pageContext.request.contextPath}/assets/image/united-kingdom.png" class="locale-image">
+            <input class="change-locale-text" type="submit" value="Eng"/>
+        </form>
+        <form class="change-locale-button" action="${pageContext.request.contextPath}/controller?command=change_locale" method="post">
+            <input type="hidden" name="local" value="ru"/>
+            <img src="${pageContext.request.contextPath}/assets/image/russia.png" class="locale-image">
+            <input class="change-locale-text" type="submit" value="Рус"/>
+        </form>
     </div>
     <div class="social-block">
         <div class="social-btn">
