@@ -14,7 +14,6 @@ public class ChangeLocaleCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        System.out.println("change locale impl");
         session.setAttribute(SessionAttribute.LOCALE, request.getParameter(RequestParameter.LOCALE));
         response.sendRedirect((String) request.getSession().getAttribute(SessionAttribute.URL));
     }

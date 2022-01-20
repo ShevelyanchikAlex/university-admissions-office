@@ -2,9 +2,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<fmt:setBundle basename="locale"/>
 <html>
 <head>
+    <fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'en'}"/>
+    <fmt:setBundle basename="locale"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><fmt:message key="signup.title"/></title>
@@ -15,14 +16,16 @@
 
 <section class="upper-header">
     <div class="change-locale-block">
-        <form class="change-locale-button" action="${pageContext.request.contextPath}/controller?command=change_locale" method="post">
-            <input type="hidden" name="local" value="en"/>
-            <img src="${pageContext.request.contextPath}/assets/image/united-kingdom.png" class="locale-image">
+        <form class="change-locale-button" action="${pageContext.request.contextPath}/controller?command=change_locale"
+              method="post">
+            <input type="hidden" name="locale" value="en"/>
+            <img src="${pageContext.request.contextPath}/assets/image/united-kingdom.png" class="locale-image" alt="">
             <input class="change-locale-text" type="submit" value="Eng"/>
         </form>
-        <form class="change-locale-button" action="${pageContext.request.contextPath}/controller?command=change_locale" method="post">
-            <input type="hidden" name="local" value="ru"/>
-            <img src="${pageContext.request.contextPath}/assets/image/russia.png" class="locale-image">
+        <form class="change-locale-button" action="${pageContext.request.contextPath}/controller?command=change_locale"
+              method="post">
+            <input type="hidden" name="locale" value="ru"/>
+            <img src="${pageContext.request.contextPath}/assets/image/russia.png" class="locale-image" alt="">
             <input class="change-locale-text" type="submit" value="Рус"/>
         </form>
     </div>
@@ -44,12 +47,21 @@
             <label class="university-name"><fmt:message key="header.university_name"/></label>
         </div>
         <ul class="nav-links">
-            <li><a href=""><fmt:message key="header.links.home"/></a></li>
-            <li><a href=""><fmt:message key="header.links.about"/></a></li>
-            <li><a href=""><fmt:message key="header.links.faculties"/></a></li>
-            <li><a href=""><fmt:message key="header.links.contacts"/></a></li>
-            <li class="log-in-btn"><fmt:message key="header.log_in_button"/></li>
-            <li class="sign-up-btn"><fmt:message key="header.sign_up_button"/></li>
+            <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
+                    key="header.links.home"/></a></li>
+            <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
+                    key="header.links.about"/></a></li>
+            <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
+                    key="header.links.faculties"/></a></li>
+            <li><a class="link" href="<c:url value="/controller?command=go_to_contacts_page" />"><fmt:message
+                    key="header.links.contacts"/></a></li>
+            <li class="log-in-btn"><a href="<c:url value="/controller?command=go_to_log_in_page" />">
+                <fmt:message key="header.log_in_button"/>
+            </a>
+            </li>
+            <li class="sign-up-btn"><a class="sign-up-text" href="<c:url value="/controller?command=go_to_sign_up_page" />">
+                <fmt:message key="header.sign_up_button"/>
+            </a></li>
         </ul>
     </nav>
 </div>

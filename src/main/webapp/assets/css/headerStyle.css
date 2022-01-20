@@ -92,7 +92,7 @@ body {
 
 
 .header {
-    height: 105px;
+    height: 100px;
     width: 100%;
     padding: 0 2%;
     background: #10599D;
@@ -126,7 +126,7 @@ nav {
     color: #45B39D;
 }
 
-.nav-links li a::after {
+.nav-links li a.link::after {
     content: '';
     background: #45B39D;
     width: 0;
@@ -137,7 +137,7 @@ nav {
     transition: width 0.5s;
 }
 
-.nav-links li a:hover::after {
+.nav-links li a.link:hover::after {
     width: 100%;
 }
 
@@ -162,5 +162,10 @@ nav {
 }
 
 .sign-up-btn:hover {
-    background: #45B39D;
+    color: white;
+    background-color: #45B39D;
+}
+
+.nav-links li a.sign-up-text:hover {
+    color: white;
 }

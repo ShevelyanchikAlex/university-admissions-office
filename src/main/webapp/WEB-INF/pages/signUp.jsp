@@ -2,9 +2,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<fmt:setBundle basename="locale"/>
 <html>
 <head>
+    <fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'en'}"/>
+    <fmt:setBundle basename="locale"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><fmt:message key="signup.title"/></title>
@@ -41,7 +42,7 @@
                 <label class="prev-text"><fmt:message key="signup.already_have_account"/></label>
             </div>
             <div class="column-bottom">
-                <a href="#" class="sign-in-button"><fmt:message key="signup.sign_in"/></a>
+                <a href="<c:url value="/controller?command=go_to_log_in_page" />" class="sign-in-button"><fmt:message key="signup.sign_in"/></a>
             </div>
         </div>
 
