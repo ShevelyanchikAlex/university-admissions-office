@@ -19,8 +19,8 @@ public class SignUpCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService userService = ServiceFactory.getInstance().getUserService();
         HttpSession session = request.getSession();
+        UserService userService = ServiceFactory.getInstance().getUserService();
 
         String name = request.getParameter(RequestParameter.USER_NAME);
         String surname = request.getParameter(RequestParameter.USER_SURNAME);

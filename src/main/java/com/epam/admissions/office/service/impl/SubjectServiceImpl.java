@@ -13,8 +13,9 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject getSubjectById(int id) throws ServiceException {
+        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
+
         try {
-            SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
             return subjectDao.getSubjectById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -23,8 +24,9 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public List<Subject> getAllSubjects() throws ServiceException {
+        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
+
         try {
-            SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
             return subjectDao.getAllSubjects();
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -33,8 +35,9 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public int deleteById(int id) throws ServiceException {
+        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
+
         try {
-            SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
             return subjectDao.deleteById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -43,8 +46,9 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public int countAllSubjects() throws ServiceException {
+        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
+
         try {
-            SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
             return subjectDao.countAllSubjects();
         } catch (DaoException e) {
             throw new ServiceException(e);

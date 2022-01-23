@@ -12,8 +12,9 @@ import java.util.List;
 public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoService {
     @Override
     public FacultyAdmissionInfo getFacultyAdmissionInfoById(int id) throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
         try {
-            FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
             return facultyAdmissionInfoDao.getFacultyAdmissionInfoById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -22,8 +23,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
     @Override
     public FacultyAdmissionInfo getFacultyAdmissionInfoByFacultyId(int facultyId) throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
         try {
-            FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
             return facultyAdmissionInfoDao.getFacultyAdmissionInfoByFacultyId(facultyId);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -32,8 +34,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
     @Override
     public List<FacultyAdmissionInfo> getAllFacultyAdmissionInfos() throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
         try {
-            FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
             return facultyAdmissionInfoDao.getAllFacultyAdmissionInfos();
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -42,8 +45,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
     @Override
     public List<FacultyAdmissionInfo> getFacultyAdmissionInfosByPassingScore(double passingScore) throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
         try {
-            FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
             return facultyAdmissionInfoDao.getFacultyAdmissionInfosByPassingScore(passingScore);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -52,8 +56,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
     @Override
     public List<FacultyAdmissionInfo> getFacultyAdmissionInfosByPlaces(double places) throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
         try {
-            FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
             return facultyAdmissionInfoDao.getFacultyAdmissionInfosByPlaces(places);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -62,8 +67,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
     @Override
     public int deleteById(int id) throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
         try {
-            FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
             return facultyAdmissionInfoDao.deleteById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -72,8 +78,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
     @Override
     public int countAllAdmissionInfos() throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
         try {
-            FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
             return facultyAdmissionInfoDao.countAllAdmissionInfos();
         } catch (DaoException e) {
             throw new ServiceException(e);

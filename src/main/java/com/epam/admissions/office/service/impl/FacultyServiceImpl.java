@@ -12,8 +12,9 @@ import java.util.List;
 public class FacultyServiceImpl implements FacultyService {
     @Override
     public Faculty getFacultyById(int id) throws ServiceException {
+        FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
+
         try {
-            FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
             return facultyDao.getFacultyById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -22,8 +23,9 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public List<Faculty> getAllFaculties() throws ServiceException {
+        FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
+
         try {
-            FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
             return facultyDao.getAllFaculties();
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -32,8 +34,9 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public int deleteById(int id) throws ServiceException {
+        FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
+
         try {
-            FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
             return facultyDao.deleteById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
@@ -42,8 +45,9 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public int countAllFaculties() throws ServiceException {
+        FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
+
         try {
-            FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
             return facultyDao.countAllFaculties();
         } catch (DaoException e) {
             throw new ServiceException(e);
