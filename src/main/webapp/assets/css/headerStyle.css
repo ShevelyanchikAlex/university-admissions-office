@@ -169,3 +169,22 @@ nav {
 .nav-links li a.sign-up-text:hover {
     color: white;
 }
+
+.log-out-btn {
+    text-align: left;
+    text-decoration: none;
+    background: #2460da;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.log-out-btn:hover {
+    color: white;
+    background-color: #45B39D;
+}
+
+.nav-links li a.log-out-text:hover {
+    color: white;
+}

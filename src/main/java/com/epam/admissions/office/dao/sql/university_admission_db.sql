@@ -6,6 +6,10 @@ SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE =
 -- -----------------------------------------------------
 -- Schema university_admissions_office_db
 -- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema university_admissions_office_db
+-- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `university_admissions_office_db` DEFAULT CHARACTER SET utf8;
 USE `university_admissions_office_db`;
 
@@ -27,12 +31,12 @@ CREATE TABLE IF NOT EXISTS `university_admissions_office_db`.`roles`
 CREATE TABLE IF NOT EXISTS `university_admissions_office_db`.`users`
 (
     `user_id`     INT          NOT NULL AUTO_INCREMENT,
-    `password`    VARCHAR(100) NULL,
-    `email`       VARCHAR(70)  NULL,
-    `name`        VARCHAR(50)  NULL,
-    `surname`     VARCHAR(70)  NULL,
-    `passport_id` VARCHAR(20)  NULL,
-    `status`      VARCHAR(10)  NOT NULL,
+    `password`    VARCHAR(100) NOT NULL,
+    `email`       VARCHAR(70)  NOT NULL,
+    `name`        VARCHAR(50)  NOT NULL,
+    `surname`     VARCHAR(70)  NOT NULL,
+    `passport_id` VARCHAR(20)  NOT NULL,
+    `is_deleted`  TINYINT      NOT NULL,
     `role_id`     INT          NOT NULL,
     PRIMARY KEY (`user_id`),
     INDEX `fk_Users_Roles1_idx` (`role_id` ASC) VISIBLE,

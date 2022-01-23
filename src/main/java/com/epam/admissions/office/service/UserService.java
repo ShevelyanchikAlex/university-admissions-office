@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService {
     User login(String email, String password) throws ServiceException;
 
-    void signUp(String name, String surname, String email, String passportId, String password) throws ServiceException;
+    boolean signUp(String name, String surname, String email, String passportId, String password, String confirmPassword) throws ServiceException;
 
     User getById(int id) throws ServiceException;
 

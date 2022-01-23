@@ -10,25 +10,23 @@ public class User implements Serializable {
     private String passwordHash;
     private String email;
     private String passportId;
-    private UserStatus userStatus;
+    private boolean isDeleted;
     private UserRole userRole;
 
 
     public User() {
     }
 
-    public User(int userId, String name, String surname, String passwordHash, String email, String passportId,
-                UserStatus userStatus, UserRole userRole) {
+    public User(int userId, String name, String surname, String passwordHash, String email, String passportId, boolean isDeleted, UserRole userRole) {
         this.userId = userId;
         this.name = name;
         this.surname = surname;
         this.passwordHash = passwordHash;
         this.email = email;
         this.passportId = passportId;
-        this.userStatus = userStatus;
+        this.isDeleted = isDeleted;
         this.userRole = userRole;
     }
-
 
     public int getUserId() {
         return userId;
@@ -78,12 +76,12 @@ public class User implements Serializable {
         this.passportId = passportId;
     }
 
-    public UserStatus getUserStatus() {
-        return userStatus;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public UserRole getUserRole() {
@@ -94,18 +92,17 @@ public class User implements Serializable {
         this.userRole = userRole;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(passwordHash, user.passwordHash) && Objects.equals(email, user.email) && Objects.equals(passportId, user.passportId) && userStatus == user.userStatus && userRole == user.userRole;
+        return userId == user.userId && isDeleted == user.isDeleted && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(passwordHash, user.passwordHash) && Objects.equals(email, user.email) && Objects.equals(passportId, user.passportId) && userRole == user.userRole;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, name, surname, passwordHash, email, passportId, userStatus, userRole);
+        return Objects.hash(userId, name, surname, passwordHash, email, passportId, isDeleted, userRole);
     }
 
     @Override
@@ -117,9 +114,8 @@ public class User implements Serializable {
                 ", passwordHash='" + passwordHash + '\'' +
                 ", email='" + email + '\'' +
                 ", passportId='" + passportId + '\'' +
-                ", userStatus=" + userStatus +
+                ", isDeleted=" + isDeleted +
                 ", userRole=" + userRole +
                 '}';
     }
-
 }

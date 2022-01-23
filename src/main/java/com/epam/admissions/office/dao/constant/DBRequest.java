@@ -1,7 +1,5 @@
 package com.epam.admissions.office.dao.constant;
 
-import java.sql.Date;
-
 public final class DBRequest {
     //USER
     public final static String INSERT_USER_QUERY = String.format(
@@ -13,7 +11,7 @@ public final class DBRequest {
             DBColumn.USER_NAME,
             DBColumn.USER_SURNAME,
             DBColumn.USER_PASSPORT_ID,
-            DBColumn.USER_STATUS,
+            DBColumn.USER_IS_DELETED,
             DBColumn.USER_ROLE_ID);
 
     public final static String UPDATE_USER_QUERY = String.format(
@@ -24,7 +22,7 @@ public final class DBRequest {
             DBColumn.USER_NAME,
             DBColumn.USER_SURNAME,
             DBColumn.USER_PASSPORT_ID,
-            DBColumn.USER_STATUS,
+            DBColumn.USER_IS_DELETED,
             DBColumn.USER_ROLE_ID,
             DBColumn.USER_ID);
 
@@ -44,14 +42,14 @@ public final class DBRequest {
             DBColumn.USER_ROLE_ID);
 
     public static final String GET_ALL_USERS_QUERY = String.format(
-            "SELECT * FROM %s WHERE %s=ACTIVE",
+            "SELECT * FROM %s WHERE %s=false",
             DBTable.USER_TABLE,
-            DBColumn.USER_STATUS);
+            DBColumn.USER_IS_DELETED);
 
     public static final String DELETE_USER_QUERY = String.format(
-            "UPDATE %s SET %s=DELETED WHERE %s=?",
+            "UPDATE %s SET %s=true WHERE %s=?",
             DBTable.USER_TABLE,
-            DBColumn.USER_STATUS,
+            DBColumn.USER_IS_DELETED,
             DBColumn.USER_ID);
 
     public static final String COUNT_USERS_BY_ROLE_ID_QUERY = String.format(
@@ -64,9 +62,9 @@ public final class DBRequest {
             DBTable.USER_TABLE);
 
     public static final String RESTORE_USER_QUERY = String.format(
-            "UPDATE %s SET %s=ACTIVE WHERE %s=?",
+            "UPDATE %s SET %s=false WHERE %s=?",
             DBTable.USER_TABLE,
-            DBColumn.USER_STATUS,
+            DBColumn.USER_IS_DELETED,
             DBColumn.USER_ID);
 
 

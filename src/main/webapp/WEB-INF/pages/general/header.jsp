@@ -44,7 +44,8 @@
         <div class="university-logo-name">
             <img class="university-image" src="${pageContext.request.contextPath}/assets/image/university_logo.png"
                  alt="">
-            <label class="university-name"><fmt:message key="header.university_name"/></label>
+            <label class="university-name"><fmt:message key="header.university_name"/><a
+                    href="<c:url value="/controller?command=go_to_home_page" />"></a></label>
         </div>
         <ul class="nav-links">
             <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
@@ -55,13 +56,21 @@
                     key="header.links.faculties"/></a></li>
             <li><a class="link" href="<c:url value="/controller?command=go_to_contacts_page" />"><fmt:message
                     key="header.links.contacts"/></a></li>
-            <li class="log-in-btn"><a href="<c:url value="/controller?command=go_to_log_in_page" />">
-                <fmt:message key="header.log_in_button"/>
-            </a>
-            </li>
-            <li class="sign-up-btn"><a class="sign-up-text" href="<c:url value="/controller?command=go_to_sign_up_page" />">
-                <fmt:message key="header.sign_up_button"/>
-            </a></li>
+            <c:if test="${sessionScope.user_id == null}">
+                    <li class="log-in-btn"><a href="<c:url value="/controller?command=go_to_log_in_page" />">
+                        <fmt:message key="header.log_in_button"/>
+                    </a></li>
+                    <li class="sign-up-btn"><a class="sign-up-text"
+                                               href="<c:url value="/controller?command=go_to_sign_up_page" />">
+                        <fmt:message key="header.sign_up_button"/>
+                    </a></li>
+            </c:if>
+            <c:if test="${sessionScope.user_id != null}">
+                <li class="log-out-btn"><a class="log-out-text"
+                                           href="<c:url value="/controller?command=logout" />">
+                    <fmt:message key="header.log_out_button"/>
+                </a></li>
+            </c:if>
         </ul>
     </nav>
 </div>

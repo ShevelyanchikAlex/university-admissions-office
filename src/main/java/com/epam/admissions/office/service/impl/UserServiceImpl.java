@@ -5,23 +5,28 @@ import com.epam.admissions.office.dao.UserDao;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.entity.user.User;
 import com.epam.admissions.office.entity.user.UserRole;
-import com.epam.admissions.office.entity.user.UserStatus;
 import com.epam.admissions.office.service.UserService;
 import com.epam.admissions.office.service.exception.ServiceException;
+import com.epam.admissions.office.service.util.UtilFactory;
+import com.epam.admissions.office.service.util.digest.PasswordDigest;
+import com.epam.admissions.office.service.validator.Validator;
+import com.epam.admissions.office.service.validator.ValidatorFactory;
+import com.epam.admissions.office.service.validator.constant.ValidPattern;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String email, String password) throws ServiceException {
+        PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
         User user = null;
 
         try {
             UserDao userDao = DaoFactory.getInstance().getUserDao();
             User dbUser = userDao.getByEmail(email);
-            //TODO add password hash
-            if (dbUser.getPasswordHash().equals(password) && !dbUser.getUserStatus().equals(UserStatus.DELETED)) {
+            if (dbUser.getPasswordHash().equals(passwordDigest.getDigestPassword(password)) && !dbUser.isDeleted()) {
                 user = dbUser;
             }
         } catch (DaoException e) {
@@ -31,15 +36,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void signUp(String name, String surname, String email, String passportId, String password) throws ServiceException {
-        // TODO Valid
+    public boolean signUp(String name, String surname, String email, String passportId, String password, String confirmPassword) throws ServiceException {
+        UserDao userDao = DaoFactory.getInstance().getUserDao();
+        PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
+
+        User user = new User(0, name, surname, passwordDigest.getDigestPassword(password), email, passportId, false, UserRole.USER);
+
         try {
-            UserDao userDao = DaoFactory.getInstance().getUserDao();
-            User user = new User(0, name, surname, password, email, passportId, UserStatus.ACTIVE, UserRole.USER);
-            userDao.createUser(user);
+            if (isUserDataValid(password, confirmPassword, user)) {
+                return userDao.createUser(user) == 1;
+            } else {
+                return false;
+            }
         } catch (DaoException e) {
-            throw new ServiceException("Unable to save new user to DB.", e);
+            throw new ServiceException("Exception while saving new user to DB.", e);
         }
+    }
+
+    private boolean isUserDataValid(String password, String confirmPassword, User user) {
+        ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
+        Validator<User> userValidator = validatorFactory.getUserValidator();
+        Validator<String> passwordValidator = validatorFactory.getPasswordValidator();
+
+        return passwordValidator.validate(password) && password.equals(confirmPassword) && userValidator.validate(user);
     }
 
     @Override

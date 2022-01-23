@@ -36,7 +36,7 @@ public class LogInCommand implements Command {
                 session.setAttribute(SessionAttribute.USER_PASSWORD, user.getPasswordHash());
                 session.setAttribute(SessionAttribute.USER_EMAIL, user.getEmail());
                 session.setAttribute(SessionAttribute.USER_PASSPORT_ID, user.getPassportId());
-                session.setAttribute(SessionAttribute.USER_STATUS, user.getUserStatus());
+                session.setAttribute(SessionAttribute.USER_IS_DELETED, user.isDeleted());
                 session.setAttribute(SessionAttribute.USER_ROLE, user.getUserRole());
                 logger.info("User " + user.getEmail() + "was log in.");
             } else {

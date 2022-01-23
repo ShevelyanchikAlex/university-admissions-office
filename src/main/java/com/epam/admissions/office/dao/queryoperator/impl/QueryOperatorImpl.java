@@ -43,13 +43,7 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         try (Connection connection = ConnectionPool.getInstance().takeConnection();
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             setStatementParams(statement, params);
-            int rowsAffected = statement.executeUpdate();
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys != null && generatedKeys.next()) {
-                return generatedKeys.getInt(1);
-            } else {
-                return rowsAffected;
-            }
+            return statement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException("Unable to execute update query.", e);
         } catch (ConnectionPoolException e) {

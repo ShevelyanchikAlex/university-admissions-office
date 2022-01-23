@@ -10,7 +10,7 @@ public final class DBColumn {
     public static final String USER_NAME = "name";
     public static final String USER_SURNAME = "surname";
     public static final String USER_PASSPORT_ID = "passport_id";
-    public static final String USER_STATUS = "status";
+    public static final String USER_IS_DELETED = "is_deleted";
     public static final String USER_ROLE_ID = "role_id";
 
     public static final String FACULTY_ID = "faculty_id";

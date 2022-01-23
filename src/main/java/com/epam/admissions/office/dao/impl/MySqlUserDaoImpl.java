@@ -24,14 +24,13 @@ public class MySqlUserDaoImpl implements UserDao {
     public int createUser(User user) throws DaoException {
         return queryOperator.executeUpdate(
                 DBRequest.INSERT_USER_QUERY,
-                user.getUserId(),
                 user.getPasswordHash(),
                 user.getEmail(),
                 user.getName(),
                 user.getSurname(),
                 user.getPassportId(),
-                user.getUserStatus(),
-                user.getUserRole());
+                user.isDeleted() ? 1 : 0,
+                user.getUserRole().ordinal());
     }
 
     @Override
@@ -43,8 +42,8 @@ public class MySqlUserDaoImpl implements UserDao {
                 user.getName(),
                 user.getSurname(),
                 user.getPassportId(),
-                user.getUserStatus(),
-                user.getUserRole(),
+                user.isDeleted() ? 1 : 0,
+                user.getUserRole().ordinal(),
                 user.getUserId());
     }
 

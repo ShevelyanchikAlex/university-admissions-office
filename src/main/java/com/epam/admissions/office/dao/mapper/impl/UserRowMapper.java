@@ -4,7 +4,6 @@ import com.epam.admissions.office.dao.mapper.RowMapper;
 import com.epam.admissions.office.dao.constant.DBColumn;
 import com.epam.admissions.office.entity.user.User;
 import com.epam.admissions.office.entity.user.UserRole;
-import com.epam.admissions.office.entity.user.UserStatus;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +18,7 @@ public class UserRowMapper implements RowMapper<User> {
         user.setName(resultSet.getString(DBColumn.USER_NAME));
         user.setSurname(resultSet.getString(DBColumn.USER_SURNAME));
         user.setPassportId(resultSet.getString(DBColumn.USER_PASSPORT_ID));
-        user.setUserStatus(UserStatus.valueOf(resultSet.getString(DBColumn.USER_STATUS)));
+        user.setDeleted(resultSet.getBoolean(DBColumn.USER_IS_DELETED));
         user.setUserRole(UserRole.valueOf(resultSet.getString(DBColumn.ROLE_NAME).toUpperCase()));
         return user;
     }

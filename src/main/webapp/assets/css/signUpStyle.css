@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 body {
@@ -9,7 +10,6 @@ body {
 }
 
 .prev-text {
-    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #808B96;
     text-align: left;
     width: 80%;
@@ -23,6 +23,30 @@ body {
     margin: 50px auto auto;
     box-shadow: 15px 15px 20px #2E4053;
     border-radius: 20px;
+}
+
+.alert-block {
+    align-items: center;
+    background: #f66868;
+    display: flex;
+    height: auto;
+    width: 40%;
+    margin: 20px auto auto;
+    border-radius: 20px;
+    box-shadow: 15px 15px 20px #decacd;
+}
+
+.alert-header {
+    font-size: 2rem;
+    padding: 10px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.alert-message {
+    padding: 10px;
+    text-align: center;
+    color: whitesmoke;
 }
 
 .form {
@@ -45,7 +69,6 @@ body {
 
 .form h1 {
     font-size: 3rem;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin: 40px;
     color: #283747;
 }
@@ -53,25 +76,26 @@ body {
 
 .box {
     padding: 12px;
-    width: 80%;
-    margin: 15px;
+    width: 100%;
+    margin: 10px 0;
     outline: none;
     border-radius: 10px;
 }
 
-#submit {
+.form-sign-up-btn {
     padding: 20px 30px;
-    width: 40%;
-    margin-top: 40px;
+    width: 45%;
     background-color: #2460da;
     color: white;
     font-weight: bold;
     border: none;
     outline: none;
     border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
 }
 
-#submit:hover {
+.form-sign-up-btn:hover {
     cursor: pointer;
     background-color: #17A589;
 }
@@ -91,7 +115,6 @@ body {
 
 
 .sign-in-button {
-    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #2460da;
     text-align: left;
     text-decoration: none;
