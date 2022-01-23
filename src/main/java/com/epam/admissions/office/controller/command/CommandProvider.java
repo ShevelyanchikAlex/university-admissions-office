@@ -4,7 +4,7 @@ import com.epam.admissions.office.controller.command.impl.ChangeLocaleCommand;
 import com.epam.admissions.office.controller.command.impl.LogInCommand;
 import com.epam.admissions.office.controller.command.impl.LogOutCommand;
 import com.epam.admissions.office.controller.command.impl.SignUpCommand;
-import com.epam.admissions.office.controller.command.impl.go_to_command.*;
+import com.epam.admissions.office.controller.command.impl.goto_command.*;
 import com.epam.admissions.office.controller.constant.CommandName;
 
 import java.util.HashMap;

@@ -19,7 +19,7 @@ public class UserRowMapper implements RowMapper<User> {
         user.setSurname(resultSet.getString(DBColumn.USER_SURNAME));
         user.setPassportId(resultSet.getString(DBColumn.USER_PASSPORT_ID));
         user.setDeleted(resultSet.getBoolean(DBColumn.USER_IS_DELETED));
-        user.setUserRole(UserRole.valueOf(resultSet.getString(DBColumn.ROLE_NAME).toUpperCase()));
+        user.setUserRole(UserRole.values()[resultSet.getInt(DBColumn.USER_ROLE_ID)]);
         return user;
     }
 }

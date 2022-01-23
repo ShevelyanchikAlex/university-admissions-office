@@ -1,4 +1,4 @@
-package com.epam.admissions.office.controller.command.impl.go_to_command;
+package com.epam.admissions.office.controller.command.impl.goto_command;
 
 import com.epam.admissions.office.controller.command.Command;
 import com.epam.admissions.office.controller.constant.CommandName;
@@ -13,17 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class GoToProfilePageCommand implements Command {
+public class GoToSignUpCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_PROFILE_PAGE);
+        session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_SIGN_UP_PAGE);
 
-
-        ///TODO get user id and add logic
-
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.PROFILE_PAGE);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.SIGN_UP_PAGE);
         requestDispatcher.forward(request, response);
     }
 }

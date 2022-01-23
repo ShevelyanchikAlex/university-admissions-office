@@ -13,14 +13,25 @@
 </head>
 <body>
 <jsp:include page="general/header.jsp"/>
+<c:if test="${sessionScope.error != null}">
+    <div class="alert-block">
+        <label class="alert-message"><p class="alert-header"><fmt:message key="signup.alert_header"/></p>
+                ${sessionScope.error}
+        </label>
+            ${sessionScope.remove("error")}
+    </div>
+</c:if>
 <div class="container">
-    <form action="" class="form">
+    <form action="controller" class="form" method="post">
+        <input type="hidden" name="command" value="login">
         <h1><fmt:message key="login.welcome_back"/></h1>
         <label class="prev-text"><fmt:message key="login.email"/></label>
-        <input type="email" name="email" class="box" placeholder="<fmt:message key="login.email_placeholder"/>"/>
+        <input type="email" name="user_email" class="box"
+               placeholder="<fmt:message key="login.email_placeholder"/>" maxlength="70" required/>
         <label class="prev-text"><fmt:message key="login.password"/></label>
-        <input type="password" name="password" class="box"
-               placeholder="<fmt:message key="login.password_placeholder"/>"/>
+        <input type="password" name="user_password" class="box"
+               placeholder="<fmt:message key="login.password_placeholder"/>"
+               minlength="8" maxlength="30" required/>
         <input type="submit" value="<fmt:message key="login.sign_in"/>" id="submit"/>
         <a href="#"><fmt:message key="login.forget_password"/></a>
     </form>

@@ -1,9 +1,6 @@
 package com.epam.admissions.office.dao.constant;
 
 public final class DBColumn {
-    public static final String ROLE_ID = "role_id";
-    public static final String ROLE_NAME = "role_name";
-
     public static final String USER_ID = "user_id";
     public static final String USER_PASSWORD_HASH = "password";
     public static final String USER_EMAIL = "email";

@@ -11,26 +11,24 @@ import com.epam.admissions.office.service.util.UtilFactory;
 import com.epam.admissions.office.service.util.digest.PasswordDigest;
 import com.epam.admissions.office.service.validator.Validator;
 import com.epam.admissions.office.service.validator.ValidatorFactory;
-import com.epam.admissions.office.service.validator.constant.ValidPattern;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String email, String password) throws ServiceException {
+        UserDao userDao = DaoFactory.getInstance().getUserDao();
         PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
         User user = null;
 
         try {
-            UserDao userDao = DaoFactory.getInstance().getUserDao();
             User dbUser = userDao.getByEmail(email);
-            if (dbUser.getPasswordHash().equals(passwordDigest.getDigestPassword(password)) && !dbUser.isDeleted()) {
+            if (dbUser != null && dbUser.getPasswordHash().equals(passwordDigest.getDigestPassword(password)) && !dbUser.isDeleted()) {
                 user = dbUser;
             }
         } catch (DaoException e) {
-            throw new ServiceException("Unable get User from DB.", e);
+            throw new ServiceException(e);
         }
         return user;
     }
@@ -49,7 +47,7 @@ public class UserServiceImpl implements UserService {
                 return false;
             }
         } catch (DaoException e) {
-            throw new ServiceException("Exception while saving new user to DB.", e);
+            throw new ServiceException(e);
         }
     }
 

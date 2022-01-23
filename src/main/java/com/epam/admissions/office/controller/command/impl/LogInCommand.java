@@ -22,38 +22,37 @@ public class LogInCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        UserService userService = ServiceFactory.getInstance().getUserService();
 
         String email = request.getParameter(RequestParameter.USER_EMAIL);
         String password = request.getParameter((RequestParameter.USER_PASSWORD));
 
         try {
-            UserService userService = ServiceFactory.getInstance().getUserService();
             User user = userService.login(email, password);
             if (user != null) {
                 session.setAttribute(SessionAttribute.USER_ID, user.getUserId());
                 session.setAttribute(SessionAttribute.USER_NAME, user.getName());
                 session.setAttribute(SessionAttribute.USER_SURNAME, user.getSurname());
-                session.setAttribute(SessionAttribute.USER_PASSWORD, user.getPasswordHash());
                 session.setAttribute(SessionAttribute.USER_EMAIL, user.getEmail());
                 session.setAttribute(SessionAttribute.USER_PASSPORT_ID, user.getPassportId());
-                session.setAttribute(SessionAttribute.USER_IS_DELETED, user.isDeleted());
                 session.setAttribute(SessionAttribute.USER_ROLE, user.getUserRole());
-                logger.info("User " + user.getEmail() + "was log in.");
-            } else {
-                session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_LOG_IN_PAGE);
+                logger.info("User " + email + "was log in.");
 
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.LOG_IN_PAGE);
+                session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_HOME_PAGE);
+
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.HOME_PAGE);
                 requestDispatcher.forward(request, response);
-            }
-            session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_HOME_PAGE);
+            } else {
+                session.setAttribute(SessionAttribute.ERROR, session.getAttribute(SessionAttribute.LOCALE) == SessionAttributeValue.LOCALE_RU
+                        ? SessionAttributeValue.ALERT_MESSAGE_INCORRECT_LOGIN_DATA_RU : SessionAttributeValue.ALERT_MESSAGE_INCORRECT_LOGIN_DATA_EN);
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.HOME_PAGE);
-            requestDispatcher.forward(request, response);
+                response.sendRedirect((String) session.getAttribute(SessionAttribute.URL));
+            }
+
         } catch (ServiceException e) {
             logger.error("It is not possible to check user data at login.", e);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
+            requestDispatcher.forward(request, response);
         }
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
-        requestDispatcher.forward(request, response);
     }
 }

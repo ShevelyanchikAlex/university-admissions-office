@@ -33,6 +33,15 @@ body {
     color: #283747;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    float: left;
+    padding: 10px;
+}
+
 .prev-text {
     font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #808B96;
@@ -87,4 +96,28 @@ body {
 .image {
     width: 300px;
     height: 300px;
+}
+
+.alert-block {
+    align-items: center;
+    background: #f66868;
+    display: flex;
+    height: auto;
+    width: 40%;
+    margin: 20px auto auto;
+    border-radius: 20px;
+    box-shadow: 15px 15px 20px #decacd;
+}
+
+.alert-header {
+    font-size: 2rem;
+    padding: 10px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.alert-message {
+    padding: 10px;
+    text-align: center;
+    color: whitesmoke;
 }

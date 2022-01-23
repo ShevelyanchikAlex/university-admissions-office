@@ -27,10 +27,8 @@ public class LogOutCommand implements Command {
         session.removeAttribute(SessionAttribute.USER_ID);
         session.removeAttribute(SessionAttribute.USER_NAME);
         session.removeAttribute(SessionAttribute.USER_SURNAME);
-        session.removeAttribute(SessionAttribute.USER_PASSWORD);
         session.removeAttribute(SessionAttribute.USER_EMAIL);
         session.removeAttribute(SessionAttribute.USER_PASSPORT_ID);
-        session.removeAttribute(SessionAttribute.USER_IS_DELETED);
         session.removeAttribute(SessionAttribute.USER_ROLE);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.HOME_PAGE);
