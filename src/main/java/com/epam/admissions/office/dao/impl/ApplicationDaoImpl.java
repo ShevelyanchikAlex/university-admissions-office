@@ -12,10 +12,10 @@ import com.epam.admissions.office.entity.Application;
 import java.sql.Date;
 import java.util.List;
 
-public class MySqlApplicationDaoImpl implements ApplicationDao {
+public class ApplicationDaoImpl implements ApplicationDao {
     private final QueryOperator<Application> queryOperator;
 
-    public MySqlApplicationDaoImpl() {
+    public ApplicationDaoImpl() {
         RowMapper<Application> mapper = RowMapperFactory.getApplicationRowMapper();
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }

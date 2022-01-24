@@ -5,12 +5,12 @@ import com.epam.admissions.office.dao.impl.*;
 public class DaoFactory {
     private static final DaoFactory instance = new DaoFactory();
 
-    private static final ApplicationDao applicationDao = new MySqlApplicationDaoImpl();
-    private static final UserDao userDao = new MySqlUserDaoImpl();
-    private static final ResultDao resultDao = new MySqlResultDaoImpl();
-    private static final SubjectDao subjectDao = new MySqlSubjectDaoImpl();
-    private static final FacultyDao facultyDao = new MySqlFacultyDaoImpl();
-    private static final FacultyAdmissionInfoDao facultyAdmissionInfoDao = new MySqlFacultyAdmissionInfoImpl();
+    private static final ApplicationDao applicationDao = new ApplicationDaoImpl();
+    private static final UserDao userDao = new UserDaoImpl();
+    private static final ResultDao resultDao = new ResultDaoImpl();
+    private static final SubjectDao subjectDao = new SubjectDaoImpl();
+    private static final FacultyDao facultyDao = new FacultyDaoImpl();
+    private static final FacultyAdmissionInfoDao facultyAdmissionInfoDao = new FacultyAdmissionInfoImpl();
 
     private DaoFactory() {
     }

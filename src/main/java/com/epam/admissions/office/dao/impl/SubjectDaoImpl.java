@@ -11,10 +11,10 @@ import com.epam.admissions.office.entity.Subject;
 
 import java.util.List;
 
-public class MySqlSubjectDaoImpl implements SubjectDao {
+public class SubjectDaoImpl implements SubjectDao {
     private final QueryOperator<Subject> queryOperator;
 
-    public MySqlSubjectDaoImpl() {
+    public SubjectDaoImpl() {
         RowMapper<Subject> mapper = RowMapperFactory.getSubjectRowMapper();
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }

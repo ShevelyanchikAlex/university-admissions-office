@@ -11,10 +11,10 @@ import com.epam.admissions.office.entity.Result;
 
 import java.util.List;
 
-public class MySqlResultDaoImpl implements ResultDao {
+public class ResultDaoImpl implements ResultDao {
     private final QueryOperator<Result> queryOperator;
 
-    public MySqlResultDaoImpl() {
+    public ResultDaoImpl() {
         RowMapper<Result> mapper = RowMapperFactory.getResultRowMapper();
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }

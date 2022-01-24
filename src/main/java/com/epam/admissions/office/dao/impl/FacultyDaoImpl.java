@@ -11,10 +11,10 @@ import com.epam.admissions.office.entity.faculty.Faculty;
 
 import java.util.List;
 
-public class MySqlFacultyDaoImpl implements FacultyDao {
+public class FacultyDaoImpl implements FacultyDao {
     private final QueryOperator<Faculty> queryOperator;
 
-    public MySqlFacultyDaoImpl() {
+    public FacultyDaoImpl() {
         RowMapper<Faculty> mapper = RowMapperFactory.getFacultyRowMapper();
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }

@@ -12,10 +12,10 @@ import com.epam.admissions.office.entity.user.UserRole;
 
 import java.util.List;
 
-public class MySqlUserDaoImpl implements UserDao {
+public class UserDaoImpl implements UserDao {
     private final QueryOperator<User> queryOperator;
 
-    public MySqlUserDaoImpl() {
+    public UserDaoImpl() {
         RowMapper<User> mapper = RowMapperFactory.getUserRowMapper();
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }
