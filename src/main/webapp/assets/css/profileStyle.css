@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 15px 15px 20px #2E4053;
+    padding: 20px;
+    margin: 50px 15%;
+}
+
+
+.profile-container .profile-data {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.avatar {
+    color: black;
+    font-size: 50px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    margin-right: 25px;
+}
+
+
+.profile-container .personal-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+
+.profile-container .personal-data .personal-data-name {
+    height: 30px;
+    color: #696666;
+    font-size: 20px;
+}
+
+.profile-container .personal-data .personal-data-value {
+    height: 30px;
+    font-size: 20px;
+}
+
+.edit-profile {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    width: 25%;
+    margin: auto;
+    background-color: #2460da;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.edit-profile:hover {
+    cursor: pointer;
+    background-color: #17A589;
+}
+
+
+
+.application-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 15px 15px 20px #2E4053;
+    padding: 20px;
+    margin: 50px 15%;
+}
+
+.application-header {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    margin-right: 25px;
+}
+
+.application-container .application-data{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.application-container .application-personal-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+
+.application-container .application-personal-data .personal-data-name {
+    height: 30px;
+    color: #696666;
+    font-size: 20px;
+}
+
+.application-container .application-personal-data .personal-data-value {
+    height: 30px;
+    font-size: 20px;
+}
+
+.add-application {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    width: 25%;
+    margin: 20px auto auto;
+    background-color: #2460da;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.add-application:hover {
+    cursor: pointer;
+    background-color: #17A589;
+}

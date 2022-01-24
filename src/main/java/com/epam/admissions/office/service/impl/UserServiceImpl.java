@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
         PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
 
-        User user = new User(0, name, surname, passwordDigest.getDigestPassword(password), email, passportId, false, UserRole.USER);
+        User user = new User(0, name, surname, passwordDigest.getDigestPassword(password), email, passportId, false, UserRole.USER_WITHOUT_APPLICATION);
 
         try {
             if (isUserDataValid(password, confirmPassword, user)) {
@@ -125,20 +125,25 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public int editPersonalData(int id, String name, String surname, String email, String passportId, String password) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
 
-        //TODO add Validation
+    @Override
+    public boolean editPersonalData(int id, String name, String surname, String email, String passportId) throws ServiceException {
+        UserDao userDao = DaoFactory.getInstance().getUserDao();
+        ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
+        Validator<User> userValidator = validatorFactory.getUserValidator();
+
         try {
             User user = userDao.getUserById(id);
             user.setName(name);
             user.setSurname(surname);
             user.setEmail(email);
             user.setPassportId(passportId);
-            user.setPasswordHash(password);
 
-            return userDao.updateUser(user);
+            if (userValidator.validate(user)) {
+                return userDao.updateUser(user) == 1;
+            } else {
+                return false;
+            }
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

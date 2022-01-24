@@ -66,6 +66,8 @@
                     </a></li>
             </c:if>
             <c:if test="${sessionScope.user_id != null}">
+                <li><a class="link" href="<c:url value="/controller?command=go_to_profile_page" />">
+                    <fmt:message key="header.links.profile"/></a></li>
                 <li class="log-out-btn"><a class="log-out-text"
                                            href="<c:url value="/controller?command=logout" />">
                     <fmt:message key="header.log_out_button"/>

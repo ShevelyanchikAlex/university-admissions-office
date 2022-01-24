@@ -23,7 +23,7 @@ public interface UserService {
 
     int countAllUsers() throws ServiceException;
 
-    int editPersonalData(int id, String name, String surname, String email, String passportId, String password) throws ServiceException;
+    boolean editPersonalData(int id, String name, String surname, String email, String passportId) throws ServiceException;
 
     List<User> getUsersByRoleId(int roleId) throws ServiceException;
 
