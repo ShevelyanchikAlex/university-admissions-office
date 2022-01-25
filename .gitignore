@@ -38,6 +38,7 @@ gradle-app.setting
 ## IntelliJ
 ##############################
 out/
+sql/
 .idea/
 .idea_modules/
 logs/
