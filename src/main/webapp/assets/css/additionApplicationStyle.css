@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 body {
@@ -10,58 +9,26 @@ body {
 }
 
 .prev-text {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #808B96;
     text-align: left;
-    width: 80%;
+    width: 65%;
 }
 
 
 .container {
     display: flex;
-    height: 500px;
-    width: 1050px;
+    height: 650px;
+    width: 950px;
     margin: 50px auto auto;
     box-shadow: 15px 15px 20px #2E4053;
     border-radius: 20px;
 }
 
-.alert-block {
-    align-items: center;
-    background: #f66868;
-    display: flex;
-    height: auto;
-    width: 40%;
-    margin: 20px auto auto;
-    border-radius: 20px;
-    box-shadow: 15px 15px 20px #decacd;
-}
-
-.alert-header {
-    font-size: 2rem;
-    padding: 10px;
-    text-align: center;
-    color: whitesmoke;
-}
-
-.alert-message {
-    padding: 10px;
-    text-align: center;
-    color: whitesmoke;
-}
-
 .form {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    align-items: center;
-    background-color: whitesmoke;
-    border-radius: 7px 0 0 7px;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
+    width: 65%;
     align-items: center;
     background-color: whitesmoke;
     border-radius: 7px 0 0 7px;
@@ -69,52 +36,62 @@ body {
 
 .form h1 {
     font-size: 3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin: 40px;
     color: #283747;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    float: left;
+    width: 65%;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
 
 .box {
     padding: 12px;
-    width: 100%;
-    margin: 10px 0;
+    width: 65%;
+    margin-top: 15px;
+    margin-bottom: 15px;
     outline: none;
     border-radius: 10px;
 }
 
-.form-edit-btn {
+#submit {
     padding: 20px 30px;
-    margin: auto;
-    width: 45%;
+    width: 40%;
+    margin-top: 40px;
     background-color: #2460da;
     color: white;
     font-weight: bold;
     border: none;
     outline: none;
     border-radius: 20px;
-    text-decoration: none;
-    text-align: center;
 }
 
-.form-edit-btn:hover {
+#submit:hover {
     cursor: pointer;
     background-color: #17A589;
 }
 
-
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: auto;
+.form a {
+    text-decoration: none;
+    color: #283747;
+    margin-top: 20px;
 }
 
-.column-bottom {
-    float: left;
-    padding: 20px 10px;
+.form a:hover {
+    color: #45B39D;
 }
 
-.image-side {
+.side {
     display: flex;
     justify-content: center;
     align-items: center;

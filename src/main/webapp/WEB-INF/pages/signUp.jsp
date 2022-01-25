@@ -79,8 +79,9 @@
     </form>
     <div class="image-side">
         <img class="image" src="${pageContext.request.contextPath}/assets/image/signup.png"
-             alt="<fmt:message key="login.sign_in"/>">
+             alt="<fmt:message key="login.title"/>">
     </div>
 </div>
 </body>
+<jsp:include page="general/footer.jsp"/>
 </html>

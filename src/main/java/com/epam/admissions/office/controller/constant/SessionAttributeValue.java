@@ -14,6 +14,10 @@ public final class SessionAttributeValue {
     public static final String ALERT_MESSAGE_INCORRECT_LOGIN_DATA_EN = "Incorrect email or password entered.\r\nPlease try again.";
     public static final String ALERT_MESSAGE_INCORRECT_LOGIN_DATA_RU = "Неверно введен email или пароль.\r\nПовторите попытку еще раз.";
 
+    public static final String APPLICATIONS_TABLE = "APPLICATIONS_TABLE";
+    public static final String RESPONDED_APPLICATIONS_TABLE = "RESPONDED_APPLICATIONS_TABLE";
+    public static final String ADMINISTRATORS_TABLE = "ADMINISTRATORS_TABLE";
+    public static final String APPLICANTS_TABLE = "APPLICANTS_TABLE";
 
     private SessionAttributeValue() {
     }

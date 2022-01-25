@@ -13,4 +13,5 @@
 <body>
 <jsp:include page="general/header.jsp"/>
 </body>
+<%--<jsp:include page="general/footer.jsp"/>--%>
 </html>

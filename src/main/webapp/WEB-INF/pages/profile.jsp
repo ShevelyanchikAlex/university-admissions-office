@@ -34,11 +34,12 @@
             </table>
         </div>
     </div>
+    <a class="edit-profile" href="<c:url value="/controller?command=go_to_edit_personal_data_page" />"><fmt:message
+            key="profile.personal.data.edit_button"/></a>
 </div>
-<a class="edit-profile" href="<c:url value="/controller?command=go_to_edit_personal_data_page" />"><fmt:message
-        key="profile.personal.data.edit_button"/></a>
 
 <c:if test="${sessionScope.user_role == 'USER'}">
+    <hr class="line">
     <div class="application-container">
         <div class="application-data">
             <div class="application-personal-data">
@@ -72,7 +73,7 @@
                     <tr>
                         <td class="personal-data-name"><b><fmt:message key="profile.application.data.confirmed"/></b>
                         </td>
-                        <td class="personal-data-value">yes</td>
+                        <td class="personal-data-value">Confirmed</td>
                     </tr>
                     <tr>
                         <td class="personal-data-name"><b><fmt:message
@@ -83,16 +84,18 @@
                         <td class="personal-data-name"><b><fmt:message
                                 key="profile.application.data.rejection_reason"/></b>
                         </td>
-                        <td class="personal-data-value">Resason</td>
+                        <td class="personal-data-value">-</td>
                     </tr>
                 </table>
             </div>
         </div>
+        <a class="edit-application" href="<c:url value="/controller?command=go_to_edit_application_page" />"><fmt:message key="profile.application.edit_button"/></a>
     </div>
 </c:if>
 
 <c:if test="${sessionScope.user_role == 'USER_WITHOUT_APPLICATION'}">
-    <a class="add-application" href=""><fmt:message key="profile.application.add_application_button"/></a>
+    <a class="add-application" href="<c:url value="/controller?command=go_to_add_application_page" />"><fmt:message key="profile.application.add_application_button"/></a>
 </c:if>
 </body>
+<jsp:include page="general/footer.jsp"/>
 </html>

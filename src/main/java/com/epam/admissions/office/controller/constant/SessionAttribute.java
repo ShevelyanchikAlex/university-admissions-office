@@ -15,6 +15,8 @@ public final class SessionAttribute {
 
     public static final String ERROR = "error";
 
+    public static final String ADMIN_TABLE = "admin_table";
+
     private SessionAttribute() {
     }
 }

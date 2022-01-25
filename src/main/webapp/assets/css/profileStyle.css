@@ -29,11 +29,15 @@ body {
 }
 
 .avatar {
-    color: black;
+    color: #2460da;
     font-size: 50px;
     margin-bottom: 25px;
     margin-top: 25px;
     margin-right: 25px;
+}
+
+.email {
+    color: #2460da;
 }
 
 
@@ -62,7 +66,7 @@ body {
     align-items: center;
     padding: 20px 30px;
     width: 25%;
-    margin: auto;
+    margin: 20px auto auto;
     background-color: #2460da;
     color: white;
     font-weight: bold;
@@ -78,6 +82,9 @@ body {
 }
 
 
+.line {
+    margin: 5%;
+}
 
 .application-container {
     display: flex;
@@ -91,12 +98,13 @@ body {
 }
 
 .application-header {
+    color: #2460da;
     margin-bottom: 25px;
     margin-top: 25px;
     margin-right: 25px;
 }
 
-.application-container .application-data{
+.application-container .application-data {
     display: flex;
     justify-content: left;
     flex-direction: column;
@@ -114,11 +122,37 @@ body {
     height: 30px;
     color: #696666;
     font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .application-container .application-personal-data .personal-data-value {
     height: 30px;
     font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.edit-application {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    width: 25%;
+    margin: 20px auto auto;
+    background-color: #2460da;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.edit-application:hover {
+    cursor: pointer;
+    background-color: #17A589;
 }
 
 .add-application {

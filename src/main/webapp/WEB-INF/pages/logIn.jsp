@@ -32,14 +32,14 @@
         <input type="password" name="user_password" class="box"
                placeholder="<fmt:message key="login.password_placeholder"/>"
                minlength="8" maxlength="30" required/>
-        <input type="submit" value="<fmt:message key="login.sign_in"/>" id="submit"/>
-        <a href="#"><fmt:message key="login.forget_password"/></a>
+        <input type="submit" value="<fmt:message key="login.sign_in_button"/>" id="submit"/>
+        <a href="<c:url value="/controller?command=go_to_sign_up_page" />"><fmt:message key="login.have_not_an_account"/></a>
     </form>
     <div class="image-side">
         <img class="image" src="${pageContext.request.contextPath}/assets/image/login.png"
-             alt="<fmt:message key="login.sign_in"/>">
+             alt="<fmt:message key="login.title"/>">
     </div>
 </div>
-
 </body>
+<jsp:include page="general/footer.jsp"/>
 </html>

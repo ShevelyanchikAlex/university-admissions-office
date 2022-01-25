@@ -50,24 +50,30 @@
         <ul class="nav-links">
             <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
                     key="header.links.home"/></a></li>
-            <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
-                    key="header.links.about"/></a></li>
-            <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
-                    key="header.links.faculties"/></a></li>
-            <li><a class="link" href="<c:url value="/controller?command=go_to_contacts_page" />"><fmt:message
-                    key="header.links.contacts"/></a></li>
+            <c:if test="${sessionScope.user_role != 'ADMIN'}">
+                <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
+                        key="header.links.about"/></a></li>
+                <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
+                        key="header.links.faculties"/></a></li>
+                <li><a class="link" href="<c:url value="/controller?command=go_to_contacts_page" />"><fmt:message
+                        key="header.links.contacts"/></a></li>
+            </c:if>
             <c:if test="${sessionScope.user_id == null}">
-                    <li class="log-in-btn"><a href="<c:url value="/controller?command=go_to_log_in_page" />">
-                        <fmt:message key="header.log_in_button"/>
-                    </a></li>
-                    <li class="sign-up-btn"><a class="sign-up-text"
-                                               href="<c:url value="/controller?command=go_to_sign_up_page" />">
-                        <fmt:message key="header.sign_up_button"/>
-                    </a></li>
+                <li class="log-in-btn"><a href="<c:url value="/controller?command=go_to_log_in_page" />">
+                    <fmt:message key="header.log_in_button"/>
+                </a></li>
+                <li class="sign-up-btn"><a class="sign-up-text"
+                                           href="<c:url value="/controller?command=go_to_sign_up_page" />">
+                    <fmt:message key="header.sign_up_button"/>
+                </a></li>
             </c:if>
             <c:if test="${sessionScope.user_id != null}">
                 <li><a class="link" href="<c:url value="/controller?command=go_to_profile_page" />">
                     <fmt:message key="header.links.profile"/></a></li>
+                <c:if test="${sessionScope.user_role == 'ADMIN'}">
+                    <li><a class="link" href="<c:url value="/controller?command=go_to_admin_page" />">
+                        <fmt:message key="header.links.admin"/></a></li>
+                </c:if>
                 <li class="log-out-btn"><a class="log-out-text"
                                            href="<c:url value="/controller?command=logout" />">
                     <fmt:message key="header.log_out_button"/>
