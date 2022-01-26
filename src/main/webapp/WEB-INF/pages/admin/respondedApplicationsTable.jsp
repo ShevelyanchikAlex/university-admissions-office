@@ -30,61 +30,46 @@
     </thead>
     <tbody>
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
+        <td>1</td>
+        <td>dasha@gmail.com</td>
         <td>AV1231122</td>
-        <td>KSIS</td>
-        <td>70</td>
+        <td>EECS</td>
+        <td>90</td>
         <td>90</td>
         <td>80</td>
         <td>22.04.2022</td>
-        <td>27.04.2022</td>
+        <td>25.04.2022</td>
         <td>-</td>
         <td><a class="response-button"
                href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Edit</a>
         </td>
     </tr>
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
+        <td>2</td>
+        <td>nl@mail.ru</td>
         <td>AV1231122</td>
-        <td>KSIS</td>
+        <td>MECHE</td>
         <td>70</td>
         <td>90</td>
         <td>80</td>
         <td>22.04.2022</td>
-        <td>27.04.2022</td>
+        <td>25.04.2022</td>
         <td>-</td>
         <td><a class="response-button"
                href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Edit</a>
         </td>
     </tr>
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>AV1231122</td>
-        <td>KSIS</td>
+        <td>16</td>
+        <td>asa@mail.ru</td>
+        <td>AV1231144</td>
+        <td>DSS</td>
         <td>70</td>
         <td>90</td>
         <td>80</td>
         <td>22.04.2022</td>
-        <td>27.04.2022</td>
+        <td>25.04.2022</td>
         <td>-</td>
-        <td><a class="response-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Edit</a>
-        </td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>AV1231122</td>
-        <td>KSIS</td>
-        <td>70</td>
-        <td>90</td>
-        <td>80</td>
-        <td>22.04.2022</td>
-        <td>27.04.2022</td>
-        <td>Some data hbfdhd</td>
         <td><a class="response-button"
                href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Edit</a>
         </td>

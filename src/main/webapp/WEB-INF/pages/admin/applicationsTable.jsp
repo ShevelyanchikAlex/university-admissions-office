@@ -29,11 +29,25 @@
     </thead>
     <tbody>
     <tr>
-        <td>12</td>
+        <td>3</td>
         <td>shevelyanchik@mail.ru</td>
         <td>Alex</td>
         <td>Shevelyanchik</td>
-        <td>KSIS</td>
+        <td>DSS</td>
+        <td>90</td>
+        <td>80</td>
+        <td>85</td>
+        <td>22.01.2022</td>
+        <td><a class="response-button"
+               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Response</a>
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>shipa@gmail.com</td>
+        <td>Pasha</td>
+        <td>Qvashonkin</td>
+        <td>DSS</td>
         <td>90</td>
         <td>77</td>
         <td>85</td>
@@ -43,25 +57,11 @@
         </td>
     </tr>
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>KSIS</td>
-        <td>90</td>
-        <td>77</td>
-        <td>85</td>
-        <td>22.01.2022</td>
-        <td><a class="response-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Response</a>
-        </td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>shevelyandsadsaadschik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelydsadanchik</td>
-        <td>KSIdsaS</td>
+        <td>6</td>
+        <td>kirik@gmail.com</td>
+        <td>Kirill</td>
+        <td>Petrov</td>
+        <td>EECS</td>
         <td>90</td>
         <td>77</td>
         <td>85</td>

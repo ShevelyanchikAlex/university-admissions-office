@@ -31,9 +31,9 @@
             <fmt:message key="edit_application.choosing_faculty"/>
         </label>
         <select name="select-faculty" class="box">
-            <option value="value1" selected>KSIS</option>
-            <option value="value2">IDS</option>
-            <option value="value3">MNG</option>
+            <option value="value1" selected>EECS</option>
+            <option value="value2">MECHE</option>
+            <option value="value3">DSS</option>
         </select>
         <label class="prev-text">
             <fmt:message key="edit_application.points_first_subject"/>
