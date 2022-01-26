@@ -11,19 +11,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class ApplicationServiceImpl implements ApplicationService {
-    @Override
-    public boolean createApplication(String faculty, int userId, int facultyId, double firstSubjectPoints, double secondSubjectPoints, double thirdSubjectPoints) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
-        Application application = new Application(0, new Date(System.currentTimeMillis()),
-                false, null, null, userId, facultyId, firstSubjectPoints, secondSubjectPoints, thirdSubjectPoints);
-
-        try {
-            return applicationDao.createApplication(application) == 1;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
+    private final int SUCCESSFUL_OPERATION = 1;
 
     @Override
     public Application getApplicationById(int id) throws ServiceException {
@@ -64,6 +52,24 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.getApplicationsByFacultyId(facultyId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public boolean createApplication(String faculty, int userId, int facultyId, double firstSubjectPoints, double secondSubjectPoints, double thirdSubjectPoints) throws ServiceException {
+        final int DEFAULT_APPLICATION_ID = 0;
+        final boolean DEFAULT_IS_APPROVED = false;
+
+        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
+        //TODO refactor
+        Application application = new Application(DEFAULT_APPLICATION_ID, new Date(System.currentTimeMillis()),
+                DEFAULT_IS_APPROVED, null, null, userId, facultyId, firstSubjectPoints, secondSubjectPoints, thirdSubjectPoints);
+
+        try {
+            return applicationDao.createApplication(application) == SUCCESSFUL_OPERATION;
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

@@ -15,6 +15,7 @@ import com.epam.admissions.office.service.validator.ValidatorFactory;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    private final int SUCCESSFUL_OPERATION = 1;
 
     @Override
     public User login(String email, String password) throws ServiceException {
@@ -35,14 +36,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean signUp(String name, String surname, String email, String passportId, String password, String confirmPassword) throws ServiceException {
+        final int DEFAULT_USER_ID = 0;
+        final boolean DEFAULT_IS_USER_DELETED = false;
+
         UserDao userDao = DaoFactory.getInstance().getUserDao();
         PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
 
-        User user = new User(0, name, surname, passwordDigest.getDigestPassword(password), email, passportId, false, UserRole.USER_WITHOUT_APPLICATION);
+        User user = new User(DEFAULT_USER_ID, name, surname, passwordDigest.getDigestPassword(password), email, passportId, DEFAULT_IS_USER_DELETED, UserRole.USER_WITHOUT_APPLICATION);
 
         try {
             if (isUserDataValid(password, confirmPassword, user)) {
-                return userDao.createUser(user) == 1;
+                return userDao.createUser(user) == SUCCESSFUL_OPERATION;
             } else {
                 return false;
             }
@@ -162,7 +166,7 @@ public class UserServiceImpl implements UserService {
             user.setPassportId(passportId);
 
             if (userValidator.validate(user)) {
-                return userDao.updateUser(user) == 1;
+                return userDao.updateUser(user) == SUCCESSFUL_OPERATION;
             } else {
                 return false;
             }
@@ -179,7 +183,7 @@ public class UserServiceImpl implements UserService {
             User user = userDao.getUserById(id);
             user.setUserRole(userRole);
 
-            return userDao.updateUser(user) == 1;
+            return userDao.updateUser(user) == SUCCESSFUL_OPERATION;
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

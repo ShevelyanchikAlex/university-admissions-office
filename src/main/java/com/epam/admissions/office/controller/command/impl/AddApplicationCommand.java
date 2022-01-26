@@ -24,7 +24,6 @@ public class AddApplicationCommand implements Command {
         HttpSession session = request.getSession();
         ApplicationService applicationService = ServiceFactory.getInstance().getApplicationService();
         UserService userService = ServiceFactory.getInstance().getUserService();
-
         String faculty = request.getParameter(RequestParameter.SELECTED_FACULTY);
         //TODO refactor
         int facultyId = 1;
