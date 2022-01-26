@@ -70,6 +70,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> getAllApplicants() throws DaoException {
+        return queryOperator.executeQuery(DBRequest.GET_ALL_APPLICANTS_QUERY);
+    }
+
+    @Override
+    public List<User> getAllAdministrators() throws DaoException {
+        return queryOperator.executeQuery(DBRequest.GET_ALL_ADMINISTRATORS_QUERY);
+    }
+
+    @Override
     public List<User> getUsersByRoleId(int roleId) throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_USER_BY_USER_ROLE_ID_QUERY, roleId);
     }

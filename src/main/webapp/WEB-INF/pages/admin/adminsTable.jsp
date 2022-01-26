@@ -24,46 +24,18 @@
     </tr>
     </thead>
     <tbody>
+    <c:forEach items="${sessionScope.administrators}" var="admin">
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="send-email-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Send email</a>
+        <td>${admin.userId}</td>
+        <td>${admin.email}</td>
+        <td>${admin.name}</td>
+        <td>${admin.surname}</td>
+        <td>${admin.passportId}</td>
+        <td><a class="response-button"
+               href="#">Send email</a>
         </td>
-    </tr>
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="send-email-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Send email</a>
-        </td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="send-email-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Send email</a>
-        </td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="send-email-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Send email</a>
-        </td>
-    </tr>
+        </c:forEach>
     </tbody>
 </table>
 </body>

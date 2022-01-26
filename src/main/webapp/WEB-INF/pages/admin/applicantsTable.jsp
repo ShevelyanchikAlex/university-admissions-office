@@ -25,56 +25,18 @@
     </tr>
     </thead>
     <tbody>
+    <c:forEach items="${sessionScope.applicants}" var="applicant">
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
+        <td>${applicant.userId}</td>
+        <td>${applicant.email}</td>
+        <td>${applicant.name}</td>
+        <td>${applicant.surname}</td>
+        <td>${applicant.passportId}</td>
         <td><a class="response-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Delete</a>
+               href="<c:url value="/controller?command=delete_applicant" />&user_id=${applicant.userId}">Delete</a>
         </td>
-    </tr>
     <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="response-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Delete</a>
-        </td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="response-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Delete</a>
-        </td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="response-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Delete</a>
-        </td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>shevelyanchik@mail.ru</td>
-        <td>Alex</td>
-        <td>Shevelyanchik</td>
-        <td>AV1231122</td>
-        <td><a class="response-button"
-               href="?${RequestParameter.COMMAND}=${CommandName.GOTO_EDIT_PERSONAL_DATA_PAGE_COMMAND}">Delete</a>
-        </td>
-    </tr>
+        </c:forEach>
     </tbody>
 </table>
 </body>

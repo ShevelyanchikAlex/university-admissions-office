@@ -46,6 +46,17 @@ public final class DBRequest {
             DBTable.USER_TABLE,
             DBColumn.USER_IS_DELETED);
 
+    public static final String GET_ALL_APPLICANTS_QUERY = String.format(
+            "SELECT * FROM %s WHERE %s=1 OR %s=3",
+            DBTable.USER_TABLE,
+            DBColumn.USER_ROLE_ID,
+            DBColumn.USER_ROLE_ID);
+
+    public static final String GET_ALL_ADMINISTRATORS_QUERY = String.format(
+            "SELECT * FROM %s WHERE %s=0",
+            DBTable.USER_TABLE,
+            DBColumn.USER_ROLE_ID);
+
     public static final String DELETE_USER_QUERY = String.format(
             "UPDATE %s SET %s=true WHERE %s=?",
             DBTable.USER_TABLE,

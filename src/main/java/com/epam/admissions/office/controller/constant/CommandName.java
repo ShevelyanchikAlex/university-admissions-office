@@ -28,6 +28,8 @@ public final class CommandName {
     public static final String GET_RESPONDED_APPLICATIONS_TABLE = "get_responded_applications_table";
     public static final String GET_ADMINISTRATORS_TABLE = "get_administrators_table";
     public static final String GET_APPLICANTS_TABLE = "get_applicants_table";
+    public static final String DELETE_APPLICANT = "delete_applicant";
+
 
     private CommandName() {
     }

@@ -32,6 +32,7 @@ public final class CommandProvider {
         commands.put(CommandName.GET_RESPONDED_APPLICATIONS_TABLE, new GetRespondedApplicationsTableCommand());
         commands.put(CommandName.GET_ADMINISTRATORS_TABLE, new GetAdministratorsTableCommand());
         commands.put(CommandName.GET_APPLICANTS_TABLE, new GetApplicantsTableCommand());
+        commands.put(CommandName.DELETE_APPLICANT, new DeleteApplicantCommand());
     }
 
     public Command getCommand(String commandName) {

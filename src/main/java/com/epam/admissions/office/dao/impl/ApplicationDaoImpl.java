@@ -21,6 +21,18 @@ public class ApplicationDaoImpl implements ApplicationDao {
     }
 
     @Override
+    public int createApplication(Application application) throws DaoException {
+        return queryOperator.executeUpdate(
+                DBRequest.INSERT_APPLICATION_QUERY,
+                application.getApplyDate(),
+                application.isApproved(),
+                application.getDecisionDate(),
+                application.getRejectionReason(),
+                application.getUserId(),
+                application.getFacultyId());
+    }
+
+    @Override
     public Application getApplicationById(int id) throws DaoException {
         return queryOperator.executeSingleEntityQuery(DBRequest.GET_APPLICATION_BY_ID_QUERY, id);
     }

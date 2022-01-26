@@ -125,6 +125,28 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public List<User> getAllApplicants() throws ServiceException {
+        UserDao userDao = DaoFactory.getInstance().getUserDao();
+
+        try {
+            return userDao.getAllApplicants();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<User> getAllAdministrators() throws ServiceException {
+        UserDao userDao = DaoFactory.getInstance().getUserDao();
+
+        try {
+            return userDao.getAllAdministrators();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 
     @Override
     public boolean editPersonalData(int id, String name, String surname, String email, String passportId) throws ServiceException {
@@ -144,6 +166,20 @@ public class UserServiceImpl implements UserService {
             } else {
                 return false;
             }
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public boolean changeUserRole(int id, UserRole userRole) throws ServiceException {
+        UserDao userDao = DaoFactory.getInstance().getUserDao();
+
+        try {
+            User user = userDao.getUserById(id);
+            user.setUserRole(userRole);
+
+            return userDao.updateUser(user) == 1;
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

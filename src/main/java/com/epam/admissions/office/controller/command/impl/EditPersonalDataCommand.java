@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class EditPersonalDataCommand implements Command {
-    private final Logger logger = Logger.getLogger(LogInCommand.class);
+    private final Logger logger = Logger.getLogger(EditPersonalDataCommand.class);
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

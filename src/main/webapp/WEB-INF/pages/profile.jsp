@@ -47,18 +47,18 @@
                 <table>
                     <tr>
                         <td class="personal-data-name"><b><fmt:message key="profile.application.data.faculty"/></b></td>
-                        <td class="personal-data-value">KSIS</td>
+                        <td class="personal-data-value">EECS</td>
                     </tr>
                     <tr>
                         <td class="personal-data-name"><b><fmt:message
                                 key="profile.application.data.date_of_application"/></b></td>
-                        <td class="personal-data-value">07.07.2022</td>
+                        <td class="personal-data-value">20.01.2022</td>
                     </tr>
 
                     <tr>
                         <td class="personal-data-name"><b><fmt:message
                                 key="profile.application.data.first_subject_points"/></b></td>
-                        <td class="personal-data-value">90</td>
+                        <td class="personal-data-value">80</td>
                     </tr>
                     <tr>
                         <td class="personal-data-name"><b><fmt:message
@@ -68,17 +68,17 @@
                     <tr>
                         <td class="personal-data-name"><b><fmt:message
                                 key="profile.application.data.third_subject_points"/></b></td>
-                        <td class="personal-data-value">75</td>
+                        <td class="personal-data-value">80</td>
                     </tr>
                     <tr>
                         <td class="personal-data-name"><b><fmt:message key="profile.application.data.confirmed"/></b>
                         </td>
-                        <td class="personal-data-value">Confirmed</td>
+                        <td class="personal-data-value">Not confirmed</td>
                     </tr>
                     <tr>
                         <td class="personal-data-name"><b><fmt:message
                                 key="profile.application.data.confirmation_date"/></b></td>
-                        <td class="personal-data-value">21.07.2022</td>
+                        <td class="personal-data-value">-</td>
                     </tr>
                     <tr>
                         <td class="personal-data-name"><b><fmt:message

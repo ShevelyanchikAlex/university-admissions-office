@@ -7,6 +7,8 @@ import java.sql.Date;
 import java.util.List;
 
 public interface ApplicationService {
+    boolean createApplication(String faculty, int userId, int facultyId, double firstSubjectPoints, double secondSubjectPoints, double thirdSubjectPoints) throws ServiceException;
+
     Application getApplicationById(int id) throws ServiceException;
 
     Application getApplicationByUserId(int userId) throws ServiceException;

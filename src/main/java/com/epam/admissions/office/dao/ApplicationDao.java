@@ -8,6 +8,8 @@ import java.sql.Date;
 import java.util.List;
 
 public interface ApplicationDao {
+    int createApplication(Application application) throws DaoException;
+
     Application getApplicationById(int id) throws DaoException;
 
     Application getApplicationByUserId(int userId) throws DaoException;

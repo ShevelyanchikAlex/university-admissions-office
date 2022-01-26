@@ -30,10 +30,13 @@
         <label class="prev-text">
             <fmt:message key="addition_application.choosing_faculty"/>
         </label>
-        <select name="select-faculty" class="box">
-            <option value="value1" selected>KSIS</option>
-            <option value="value2">IDS</option>
-            <option value="value3">MNG</option>
+        <select name="selected_faculty" class="box">
+            <option value="<fmt:message key="faculties.EECS.short_name"/>" selected><fmt:message
+                    key="faculties.EECS.short_name"/></option>
+            <option value="<fmt:message key="faculties.MECHE.short_name"/>"><fmt:message
+                    key="faculties.MECHE.short_name"/></option>
+            <option value="<fmt:message key="faculties.DSS.short_name"/>"><fmt:message
+                    key="faculties.DSS.short_name"/></option>
         </select>
         <label class="prev-text">
             <fmt:message key="addition_application.points_first_subject"/>

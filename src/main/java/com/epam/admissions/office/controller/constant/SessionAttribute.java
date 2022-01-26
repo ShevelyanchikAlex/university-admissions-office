@@ -13,6 +13,11 @@ public final class SessionAttribute {
     public static final String USER_IS_DELETED = "user_is_deleted";
     public static final String USER_ROLE = "user_role";
 
+    public static final String FACULTY_ID = "faculty_id";
+
+    public static final String APPLICANTS = "applicants";
+    public static final String ADMINISTRATORS = "administrators";
+
     public static final String ERROR = "error";
 
     public static final String ADMIN_TABLE = "admin_table";

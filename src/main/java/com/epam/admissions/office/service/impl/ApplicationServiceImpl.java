@@ -12,6 +12,20 @@ import java.util.List;
 
 public class ApplicationServiceImpl implements ApplicationService {
     @Override
+    public boolean createApplication(String faculty, int userId, int facultyId, double firstSubjectPoints, double secondSubjectPoints, double thirdSubjectPoints) throws ServiceException {
+        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
+        Application application = new Application(0, new Date(System.currentTimeMillis()),
+                false, null, null, userId, facultyId, firstSubjectPoints, secondSubjectPoints, thirdSubjectPoints);
+
+        try {
+            return applicationDao.createApplication(application) == 1;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public Application getApplicationById(int id) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
 
