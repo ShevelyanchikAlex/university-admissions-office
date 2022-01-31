@@ -10,11 +10,17 @@ import java.util.List;
 public interface ApplicationDao {
     int createApplication(Application application) throws DaoException;
 
+    int updateApplication(Application application) throws DaoException;
+
     Application getApplicationById(int id) throws DaoException;
 
     Application getApplicationByUserId(int userId) throws DaoException;
 
     List<Application> getAllApplications() throws DaoException;
+
+    List<Application> getAllConfirmedApplications() throws DaoException;
+
+    List<Application> getAllNotConfirmedApplications() throws DaoException;
 
     List<Application> getApplicationsByFacultyId(int facultyId) throws DaoException;
 

@@ -1,5 +1,6 @@
 package com.epam.admissions.office.service.util.digest.impl;
 
+import com.epam.admissions.office.service.exception.ServiceException;
 import com.epam.admissions.office.service.util.digest.PasswordDigest;
 
 import java.security.MessageDigest;
@@ -9,8 +10,8 @@ public class PasswordDigestImpl implements PasswordDigest {
     private static final String HASH_ALGORITHM = "SHA-256";
 
     @Override
-    public String getDigestPassword(String password) {
-        String digestPassword = null;
+    public String getDigestPassword(String password) throws ServiceException {
+        String digestPassword;
         try {
             MessageDigest md = MessageDigest.getInstance(HASH_ALGORITHM);
 
@@ -22,7 +23,7 @@ public class PasswordDigestImpl implements PasswordDigest {
             }
             digestPassword = sb.toString();
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            throw new ServiceException(e);
         }
         return digestPassword;
     }

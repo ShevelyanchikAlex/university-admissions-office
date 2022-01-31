@@ -2,9 +2,11 @@ package com.epam.admissions.office.controller.command.impl;
 
 import com.epam.admissions.office.controller.command.Command;
 import com.epam.admissions.office.controller.constant.*;
+import com.epam.admissions.office.entity.Application;
+import com.epam.admissions.office.entity.Result;
 import com.epam.admissions.office.entity.user.User;
-import com.epam.admissions.office.service.ServiceFactory;
-import com.epam.admissions.office.service.UserService;
+import com.epam.admissions.office.entity.user.UserRole;
+import com.epam.admissions.office.service.*;
 import com.epam.admissions.office.service.exception.ServiceException;
 import org.apache.log4j.Logger;
 
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
 public class LogInCommand implements Command {
@@ -36,6 +39,10 @@ public class LogInCommand implements Command {
                 session.setAttribute(SessionAttribute.USER_EMAIL, user.getEmail());
                 session.setAttribute(SessionAttribute.USER_PASSPORT_ID, user.getPassportId());
                 session.setAttribute(SessionAttribute.USER_ROLE, user.getUserRole());
+
+                if (user.getUserRole() == UserRole.USER) {
+                    initUserApplicationData(session, user.getUserId());
+                }
                 logger.info("User " + email + "was log in.");
 
                 session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_HOME_PAGE);
@@ -54,5 +61,20 @@ public class LogInCommand implements Command {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }
+    }
+
+
+    private void initUserApplicationData(HttpSession session, int userId) throws ServiceException {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        ApplicationService applicationService = serviceFactory.getApplicationService();
+        ResultService resultService = serviceFactory.getResultService();
+
+        Application application = applicationService.getApplicationByUserId(userId);
+        List<Result> resultList = resultService.getResultsByApplicationId(application.getApplicationId());
+
+        session.setAttribute(SessionAttribute.APPLICATION, application);
+        session.setAttribute(SessionAttribute.POINTS_FIRST_SUBJECT, resultList.get(SessionAttributeValue.FIRST_SUBJECT_INDEX).getScore());
+        session.setAttribute(SessionAttribute.POINTS_SECOND_SUBJECT, resultList.get(SessionAttributeValue.SECOND_SUBJECT_INDEX).getScore());
+        session.setAttribute(SessionAttribute.POINTS_THIRD_SUBJECT, resultList.get(SessionAttributeValue.THIRD_SUBJECT_INDEX).getScore());
     }
 }

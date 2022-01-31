@@ -19,6 +19,7 @@ public final class CommandProvider {
         commands.put(CommandName.GO_TO_EDIT_PERSONAL_DATA_PAGE, new GoToEditPersonalDataPageCommand());
         commands.put(CommandName.GO_TO_ERROR_404_PAGE, new GoToError404PageCommand());
         commands.put(CommandName.GO_TO_ADMIN_PAGE, new GoToAdminPage());
+        commands.put(CommandName.GO_TO_REJECT_APPLICATION_PAGE, new GoToRejectApplicationPageCommand());
         commands.put(CommandName.CHANGE_LOCALE, new ChangeLocaleCommand());
         commands.put(CommandName.LOG_IN, new LogInCommand());
         commands.put(CommandName.LOG_OUT, new LogOutCommand());
@@ -33,6 +34,8 @@ public final class CommandProvider {
         commands.put(CommandName.GET_ADMINISTRATORS_TABLE, new GetAdministratorsTableCommand());
         commands.put(CommandName.GET_APPLICANTS_TABLE, new GetApplicantsTableCommand());
         commands.put(CommandName.DELETE_APPLICANT, new DeleteApplicantCommand());
+        commands.put(CommandName.CONFIRM_APPLICATION, new ConfirmApplicationCommand());
+        commands.put(CommandName.REJECT_APPLICATION, new RejectApplicationCommand());
     }
 
     public Command getCommand(String commandName) {

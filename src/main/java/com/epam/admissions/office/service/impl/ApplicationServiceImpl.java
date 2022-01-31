@@ -47,6 +47,28 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<Application> getAllConfirmedApplications() throws ServiceException {
+        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
+        try {
+            return applicationDao.getAllConfirmedApplications();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Application> getAllNotConfirmedApplications() throws ServiceException {
+        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
+        try {
+            return applicationDao.getAllNotConfirmedApplications();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public List<Application> getApplicationsByFacultyId(int facultyId) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
 
@@ -58,18 +80,46 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public boolean createApplication(String faculty, int userId, int facultyId, double firstSubjectPoints, double secondSubjectPoints, double thirdSubjectPoints) throws ServiceException {
+    public int createApplication(int userId, int facultyId) throws ServiceException {
         final int DEFAULT_APPLICATION_ID = 0;
         final boolean DEFAULT_IS_APPROVED = false;
-
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
 
-        //TODO refactor
         Application application = new Application(DEFAULT_APPLICATION_ID, new Date(System.currentTimeMillis()),
-                DEFAULT_IS_APPROVED, null, null, userId, facultyId, firstSubjectPoints, secondSubjectPoints, thirdSubjectPoints);
+                DEFAULT_IS_APPROVED, null, null, userId, facultyId);
 
         try {
-            return applicationDao.createApplication(application) == SUCCESSFUL_OPERATION;
+            return applicationDao.createApplication(application);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public boolean updateFacultyIdOfApplication(int applicationId, int facultyId) throws ServiceException {
+        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
+        try {
+            Application application = applicationDao.getApplicationById(applicationId);
+            application.setFacultyId(facultyId);
+
+            return applicationDao.updateApplication(application) == SUCCESSFUL_OPERATION;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public boolean updateConfirmStatusOfApplication(int applicationId, boolean status, String rejectionReason) throws ServiceException {
+        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
+        try {
+            Application application = applicationDao.getApplicationById(applicationId);
+            application.setApproved(status);
+            application.setRejectionReason(rejectionReason);
+            application.setDecisionDate(new Date(System.currentTimeMillis()));
+
+            return applicationDao.updateApplication(application) == SUCCESSFUL_OPERATION;
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

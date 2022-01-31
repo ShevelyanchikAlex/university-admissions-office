@@ -12,7 +12,22 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/tableStyle.css">
 </head>
 <body>
-<table class="table">
+<div class="search">
+    <div><i class="fas fa-search search-icon"></i></div>
+    <div class="input"><input id="myInput" class="form-control" onkeyup='tableSearch()' placeholder="Search"
+                              type="text"></div>
+    <div class="select-column-number">
+        <select name="select-column" id="selectedColumn">
+            <option value="0" selected>ID</option>
+            <option value="1">Email</option>
+            <option value="2">Name</option>
+            <option value="3">Surname</option>
+            <option value="4">Passport data</option>
+        </select>
+    </div>
+</div>
+
+<table class="table" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
     <thead>
     <tr>
         <th>ID</th>
@@ -40,3 +55,28 @@
 </table>
 </body>
 </html>
+
+<script>
+    function tableSearch() {
+        let input, filter, table, tr, td, txtValue;
+        let selectedColumn;
+
+        input = document.getElementById("myInput");
+        selectedColumn = document.getElementById("selectedColumn");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[selectedColumn.value];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

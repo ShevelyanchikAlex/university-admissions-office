@@ -13,15 +13,12 @@ public class Application implements Serializable {
     private String rejectionReason;
     private int userId;
     private int facultyId;
-    private double firstSubjectPoints;
-    private double secondSubjectPoints;
-    private double thirdSubjectPoints;
 
 
     public Application() {
     }
 
-    public Application(int applicationId, Date applyDate, boolean isApproved, Date decisionDate, String rejectionReason, int userId, int facultyId, double firstSubjectPoints, double secondSubjectPoints, double thirdSubjectPoints) {
+    public Application(int applicationId, Date applyDate, boolean isApproved, Date decisionDate, String rejectionReason, int userId, int facultyId) {
         this.applicationId = applicationId;
         this.applyDate = applyDate;
         this.isApproved = isApproved;
@@ -29,9 +26,6 @@ public class Application implements Serializable {
         this.rejectionReason = rejectionReason;
         this.userId = userId;
         this.facultyId = facultyId;
-        this.firstSubjectPoints = firstSubjectPoints;
-        this.secondSubjectPoints = secondSubjectPoints;
-        this.thirdSubjectPoints = thirdSubjectPoints;
     }
 
     public int getApplicationId() {
@@ -90,41 +84,17 @@ public class Application implements Serializable {
         this.facultyId = facultyId;
     }
 
-    public double getFirstSubjectPoints() {
-        return firstSubjectPoints;
-    }
-
-    public void setFirstSubjectPoints(double firstSubjectPoints) {
-        this.firstSubjectPoints = firstSubjectPoints;
-    }
-
-    public double getSecondSubjectPoints() {
-        return secondSubjectPoints;
-    }
-
-    public void setSecondSubjectPoints(double secondSubjectPoints) {
-        this.secondSubjectPoints = secondSubjectPoints;
-    }
-
-    public double getThirdSubjectPoints() {
-        return thirdSubjectPoints;
-    }
-
-    public void setThirdSubjectPoints(double thirdSubjectPoints) {
-        this.thirdSubjectPoints = thirdSubjectPoints;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Application that = (Application) o;
-        return applicationId == that.applicationId && isApproved == that.isApproved && userId == that.userId && facultyId == that.facultyId && Double.compare(that.firstSubjectPoints, firstSubjectPoints) == 0 && Double.compare(that.secondSubjectPoints, secondSubjectPoints) == 0 && Double.compare(that.thirdSubjectPoints, thirdSubjectPoints) == 0 && Objects.equals(applyDate, that.applyDate) && Objects.equals(decisionDate, that.decisionDate) && Objects.equals(rejectionReason, that.rejectionReason);
+        return applicationId == that.applicationId && isApproved == that.isApproved && userId == that.userId && facultyId == that.facultyId && Objects.equals(applyDate, that.applyDate) && Objects.equals(decisionDate, that.decisionDate) && Objects.equals(rejectionReason, that.rejectionReason);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(applicationId, applyDate, isApproved, decisionDate, rejectionReason, userId, facultyId, firstSubjectPoints, secondSubjectPoints, thirdSubjectPoints);
+        return Objects.hash(applicationId, applyDate, isApproved, decisionDate, rejectionReason, userId, facultyId);
     }
 
     @Override
@@ -137,9 +107,6 @@ public class Application implements Serializable {
                 ", rejectionReason='" + rejectionReason + '\'' +
                 ", userId=" + userId +
                 ", facultyId=" + facultyId +
-                ", firstSubjectPoints=" + firstSubjectPoints +
-                ", secondSubjectPoints=" + secondSubjectPoints +
-                ", thirdSubjectPoints=" + thirdSubjectPoints +
                 '}';
     }
 }

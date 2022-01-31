@@ -1,6 +1,7 @@
 package com.epam.admissions.office.dao.impl;
 
 import com.epam.admissions.office.dao.ApplicationDao;
+import com.epam.admissions.office.dao.constant.DBColumn;
 import com.epam.admissions.office.dao.constant.DBRequest;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.dao.mapper.RowMapper;
@@ -22,7 +23,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
 
     @Override
     public int createApplication(Application application) throws DaoException {
-        return queryOperator.executeUpdate(
+        return queryOperator.executeUpdateWithGeneratedKeys(
                 DBRequest.INSERT_APPLICATION_QUERY,
                 application.getApplyDate(),
                 application.isApproved(),
@@ -30,6 +31,19 @@ public class ApplicationDaoImpl implements ApplicationDao {
                 application.getRejectionReason(),
                 application.getUserId(),
                 application.getFacultyId());
+    }
+
+    @Override
+    public int updateApplication(Application application) throws DaoException {
+        return queryOperator.executeUpdate(
+                DBRequest.UPDATE_APPLICATION_QUERY,
+                application.getApplyDate(),
+                application.isApproved(),
+                application.getDecisionDate(),
+                application.getRejectionReason(),
+                application.getUserId(),
+                application.getFacultyId(),
+                application.getApplicationId());
     }
 
     @Override
@@ -45,6 +59,16 @@ public class ApplicationDaoImpl implements ApplicationDao {
     @Override
     public List<Application> getAllApplications() throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_ALL_APPLICATIONS_QUERY);
+    }
+
+    @Override
+    public List<Application> getAllConfirmedApplications() throws DaoException {
+        return queryOperator.executeQuery(DBRequest.GET_ALL_CONFIRMED_APPLICATIONS_QUERY);
+    }
+
+    @Override
+    public List<Application> getAllNotConfirmedApplications() throws DaoException {
+        return queryOperator.executeQuery(DBRequest.GET_ALL_NOT_CONFIRMED_APPLICATIONS_QUERY);
     }
 
     @Override

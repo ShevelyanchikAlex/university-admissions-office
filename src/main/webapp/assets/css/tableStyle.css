@@ -65,3 +65,53 @@ body {
     cursor: pointer;
     background-color: #17A589;
 }
+
+.confirm-button {
+    display: flex;
+    font-weight: normal;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: #17A589;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    text-decoration: none;
+    size: auto;
+    padding: 5px;
+}
+
+.confirm-button a {
+    font-weight: normal;
+}
+
+.confirm-button:hover {
+    cursor: pointer;
+    background-color: #2460da;
+}
+
+.reject-button {
+    display: flex;
+    font-weight: normal;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: #f66868;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    text-decoration: none;
+    size: auto;
+    padding: 5px;
+}
+
+.reject-button a {
+    font-weight: normal;
+}
+
+.reject-button:hover {
+    cursor: pointer;
+    background-color: #2460da;
+}

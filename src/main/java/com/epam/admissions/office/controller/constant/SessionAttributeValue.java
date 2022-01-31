@@ -19,6 +19,10 @@ public final class SessionAttributeValue {
     public static final String ADMINISTRATORS_TABLE = "ADMINISTRATORS_TABLE";
     public static final String APPLICANTS_TABLE = "APPLICANTS_TABLE";
 
+    public  static final int FIRST_SUBJECT_INDEX = 0;
+    public  static final int SECOND_SUBJECT_INDEX = 1;
+    public  static final int THIRD_SUBJECT_INDEX = 2;
+
     private SessionAttributeValue() {
     }
 }

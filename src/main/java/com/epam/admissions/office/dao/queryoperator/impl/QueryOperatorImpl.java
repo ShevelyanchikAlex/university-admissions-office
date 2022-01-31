@@ -52,6 +52,27 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
     }
 
     @Override
+    public int executeUpdateWithGeneratedKeys(String query, Object... params) throws DaoException {
+        final int COLUMN_INDEX = 1;
+
+        try (Connection connection = ConnectionPool.getInstance().takeConnection();
+             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            setStatementParams(statement, params);
+            int numberInsertedRows = statement.executeUpdate();
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys != null && generatedKeys.next()) {
+                return generatedKeys.getInt(COLUMN_INDEX);
+            } else {
+                return numberInsertedRows;
+            }
+        } catch (SQLException e) {
+            throw new DaoException("Unable to execute update query.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("Unable to get connection.", e);
+        }
+    }
+
+    @Override
     public int executeCountQuery(String query, Object... params) throws DaoException {
         try (Connection connection = ConnectionPool.getInstance().takeConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {

@@ -1,15 +1,9 @@
 package com.epam.admissions.office.controller.command.impl;
 
 import com.epam.admissions.office.controller.command.Command;
-import com.epam.admissions.office.controller.constant.CommandName;
-import com.epam.admissions.office.controller.constant.PagePath;
-import com.epam.admissions.office.controller.constant.SessionAttribute;
-import com.epam.admissions.office.controller.constant.SessionAttributeValue;
-import com.epam.admissions.office.entity.Application;
-import com.epam.admissions.office.entity.user.User;
+import com.epam.admissions.office.controller.constant.*;
 import com.epam.admissions.office.service.ApplicationService;
 import com.epam.admissions.office.service.ServiceFactory;
-import com.epam.admissions.office.service.UserService;
 import com.epam.admissions.office.service.exception.ServiceException;
 import org.apache.log4j.Logger;
 
@@ -19,24 +13,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
-public class GetApplicationsTableCommand implements Command {
-    private final Logger logger = Logger.getLogger(GetApplicationsTableCommand.class);
+public class RejectApplicationCommand implements Command {
+    private final Logger logger = Logger.getLogger(RejectApplicationCommand.class);
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        final boolean IS_APPROVED = false;
         HttpSession session = request.getSession();
         ApplicationService applicationService = ServiceFactory.getInstance().getApplicationService();
 
+        int applicationId = Integer.parseInt(request.getParameter(RequestParameter.APPLICATION_ID));
+        String rejectionReason = request.getParameter(RequestParameter.REJECTION_REASON);
         try {
-            List<Application> applications = applicationService.getAllNotConfirmedApplications();
+            applicationService.updateConfirmStatusOfApplication(applicationId, IS_APPROVED, rejectionReason);
 
-            session.setAttribute(SessionAttribute.NOT_RESPONDED_APPLICATIONS, applications);
-            session.setAttribute(SessionAttribute.ADMIN_TABLE, SessionAttributeValue.APPLICATIONS_TABLE);
-            response.sendRedirect(SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
+            session.setAttribute(SessionAttribute.NOT_RESPONDED_APPLICATIONS, applicationService.getAllNotConfirmedApplications());
+            session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ADMIN_PAGE);
+            requestDispatcher.forward(request, response);
         } catch (ServiceException e) {
-            logger.error("It is not possible to get Administrators.", e);
+            logger.error("Exception in time rejection of Application.", e);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }

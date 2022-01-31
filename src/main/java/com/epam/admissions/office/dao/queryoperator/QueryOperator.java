@@ -14,6 +14,8 @@ public interface QueryOperator<T> {
 
     int executeUpdate(String query, Object... params) throws DaoException;
 
+    int executeUpdateWithGeneratedKeys(String query, Object... params) throws DaoException;
+
     int executeCountQuery(String query, Object... params) throws DaoException;
 
     int executeTransaction(List<ParamQuery> queries) throws DaoException;

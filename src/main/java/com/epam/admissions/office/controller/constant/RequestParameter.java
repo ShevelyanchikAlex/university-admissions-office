@@ -14,10 +14,14 @@ public final class RequestParameter {
     public static final String USER_IS_DELETED = "user_is_deleted";
     public static final String USER_ROLE = "user_role";
 
-    public static final String SELECTED_FACULTY = "selected_faculty";
+    public static final String SELECTED_FACULTY_ID = "selected_faculty_id";
     public static final String POINTS_FIRST_SUBJECT = "points_first_subject";
     public static final String POINTS_SECOND_SUBJECT = "points_second_subject";
     public static final String POINTS_THIRD_SUBJECT = "points_third_subject";
+
+
+    public static final String APPLICATION_ID = "application_id";
+    public static final String REJECTION_REASON = "rejection_reason";
 
     private RequestParameter() {
     }

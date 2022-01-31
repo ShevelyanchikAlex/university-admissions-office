@@ -47,8 +47,9 @@ public final class DBRequest {
             DBColumn.USER_IS_DELETED);
 
     public static final String GET_ALL_APPLICANTS_QUERY = String.format(
-            "SELECT * FROM %s WHERE %s=1 OR %s=3",
+            "SELECT * FROM %s WHERE %s=false AND %s=1 OR %s=3",
             DBTable.USER_TABLE,
+            DBColumn.USER_IS_DELETED,
             DBColumn.USER_ROLE_ID,
             DBColumn.USER_ROLE_ID);
 
@@ -145,6 +146,11 @@ public final class DBRequest {
             "SELECT * FROM %s WHERE %s=?",
             DBTable.RESULT_TABLE,
             DBColumn.RESULT_SCORE);
+
+    public static final String GET_RESULTS_BY_APPLICATION_ID_QUERY = String.format(
+            "SELECT * FROM %s WHERE %s=?",
+            DBTable.RESULT_TABLE,
+            DBColumn.APPLICATION_ID);
 
     public static final String GET_RESULTS_BY_SUBJECT_ID_QUERY = String.format(
             "SELECT * FROM %s WHERE %s=?",
@@ -302,6 +308,17 @@ public final class DBRequest {
     public static final String GET_ALL_APPLICATIONS_QUERY = String.format(
             "SELECT * FROM %s",
             DBTable.APPLICATION_TABLE);
+
+    public static final String GET_ALL_NOT_CONFIRMED_APPLICATIONS_QUERY = String.format(
+            "SELECT * FROM %s WHERE %s=false AND %s IS NULL",
+            DBTable.APPLICATION_TABLE,
+            DBColumn.APPLICATION_IS_APPROVED,
+            DBColumn.APPLICATION_DECISION_DATE);
+
+    public static final String GET_ALL_CONFIRMED_APPLICATIONS_QUERY = String.format(
+            "SELECT * FROM %s WHERE %s=true",
+            DBTable.APPLICATION_TABLE,
+            DBColumn.APPLICATION_IS_APPROVED);
 
     public static final String GET_APPLICATIONS_BY_FACULTY_ID_QUERY = String.format(
             "SELECT * FROM %s WHERE %s=?",

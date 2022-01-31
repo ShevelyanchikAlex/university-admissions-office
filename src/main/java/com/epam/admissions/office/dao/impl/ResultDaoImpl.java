@@ -1,6 +1,7 @@
 package com.epam.admissions.office.dao.impl;
 
 import com.epam.admissions.office.dao.ResultDao;
+import com.epam.admissions.office.dao.constant.DBColumn;
 import com.epam.admissions.office.dao.constant.DBRequest;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.dao.mapper.RowMapper;
@@ -20,6 +21,31 @@ public class ResultDaoImpl implements ResultDao {
     }
 
     @Override
+    public int createResult(Result result) throws DaoException {
+        return queryOperator.executeUpdate(
+                DBRequest.INSERT_RESULT_QUERY,
+                result.getScore(),
+                result.getCertificateId(),
+                result.getCertificateImageUrl(),
+                result.isCertificateConfirmed(),
+                result.getApplicationId(),
+                result.getSubjectId());
+    }
+
+    @Override
+    public int updateResult(Result result) throws DaoException {
+        return queryOperator.executeUpdate(
+                DBRequest.UPDATE_RESULT_QUERY,
+                result.getScore(),
+                result.getCertificateId(),
+                result.getCertificateImageUrl(),
+                result.isCertificateConfirmed(),
+                result.getApplicationId(),
+                result.getSubjectId(),
+                result.getResultId());
+    }
+
+    @Override
     public Result getResultById(int id) throws DaoException {
         return queryOperator.executeSingleEntityQuery(DBRequest.GET_RESULT_BY_ID_QUERY, id);
     }
@@ -27,6 +53,11 @@ public class ResultDaoImpl implements ResultDao {
     @Override
     public List<Result> getResultsByScore(double score) throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_RESULTS_BY_SCORE_QUERY, score);
+    }
+
+    @Override
+    public List<Result> getResultsByApplicationId(int applicationId) throws DaoException {
+        return queryOperator.executeQuery(DBRequest.GET_RESULTS_BY_APPLICATION_ID_QUERY, applicationId);
     }
 
     @Override

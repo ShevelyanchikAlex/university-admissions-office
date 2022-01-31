@@ -2,11 +2,14 @@ package com.epam.admissions.office.service.util;
 
 import com.epam.admissions.office.service.util.digest.PasswordDigest;
 import com.epam.admissions.office.service.util.digest.impl.PasswordDigestImpl;
+import com.epam.admissions.office.service.util.mail.MailUtil;
+import com.epam.admissions.office.service.util.mail.impl.MailUtilImpl;
 
 public class UtilFactory {
     private static final UtilFactory instance = new UtilFactory();
 
     private static final PasswordDigest passwordDigest = new PasswordDigestImpl();
+    private static final MailUtil mailUtil = new MailUtilImpl();
 
     private UtilFactory() {
     }
@@ -17,5 +20,9 @@ public class UtilFactory {
 
     public PasswordDigest getPasswordDigest() {
         return passwordDigest;
+    }
+
+    public MailUtil getMailUtil() {
+        return mailUtil;
     }
 }

@@ -12,6 +12,7 @@ public final class CommandName {
     public static final String GO_TO_ADD_APPLICATION_PAGE = "go_to_add_application_page";
     public static final String GO_TO_EDIT_APPLICATION_PAGE = "go_to_edit_application_page";
     public static final String GO_TO_ADMIN_PAGE = "go_to_admin_page";
+    public static final String GO_TO_REJECT_APPLICATION_PAGE = "go_to_reject_application_page";
 
     public static final String CHANGE_LOCALE = "change_locale";
 
@@ -30,6 +31,8 @@ public final class CommandName {
     public static final String GET_APPLICANTS_TABLE = "get_applicants_table";
     public static final String DELETE_APPLICANT = "delete_applicant";
 
+    public static final String CONFIRM_APPLICATION = "confirm_application";
+    public static final String REJECT_APPLICATION = "reject_application";
 
     private CommandName() {
     }

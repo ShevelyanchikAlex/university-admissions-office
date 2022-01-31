@@ -6,9 +6,15 @@ import com.epam.admissions.office.entity.Result;
 import java.util.List;
 
 public interface ResultDao {
+    int createResult(Result result) throws DaoException;
+
+    int updateResult(Result result) throws DaoException;
+
     Result getResultById(int id) throws DaoException;
 
     List<Result> getResultsByScore(double score) throws DaoException;
+
+    List<Result> getResultsByApplicationId(int applicationId) throws DaoException;
 
     List<Result> getResultsBySubjectId(int subjectId) throws DaoException;
 

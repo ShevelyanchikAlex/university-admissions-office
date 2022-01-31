@@ -13,6 +13,8 @@ public final class PagePath {
     public static final String ADD_APPLICATION_PAGE = "/WEB-INF/pages/user/additionApplicationPage.jsp";
     public static final String EDIT_APPLICATION_PAGE = "/WEB-INF/pages/user/editApplicationPage.jsp";
 
+    public static final String REJECT_APPLICATION_PAGE = "/WEB-INF/pages/admin/rejectApplicationPage.jsp";
+
     public static final String ERROR_404_PAGE = "/WEB-INF/pages/error/error_404.jsp";
     public static final String ERROR_500_PAGE = "/WEB-INF/pages/error/error_500.jsp";
 

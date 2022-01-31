@@ -30,28 +30,34 @@
         <label class="prev-text">
             <fmt:message key="edit_application.choosing_faculty"/>
         </label>
-        <select name="select-faculty" class="box">
-            <option value="value1" selected>EECS</option>
-            <option value="value2">MECHE</option>
-            <option value="value3">DSS</option>
+        <select name="selected_faculty_id" class="box">
+            <option value="<fmt:message key="faculties.EECS.id"/>"><fmt:message
+                    key="faculties.EECS.short_name"/></option>
+            <option value="<fmt:message key="faculties.MECHE.id"/>"><fmt:message
+                    key="faculties.MECHE.short_name"/></option>
+            <option value="<fmt:message key="faculties.DSS.id"/>"><fmt:message
+                    key="faculties.DSS.short_name"/></option>
         </select>
         <label class="prev-text">
             <fmt:message key="edit_application.points_first_subject"/>
         </label>
         <input type="number" name="points_first_subject" class="box"
-               placeholder="<fmt:message key="edit_application.points_first_subject_placeholder"/>" min="0"
+               placeholder="<fmt:message key="edit_application.points_first_subject_placeholder"/>"
+               value="${sessionScope.points_first_subject}" min="0"
                max="100" required/>
         <label class="prev-text">
             <fmt:message key="edit_application.points_second_subject"/>
         </label>
         <input type="number" name="points_second_subject" class="box"
-               placeholder="<fmt:message key="edit_application.points_second_subject_placeholder"/>" min="0"
+               placeholder="<fmt:message key="edit_application.points_second_subject_placeholder"/>"
+               value="${sessionScope.points_second_subject}" min="0"
                max="100" required/>
         <label class="prev-text">
             <fmt:message key="edit_application.points_third_subject"/>
         </label>
         <input type="number" name="points_third_subject" class="box"
-               placeholder="<fmt:message key="edit_application.points_third_subject_placeholder"/>" min="0"
+               placeholder="<fmt:message key="edit_application.points_third_subject_placeholder"/>"
+               value="${sessionScope.points_third_subject}" min="0"
                max="100" required/>
         <input type="submit" value="<fmt:message key="edit_application.edit_button"/>" id="submit"/>
     </form>
