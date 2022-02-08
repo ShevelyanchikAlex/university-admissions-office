@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+}
+
+
+.header-text {
+    display: flex;
+    height: auto;
+    width: 90%;
+    margin: 3% 3% 1%;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-box {
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 70%;
+    border-radius: 7px 0 0 7px;
+    text-indent: 3%;
+    text-align: justify;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 3% 1%;
+    padding: 5px;
+}
+
+.page-title h1 {
+    font-size: 60px;
+    color: #2E4053;
+}
+
+.text-box h2 {
+    font-size: 40px;
+    color: #2E4053;
+}
+
+.side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 0 7px 7px 0;
+}
+
+.image {
+    width: 400px;
+    height: 400px;
+}
+
+.line-separator {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 7%;
+    color: #2E4053;
+}
+
+.mission-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3%;
+    padding: 5px;
+}
+
+.mission-title h1 {
+    font-size: 60px;
+    color: #2E4053;
+}
+
+.mission-text {
+    width: 100%;
+}
+
+.mission-text .mission-text-box {
+    text-indent: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 5px;
+    text-align: justify;
+}
+
+.mission-text .mission-text-box h3 {
+    font-size: 30px;
+    color: #2E4053;
+}

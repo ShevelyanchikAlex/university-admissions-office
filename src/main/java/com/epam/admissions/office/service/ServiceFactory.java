@@ -10,6 +10,7 @@ public class ServiceFactory {
     private static final SubjectService subjectService = new SubjectServiceImpl();
     private static final ResultService resultService = new ResultServiceImpl();
     private static final FacultyAdmissionInfoService facultyAdmissionInfoService = new FacultyAdmissionInfoServiceImpl();
+    private static final FacultiesHasSubjectsService facultiesHasSubjectsService = new FacultiesHasSubjectsServiceImpl();
     private static final ApplicationService applicationService = new ApplicationServiceImpl();
 
     private ServiceFactory() {
@@ -37,6 +38,10 @@ public class ServiceFactory {
 
     public FacultyAdmissionInfoService getFacultyAdmissionInfoService() {
         return facultyAdmissionInfoService;
+    }
+
+    public FacultiesHasSubjectsService getFacultiesHasSubjectsService() {
+        return facultiesHasSubjectsService;
     }
 
     public ApplicationService getApplicationService() {

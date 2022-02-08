@@ -11,7 +11,7 @@ public class FacultiesAdmissionInfoRowMapper implements RowMapper<FacultyAdmissi
     @Override
     public FacultyAdmissionInfo map(ResultSet resultSet) throws SQLException {
         FacultyAdmissionInfo facultyAdmissionInfo = new FacultyAdmissionInfo();
-        facultyAdmissionInfo.setFacultyId(resultSet.getInt(DBColumn.FACULTIES_ADMISSION_INFO_ID));
+        facultyAdmissionInfo.setFacultyAdmissionInfoId(resultSet.getInt(DBColumn.FACULTIES_ADMISSION_INFO_ID));
         facultyAdmissionInfo.setPassingScore(resultSet.getDouble(DBColumn.FACULTIES_ADMISSION_PASSING_SCORE));
         facultyAdmissionInfo.setPlaces(resultSet.getInt(DBColumn.FACULTIES_ADMISSION_PLACES));
         facultyAdmissionInfo.setYear(resultSet.getDate(DBColumn.FACULTIES_ADMISSION_YEAR));

@@ -19,10 +19,6 @@ public class GoToProfilePageCommand implements Command {
         HttpSession session = request.getSession();
         session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_PROFILE_PAGE);
 
-
-        ///TODO get user id and add logic
-
-
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.PROFILE_PAGE);
         requestDispatcher.forward(request, response);
     }

@@ -106,6 +106,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int countByUserRole(UserRole userRole) throws DaoException {
-        return queryOperator.executeCountQuery(DBRequest.COUNT_USERS_BY_ROLE_ID_QUERY, userRole);
+        return queryOperator.executeCountQuery(DBRequest.COUNT_USERS_BY_ROLE_ID_QUERY, userRole.ordinal());
     }
 }

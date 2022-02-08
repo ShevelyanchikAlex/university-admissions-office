@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 3% 2%;
+    padding: 5px;
+}
+
+.page-title h1 {
+    font-size: 60px;
+    color: #2E4053;
+}
+
+
+.faculty-tile {
+    display: flex;
+    height: auto;
+    width: 90%;
+    margin: 0 5% auto;
+    padding: 0 2% 2%;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-box {
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 70%;
+    border-radius: 7px 0 0 7px;
+    text-align: justify;
+}
+
+
+.text-box h3 {
+    font-size: 35px;
+    color: #2E4053;
+}
+
+.side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 0 7px 7px 0;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+}
+
+.line-separator {
+    margin: 5% 20%;
+    color: #2E4053;
+}
+
+
+.faculty-average-score-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3%;
+    padding: 5px;
+}
+
+.faculty-average-score-title h2 {
+    font-size: 50px;
+    color: #2E4053;
+}
+
+.faculty-score-row {
+    display: flex;
+    margin: auto;
+    width: 90%;
+}
+
+.faculty-score-container {
+    display: block;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #2E4053;
+    margin: auto;
+    padding: 20px;
+}
+
+.faculty-score-container:hover {
+    background: white;
+    box-shadow: 10px 10px 20px #2E4053;
+    transition: all 400ms ease;
+}
+
+
+.faculty-score-container .faculty-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.faculty-score-container .faculty-data .icon i {
+    font-size: 2.3rem;
+    color: #2E4053;
+}
+
+.faculty-score-container .faculty-data .faculty-value-name {
+    height: 30px;
+    color: #696666;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.faculty-score-container .faculty-data .faculty-value {
+    height: 30px;
+    font-size: 20px;
+    padding: 5px;
+}

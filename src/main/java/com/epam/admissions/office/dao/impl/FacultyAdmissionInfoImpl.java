@@ -50,6 +50,17 @@ public class FacultyAdmissionInfoImpl implements FacultyAdmissionInfoDao {
     }
 
     @Override
+    public int updateFacultyAdmissionInfo(FacultyAdmissionInfo facultyAdmissionInfo) throws DaoException {
+        return queryOperator.executeUpdate(
+                DBRequest.UPDATE_FACULTY_ADMISSION_INFO_QUERY,
+                facultyAdmissionInfo.getPassingScore(),
+                facultyAdmissionInfo.getPlaces(),
+                facultyAdmissionInfo.getYear(),
+                facultyAdmissionInfo.getFacultyId(),
+                facultyAdmissionInfo.getFacultyAdmissionInfoId());
+    }
+
+    @Override
     public int countAllAdmissionInfos() throws DaoException {
         return queryOperator.executeCountQuery(DBRequest.COUNT_ALL_FACULTY_ADMISSION_INFOS_QUERY);
     }

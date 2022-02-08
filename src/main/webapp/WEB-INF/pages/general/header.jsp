@@ -51,9 +51,9 @@
             <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
                     key="header.links.home"/></a></li>
             <c:if test="${sessionScope.user_role != 'ADMIN'}">
-                <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
+                <li><a class="link" href="<c:url value="/controller?command=go_to_about_page" />"><fmt:message
                         key="header.links.about"/></a></li>
-                <li><a class="link" href="<c:url value="/controller?command=go_to_home_page" />"><fmt:message
+                <li><a class="link" href="<c:url value="/controller?command=go_to_faculties_page" />"><fmt:message
                         key="header.links.faculties"/></a></li>
                 <li><a class="link" href="<c:url value="/controller?command=go_to_contacts_page" />"><fmt:message
                         key="header.links.contacts"/></a></li>
@@ -69,10 +69,12 @@
             </c:if>
             <c:if test="${sessionScope.user_id != null}">
                 <li><a class="link" href="<c:url value="/controller?command=go_to_profile_page" />">
-                    <fmt:message key="header.links.profile"/></a></li>
+                    <fmt:message key="header.links.profile"/>
+                </a></li>
                 <c:if test="${sessionScope.user_role == 'ADMIN'}">
                     <li><a class="link" href="<c:url value="/controller?command=go_to_admin_page" />">
-                        <fmt:message key="header.links.admin"/></a></li>
+                        <fmt:message key="header.links.admin"/>
+                    </a></li>
                 </c:if>
                 <li class="log-out-btn"><a class="log-out-text"
                                            href="<c:url value="/controller?command=logout" />">

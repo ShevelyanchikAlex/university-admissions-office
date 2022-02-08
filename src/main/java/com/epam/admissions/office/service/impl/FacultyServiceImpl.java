@@ -4,6 +4,7 @@ import com.epam.admissions.office.dao.DaoFactory;
 import com.epam.admissions.office.dao.FacultyDao;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.entity.faculty.Faculty;
+import com.epam.admissions.office.entity.faculty.FacultyHasSubject;
 import com.epam.admissions.office.service.FacultyService;
 import com.epam.admissions.office.service.exception.ServiceException;
 
@@ -16,8 +17,8 @@ public class FacultyServiceImpl implements FacultyService {
 
         try {
             return facultyDao.getFacultyById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -27,8 +28,8 @@ public class FacultyServiceImpl implements FacultyService {
 
         try {
             return facultyDao.getAllFaculties();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -38,8 +39,8 @@ public class FacultyServiceImpl implements FacultyService {
 
         try {
             return facultyDao.deleteById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -49,8 +50,8 @@ public class FacultyServiceImpl implements FacultyService {
 
         try {
             return facultyDao.countAllFaculties();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 }

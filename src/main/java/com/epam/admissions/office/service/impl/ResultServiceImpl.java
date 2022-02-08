@@ -10,22 +10,21 @@ import com.epam.admissions.office.service.exception.ServiceException;
 import java.util.List;
 
 public class ResultServiceImpl implements ResultService {
-    private final int SUCCESSFUL_OPERATION = 1;
+    private static final int SUCCESSFUL_OPERATION = 1;
+    private static final int DEFAULT_RESULT_ID = 0;
+    private static final int DEFAULT_CERTIFICATE_ID = 0;
+    private static final boolean DEFAULT_IS_CERTIFICATE_CONFIRMED = true;
 
     @Override
     public boolean createResult(double score, int applicationId, int subjectId) throws ServiceException {
-        final int DEFAULT_RESULT_ID = 0;
-        final int DEFAULT_CERTIFICATE_ID = 0;
-        final boolean DEFAULT_IS_CERTIFICATE_CONFIRMED = true;
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
-
         Result result = new Result(DEFAULT_RESULT_ID, score, DEFAULT_CERTIFICATE_ID, null,
                 DEFAULT_IS_CERTIFICATE_CONFIRMED, applicationId, subjectId);
 
         try {
             return resultDao.createResult(result) == SUCCESSFUL_OPERATION;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -37,10 +36,9 @@ public class ResultServiceImpl implements ResultService {
             Result result = resultDao.getResultById(resultId);
             result.setScore(score);
             result.setSubjectId(subjectId);
-
             return resultDao.updateResult(result) == SUCCESSFUL_OPERATION;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -50,8 +48,8 @@ public class ResultServiceImpl implements ResultService {
 
         try {
             return resultDao.getResultById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -61,8 +59,8 @@ public class ResultServiceImpl implements ResultService {
 
         try {
             return resultDao.getResultsByScore(score);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -72,8 +70,8 @@ public class ResultServiceImpl implements ResultService {
 
         try {
             return resultDao.getResultsByApplicationId(applicationId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -83,8 +81,8 @@ public class ResultServiceImpl implements ResultService {
 
         try {
             return resultDao.getResultsBySubjectId(subjectId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -94,8 +92,8 @@ public class ResultServiceImpl implements ResultService {
 
         try {
             return resultDao.getAllResults();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -105,8 +103,8 @@ public class ResultServiceImpl implements ResultService {
 
         try {
             return resultDao.deleteById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -116,8 +114,8 @@ public class ResultServiceImpl implements ResultService {
 
         try {
             return resultDao.countAllResults();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 }

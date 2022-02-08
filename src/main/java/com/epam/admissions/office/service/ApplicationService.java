@@ -32,4 +32,6 @@ public interface ApplicationService {
     int deleteById(int id) throws ServiceException;
 
     int countAllApplication() throws ServiceException;
+
+    int countAllRespondedApplication() throws ServiceException;
 }

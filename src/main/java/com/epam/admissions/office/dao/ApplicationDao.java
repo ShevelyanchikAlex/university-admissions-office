@@ -31,4 +31,6 @@ public interface ApplicationDao {
     int deleteById(int id) throws DaoException;
 
     int countAllApplication() throws DaoException;
+
+    int countAllRespondedApplication() throws DaoException;
 }

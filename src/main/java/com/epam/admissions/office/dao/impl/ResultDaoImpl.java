@@ -1,7 +1,6 @@
 package com.epam.admissions.office.dao.impl;
 
 import com.epam.admissions.office.dao.ResultDao;
-import com.epam.admissions.office.dao.constant.DBColumn;
 import com.epam.admissions.office.dao.constant.DBRequest;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.dao.mapper.RowMapper;

@@ -3,7 +3,6 @@ package com.epam.admissions.office.dao;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.entity.user.User;
 import com.epam.admissions.office.entity.user.UserRole;
-import com.epam.admissions.office.service.exception.ServiceException;
 
 import java.util.List;
 

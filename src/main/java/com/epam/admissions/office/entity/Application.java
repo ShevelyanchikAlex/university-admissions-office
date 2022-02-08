@@ -7,13 +7,12 @@ import java.util.Objects;
 
 public class Application implements Serializable {
     private int applicationId;
-    private Date applyDate;
-    private boolean isApproved;
-    private Date decisionDate;
-    private String rejectionReason;
     private int userId;
     private int facultyId;
-
+    private boolean isApproved;
+    private String rejectionReason;
+    private Date applyDate;
+    private Date decisionDate;
 
     public Application() {
     }

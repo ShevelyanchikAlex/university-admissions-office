@@ -11,7 +11,7 @@ body {
 
 
 .header-text {
-    min-height: 70vh;
+    min-height: 55vh;
     width: 100%;
     position: relative;
 }
@@ -32,7 +32,7 @@ body {
 
 .text-box p {
     margin: 10px 0 40px;
-    font-size: 14px;
+    font-size: 20px;
     color: #2E4053;
 }
 
@@ -53,11 +53,78 @@ body {
     transition: 1s;
 }
 
+.line-separator-header {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 2%;
+    color: #2E4053;
+}
+
+.line-separator {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 7%;
+    color: #2E4053;
+}
+
+
+.benefits {
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.benefits h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #2E4053;
+}
+
+
+.benefits-row {
+    padding: 1%;
+    display: flex;
+    margin: auto;
+}
+
+.benefits-tile {
+    width: auto;
+    height: auto;
+    align-items: center;
+    margin: 1% 1.5%;
+    padding: 1%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #2E4053;
+    font-size: 1.5rem;
+}
+
+
+.benefits-tile:hover {
+    background: white;
+    box-shadow: 10px 10px 20px #2E4053;
+    transition: all 400ms ease;
+}
+
+.benefits-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #2E4053;
+}
+
+.benefits-data i {
+    font-size: 3rem;
+    padding: 3%;
+    color: #2E4053;
+}
+
 .faculties {
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 2%;
 }
 
 .faculties h1 {
@@ -68,14 +135,51 @@ body {
 
 .faculties p {
     color: #2E4053;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 22px;
     padding: 10px;
 }
 
-.faculties-row {
-    margin-top: 5%;
+
+.faculty-row {
     display: flex;
-    justify-content: space-between;
+    margin: auto;
+    padding-top: 2%;
+}
+
+.faculty-score-tile {
+    align-items: center;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #2E4053;
+    font-size: 1.5rem;
+}
+
+
+.faculty-score-tile:hover {
+    background: white;
+    box-shadow: 10px 10px 20px #2E4053;
+    transition: all 400ms ease;
+}
+
+.faculty-container .faculty-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faculty-col {
+    color: #2E4053;
+    padding: 5px;
+}
+
+.faculty-logo {
+    width: 50%;
+    height: 50%;
+    margin-bottom: 5%;
 }

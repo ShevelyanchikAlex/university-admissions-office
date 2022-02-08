@@ -1,6 +1,7 @@
 package com.epam.admissions.office.service;
 
 import com.epam.admissions.office.entity.faculty.Faculty;
+import com.epam.admissions.office.entity.faculty.FacultyHasSubject;
 import com.epam.admissions.office.service.exception.ServiceException;
 
 import java.util.List;

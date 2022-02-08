@@ -10,7 +10,6 @@ public class Faculty implements Serializable {
     private String facultyDescription;
     private String logoPictureUrl;
 
-
     public Faculty() {
     }
 

@@ -18,12 +18,11 @@ public class PasswordDigestImpl implements PasswordDigest {
             byte[] bytes = md.digest(password.getBytes());
             StringBuilder sb = new StringBuilder();
             for (byte aByte : bytes) {
-                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16)
-                        .substring(1));
+                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
             }
             digestPassword = sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new ServiceException(e);
+        } catch (NoSuchAlgorithmException exception) {
+            throw new ServiceException(exception);
         }
         return digestPassword;
     }

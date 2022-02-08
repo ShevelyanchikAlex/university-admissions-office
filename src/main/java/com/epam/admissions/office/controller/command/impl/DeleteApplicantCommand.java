@@ -1,8 +1,9 @@
 package com.epam.admissions.office.controller.command.impl;
 
 import com.epam.admissions.office.controller.command.Command;
-import com.epam.admissions.office.controller.constant.*;
-import com.epam.admissions.office.entity.user.User;
+import com.epam.admissions.office.controller.constant.PagePath;
+import com.epam.admissions.office.controller.constant.RequestParameter;
+import com.epam.admissions.office.controller.constant.SessionAttribute;
 import com.epam.admissions.office.service.ServiceFactory;
 import com.epam.admissions.office.service.UserService;
 import com.epam.admissions.office.service.exception.ServiceException;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 public class DeleteApplicantCommand implements Command {
     private final Logger logger = Logger.getLogger(DeleteApplicantCommand.class);
@@ -27,11 +27,10 @@ public class DeleteApplicantCommand implements Command {
         try {
             int userId = Integer.parseInt(request.getParameter(RequestParameter.USER_ID));
             userService.deleteById(userId);
-
             session.setAttribute(SessionAttribute.APPLICANTS, userService.getAllApplicants());
             response.sendRedirect((String) session.getAttribute(SessionAttribute.URL));
-        } catch (ServiceException | NumberFormatException e) {
-            logger.error("Unable to delete applicant.", e);
+        } catch (ServiceException | NumberFormatException exception) {
+            logger.error("Unable to delete applicant.", exception);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }

@@ -34,19 +34,15 @@ public class EditPersonalDataCommand implements Command {
                 session.setAttribute(SessionAttribute.USER_SURNAME, surname);
                 session.setAttribute(SessionAttribute.USER_EMAIL, email);
                 session.setAttribute(SessionAttribute.USER_PASSPORT_ID, passportId);
-
                 session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_PROFILE_PAGE);
 
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.PROFILE_PAGE);
                 requestDispatcher.forward(request, response);
             } else {
-                session.setAttribute(SessionAttribute.ERROR, session.getAttribute(SessionAttribute.LOCALE) == SessionAttributeValue.LOCALE_RU
-                        ? SessionAttributeValue.ALERT_MESSAGE_INCORRECT_LOGIN_DATA_RU : SessionAttributeValue.ALERT_MESSAGE_INCORRECT_LOGIN_DATA_EN);
-
                 response.sendRedirect((String) session.getAttribute(SessionAttribute.URL));
             }
-        } catch (ServiceException e) {
-            logger.error("Exception in time edition personal data.", e);
+        } catch (ServiceException exception) {
+            logger.error("Exception in time edition personal data.", exception);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }

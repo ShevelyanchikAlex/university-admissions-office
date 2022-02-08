@@ -14,32 +14,28 @@
 <body>
 <div class="search">
     <div><i class="fas fa-search search-icon"></i></div>
-    <div class="input"><input id="myInput" class="form-control" onkeyup='tableSearch()' placeholder="Search"
+    <div class="input"><input id="search-input" class="form-control" onkeyup='tableSearch()'
+                              placeholder="<fmt:message key="admin.statistic.search.placeholder"/>"
                               type="text"></div>
     <div class="select-column-number">
         <select name="select-column" id="selectedColumn">
-            <option value="0" selected>ID</option>
-            <option value="1">Email</option>
-            <option value="2">Name</option>
-            <option value="3">Surname</option>
-            <option value="4">Faculty</option>
-            <option value="5">Response</option>
+            <option value="0" selected><fmt:message key="admin.statistic.applications_table.application_id"/></option>
+            <option value="1" selected><fmt:message key="admin.statistic.applications_table.user_id"/></option>
+            <option value="2"><fmt:message key="admin.statistic.applications_table.faculty"/></option>
         </select>
     </div>
 </div>
 
-<table class="table" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+<table class="table" id="applications-table" data-filter-control="true" data-show-search-clear-button="true">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>User Id</th>
-        <th>Faculty</th>
-<%--        <th>First subject's points</th>--%>
-<%--        <th>Second subject's points</th>--%>
-<%--        <th>Third subject's points</th>--%>
-        <th>Application date</th>
-        <th>Confirm</th>
-        <th>Reject</th>
+        <th><fmt:message key="admin.statistic.applications_table.application_id"/></th>
+        <th><fmt:message key="admin.statistic.applications_table.user_id"/></th>
+        <th><fmt:message key="admin.statistic.applications_table.faculty"/></th>
+        <%--        <th><fmt:message key="admin.statistic.applications_table.score"/></th>--%>
+        <th><fmt:message key="admin.statistic.applications_table.application_date"/></th>
+        <th><fmt:message key="admin.statistic.applications_table.confirm"/></th>
+        <th><fmt:message key="admin.statistic.applications_table.reject"/></th>
     </tr>
     </thead>
     <tbody>
@@ -47,16 +43,30 @@
     <tr>
         <td>${application.applicationId}</td>
         <td>${application.userId}</td>
-        <td>${application.facultyId}</td>
+        <td>
+            <c:choose>
+                <c:when test="${application.facultyId == 1}">
+                    <p><fmt:message key="admin.statistic.eecs"/></p>
+                </c:when>
+                <c:when test="${application.facultyId == 2}">
+                    <p><fmt:message key="admin.statistic.meche"/></p>
+                </c:when>
+                <c:when test="${application.facultyId == 3}">
+                    <p><fmt:message key="admin.statistic.dss"/></p>
+                </c:when>
+            </c:choose>
+        </td>
         <td>${application.applyDate}</td>
         <td><a class="confirm-button"
-               href="<c:url value="/controller?command=confirm_application" />&application_id=${application.applicationId}">Confirm</a>
+               href="<c:url value="/controller?command=confirm_application" />&application_id=${application.applicationId}"><fmt:message
+                key="admin.statistic.applications_table.confirm"/></a>
         </td>
         <td><a class="reject-button"
-               href="<c:url value="/controller?command=go_to_reject_application_page" />&application_id=${application.applicationId}">Reject</a>
+               href="<c:url value="/controller?command=go_to_reject_application_page" />&application_id=${application.applicationId}"><fmt:message
+                key="admin.statistic.applications_table.reject"/></a>
         </td>
     <tr>
-    </c:forEach>
+        </c:forEach>
     </tbody>
 </table>
 </body>
@@ -67,10 +77,10 @@
         let input, filter, table, tr, td, txtValue;
         let selectedColumn;
 
-        input = document.getElementById("myInput");
+        input = document.getElementById("search-input");
         selectedColumn = document.getElementById("selectedColumn");
         filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
+        table = document.getElementById("applications-table");
         tr = table.getElementsByTagName("tr");
 
         for (let i = 0; i < tr.length; i++) {

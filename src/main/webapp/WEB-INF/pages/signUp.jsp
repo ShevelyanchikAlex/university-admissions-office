@@ -1,24 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.epam.admissions.office.service.validator.constant.ValidPattern" %>
 
 <html>
 <head>
     <fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'en'}"/>
     <fmt:setBundle basename="locale"/>
+    <title><fmt:message key="signup.title"/></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><fmt:message key="signup.title"/></title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/signUpStyle.css">
 </head>
 <body>
 <jsp:include page="general/header.jsp"/>
-<c:if test="${sessionScope.error != null}">
-    <div class="alert-block">
-        <label class="alert-message"><p class="alert-header"><fmt:message key="signup.alert_header"/></p>
-                ${sessionScope.error}
-        </label>
-            ${sessionScope.remove("error")}
+<c:if test="${sessionScope.input_hint_status == 'SHOW'}">
+    <div class="input-hint-block">
+        <h1 class="input-hint-header"><fmt:message key="signup.input_hint.title"/></h1>
+        <p class="input-hint-message"><fmt:message key="signup.input_hint.message"/></p>
     </div>
 </c:if>
 <div class="container">
@@ -30,17 +29,20 @@
                 <label class="prev-text">
                     <fmt:message key="signup.first_name"/><em>*</em>
                     <input type="text" name="user_name" class="box"
-                           placeholder="<fmt:message key="signup.first_name_placeholder"/>" maxlength="50" required/>
+                           placeholder="<fmt:message key="signup.first_name_placeholder"/>"
+                           pattern="${ValidPattern.NAME_PATTERN}" maxlength="50" required/>
                 </label>
                 <label class="prev-text">
                     <fmt:message key="signup.email"/><em>*</em>
                     <input type="email" name="user_email" class="box"
-                           placeholder="<fmt:message key="signup.email_placeholder"/> " maxlength="70" required/>
+                           placeholder="<fmt:message key="signup.email_placeholder"/> "
+                           pattern="${ValidPattern.EMAIL_PATTERN}" maxlength="70" required/>
                 </label>
                 <label class="prev-text">
                     <fmt:message key="signup.password"/><em>*</em>
                     <input type="password" name="user_password" class="box"
                            placeholder="<fmt:message key="signup.password_placeholder"/>"
+                           pattern="${ValidPattern.PASSWORD_PATTERN}"
                            minlength="8" maxlength="30" required/>
                 </label>
             </div>
@@ -48,19 +50,35 @@
                 <label class="prev-text">
                     <fmt:message key="signup.last_name"/><em>*</em>
                     <input type="text" name="user_surname" class="box"
-                           placeholder="<fmt:message key="signup.last_name_placeholder"/>" maxlength="70" required/>
+                           placeholder="<fmt:message key="signup.last_name_placeholder"/>"
+                           pattern="${ValidPattern.NAME_PATTERN}" maxlength="70" required/>
                 </label>
                 <label class="prev-text">
                     <fmt:message key="signup.passport_id"/><em>*</em>
                     <input type="text" name="user_passport_id" class="box"
-                           placeholder="<fmt:message key="signup.passport_id_placeholder"/>" maxlength="9" required/>
+                           placeholder="<fmt:message key="signup.passport_id_placeholder"/>"
+                           pattern="${ValidPattern.PASSPORT_SERIES_AND_NUMBER}" maxlength="9" required/>
                 </label>
                 <label class="prev-text">
                     <fmt:message key="signup.confirm_password"/><em>*</em>
                     <input type="password" name="confirm_password" class="box"
                            placeholder="<fmt:message key="signup.confirm_password_placeholder"/>"
+                           pattern="${ValidPattern.PASSWORD_PATTERN}"
                            minlength="8" maxlength="30" required/>
                 </label>
+            </div>
+        </div>
+
+        <div class="input-hint-row">
+            <div class="column-input-hint-bottom">
+                <a href="<c:url value="/controller?command=change_input_hint_status" />" class="show-input-hint-button">
+                    <c:if test="${sessionScope.input_hint_status == null || sessionScope.input_hint_status == 'HIDE'}">
+                        <fmt:message key="signup.input_hint.show_input_hint_button"/>
+                    </c:if>
+                    <c:if test="${sessionScope.input_hint_status == 'SHOW'}">
+                        <fmt:message key="signup.input_hint.hide_input_hint_button"/>
+                    </c:if>
+                </a>
             </div>
         </div>
 

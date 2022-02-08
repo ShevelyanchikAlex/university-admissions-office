@@ -6,36 +6,36 @@
 <head>
     <fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'en'}"/>
     <fmt:setBundle basename="locale"/>
+    <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/tableStyle.css">
 </head>
 <body>
 <div class="search">
     <div><i class="fas fa-search search-icon"></i></div>
-    <div class="input"><input id="myInput" class="form-control" onkeyup='tableSearch()' placeholder="Search"
+    <div class="input"><input id="search-input" class="form-control" onkeyup='tableSearch()'
+                              placeholder="<fmt:message key="admin.statistic.search.placeholder"/>"
                               type="text"></div>
     <div class="select-column-number">
         <select name="select-column" id="selectedColumn">
-            <option value="0" selected>ID</option>
-            <option value="1">Email</option>
-            <option value="2">Name</option>
-            <option value="3">Surname</option>
-            <option value="4">Passport data</option>
+            <option value="0" selected><fmt:message key="admin.statistic.users.id"/></option>
+            <option value="1"><fmt:message key="admin.statistic.users.email"/></option>
+            <option value="2"><fmt:message key="admin.statistic.users.name"/></option>
+            <option value="3"><fmt:message key="admin.statistic.users.surname"/></option>
+            <option value="4"><fmt:message key="admin.statistic.users.passport_data"/></option>
         </select>
     </div>
 </div>
 
-<table class="table" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+<table class="table" id="admins-table" data-filter-control="true" data-show-search-clear-button="true">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Email</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Passport data</th>
-        <th>Send email</th>
+        <th><fmt:message key="admin.statistic.users.id"/></th>
+        <th><fmt:message key="admin.statistic.users.email"/></th>
+        <th><fmt:message key="admin.statistic.users.name"/></th>
+        <th><fmt:message key="admin.statistic.users.surname"/></th>
+        <th><fmt:message key="admin.statistic.users.passport_data"/></th>
     </tr>
     </thead>
     <tbody>
@@ -46,9 +46,6 @@
         <td>${admin.name}</td>
         <td>${admin.surname}</td>
         <td>${admin.passportId}</td>
-        <td><a class="response-button"
-               href="#">Send email</a>
-        </td>
     <tr>
         </c:forEach>
     </tbody>
@@ -61,10 +58,10 @@
         let input, filter, table, tr, td, txtValue;
         let selectedColumn;
 
-        input = document.getElementById("myInput");
+        input = document.getElementById("search-input");
         selectedColumn = document.getElementById("selectedColumn");
         filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
+        table = document.getElementById("admins-table");
         tr = table.getElementsByTagName("tr");
 
         for (let i = 0; i < tr.length; i++) {

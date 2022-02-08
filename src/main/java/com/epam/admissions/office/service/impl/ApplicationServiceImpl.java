@@ -11,7 +11,9 @@ import java.sql.Date;
 import java.util.List;
 
 public class ApplicationServiceImpl implements ApplicationService {
-    private final int SUCCESSFUL_OPERATION = 1;
+    private static final int SUCCESSFUL_OPERATION = 1;
+    private static final int DEFAULT_APPLICATION_ID = 0;
+    private static final boolean DEFAULT_IS_APPROVED = false;
 
     @Override
     public Application getApplicationById(int id) throws ServiceException {
@@ -19,8 +21,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.getApplicationById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -30,8 +32,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.getApplicationByUserId(userId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -41,8 +43,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.getAllApplications();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -52,8 +54,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.getAllConfirmedApplications();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -63,8 +65,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.getAllNotConfirmedApplications();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -74,15 +76,13 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.getApplicationsByFacultyId(facultyId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
     @Override
     public int createApplication(int userId, int facultyId) throws ServiceException {
-        final int DEFAULT_APPLICATION_ID = 0;
-        final boolean DEFAULT_IS_APPROVED = false;
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
 
         Application application = new Application(DEFAULT_APPLICATION_ID, new Date(System.currentTimeMillis()),
@@ -90,8 +90,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.createApplication(application);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -102,10 +102,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         try {
             Application application = applicationDao.getApplicationById(applicationId);
             application.setFacultyId(facultyId);
-
             return applicationDao.updateApplication(application) == SUCCESSFUL_OPERATION;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -118,10 +117,9 @@ public class ApplicationServiceImpl implements ApplicationService {
             application.setApproved(status);
             application.setRejectionReason(rejectionReason);
             application.setDecisionDate(new Date(System.currentTimeMillis()));
-
             return applicationDao.updateApplication(application) == SUCCESSFUL_OPERATION;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -129,11 +127,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<Application> getApplicationsByApplyDate(Date applyDate) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
 
-        //TODO Validation
         try {
             return applicationDao.getApplicationsByApplyDate(applyDate);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -141,11 +138,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<Application> getApplicationsByDecisionDate(Date decisionDate) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
 
-        //TODO Validation
         try {
             return applicationDao.getApplicationsByDecisionDate(decisionDate);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -155,8 +151,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.deleteById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -166,8 +162,19 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         try {
             return applicationDao.countAllApplication();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
+        }
+    }
+
+    @Override
+    public int countAllRespondedApplication() throws ServiceException {
+        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
+        try {
+            return applicationDao.countAllRespondedApplication();
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 }

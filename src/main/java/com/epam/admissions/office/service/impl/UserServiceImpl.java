@@ -15,7 +15,10 @@ import com.epam.admissions.office.service.validator.ValidatorFactory;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private final int SUCCESSFUL_OPERATION = 1;
+    private static final int SUCCESSFUL_OPERATION = 1;
+    private static final int DEFAULT_USER_ID = 0;
+    private static final boolean DEFAULT_IS_USER_DELETED = false;
+    private static final boolean UNSUCCESSFUL_OPERATION = false;
 
     @Override
     public User login(String email, String password) throws ServiceException {
@@ -28,17 +31,14 @@ public class UserServiceImpl implements UserService {
             if (dbUser != null && dbUser.getPasswordHash().equals(passwordDigest.getDigestPassword(password)) && !dbUser.isDeleted()) {
                 user = dbUser;
             }
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
         return user;
     }
 
     @Override
     public boolean signUp(String name, String surname, String email, String passportId, String password, String confirmPassword) throws ServiceException {
-        final int DEFAULT_USER_ID = 0;
-        final boolean DEFAULT_IS_USER_DELETED = false;
-
         UserDao userDao = DaoFactory.getInstance().getUserDao();
         PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
 
@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
             } else {
                 return false;
             }
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.getUserById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -80,8 +80,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.getByEmail(email);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -91,8 +91,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.deleteById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -102,8 +102,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.restoreById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -113,8 +113,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.getAllUsers();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -124,8 +124,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.countAllUsers();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -135,8 +135,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.getAllApplicants();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -146,8 +146,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.getAllAdministrators();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -155,23 +155,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean editPersonalData(int id, String name, String surname, String email, String passportId) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
-        ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
-        Validator<User> userValidator = validatorFactory.getUserValidator();
+        Validator<User> userValidator = ValidatorFactory.getInstance().getUserValidator();
 
         try {
             User user = userDao.getUserById(id);
-            user.setName(name);
-            user.setSurname(surname);
-            user.setEmail(email);
-            user.setPassportId(passportId);
-
-            if (userValidator.validate(user)) {
-                return userDao.updateUser(user) == SUCCESSFUL_OPERATION;
+            if (!user.getEmail().equals(email) && userDao.getByEmail(email) != null) {
+                return UNSUCCESSFUL_OPERATION;
             } else {
-                return false;
+                user.setName(name);
+                user.setSurname(surname);
+                user.setEmail(email);
+                user.setPassportId(passportId);
+
+                if (userValidator.validate(user)) {
+                    return userDao.updateUser(user) == SUCCESSFUL_OPERATION;
+                } else {
+                    return UNSUCCESSFUL_OPERATION;
+                }
             }
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -184,8 +187,8 @@ public class UserServiceImpl implements UserService {
             user.setUserRole(userRole);
 
             return userDao.updateUser(user) == SUCCESSFUL_OPERATION;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -195,8 +198,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.getUsersByRoleId(roleId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -206,8 +209,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.getUsersByStatus(status);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -217,8 +220,8 @@ public class UserServiceImpl implements UserService {
 
         try {
             return userDao.countByUserRole(userRole);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 }

@@ -13,24 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Enumeration;
 
 public class LogOutCommand implements Command {
-    private final Logger logger = Logger.getLogger(LogOutCommand.class);
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        logger.info("User " + session.getAttribute(SessionAttribute.USER_EMAIL) + " was log out.");
-
-        session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_HOME_PAGE);
-
-        session.removeAttribute(SessionAttribute.USER_ID);
-        session.removeAttribute(SessionAttribute.USER_NAME);
-        session.removeAttribute(SessionAttribute.USER_SURNAME);
-        session.removeAttribute(SessionAttribute.USER_EMAIL);
-        session.removeAttribute(SessionAttribute.USER_PASSPORT_ID);
-        session.removeAttribute(SessionAttribute.USER_ROLE);
-
+        request.getSession().invalidate();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.HOME_PAGE);
         requestDispatcher.forward(request, response);
     }

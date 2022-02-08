@@ -11,6 +11,7 @@ public class DaoFactory {
     private static final SubjectDao subjectDao = new SubjectDaoImpl();
     private static final FacultyDao facultyDao = new FacultyDaoImpl();
     private static final FacultyAdmissionInfoDao facultyAdmissionInfoDao = new FacultyAdmissionInfoImpl();
+    private static final FacultiesHasSubjectsDao facultiesHasSubjectsDao = new FacultiesHasSubjectsDaoImpl();
 
     private DaoFactory() {
     }
@@ -41,5 +42,9 @@ public class DaoFactory {
 
     public FacultyAdmissionInfoDao getFacultyAdmissionInfoDao() {
         return facultyAdmissionInfoDao;
+    }
+
+    public FacultiesHasSubjectsDao getFacultiesHasSubjectsDao() {
+        return facultiesHasSubjectsDao;
     }
 }

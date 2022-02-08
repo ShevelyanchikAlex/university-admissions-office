@@ -1,7 +1,6 @@
 package com.epam.admissions.office.dao.impl;
 
 import com.epam.admissions.office.dao.ApplicationDao;
-import com.epam.admissions.office.dao.constant.DBColumn;
 import com.epam.admissions.office.dao.constant.DBRequest;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.dao.mapper.RowMapper;
@@ -94,5 +93,10 @@ public class ApplicationDaoImpl implements ApplicationDao {
     @Override
     public int countAllApplication() throws DaoException {
         return queryOperator.executeCountQuery(DBRequest.COUNT_ALL_APPLICATIONS_QUERY);
+    }
+
+    @Override
+    public int countAllRespondedApplication() throws DaoException {
+        return queryOperator.executeCountQuery(DBRequest.COUNT_ALL_RESPONDED_APPLICATIONS_QUERY);
     }
 }

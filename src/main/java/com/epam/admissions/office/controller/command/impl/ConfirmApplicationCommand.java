@@ -17,22 +17,22 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class ConfirmApplicationCommand implements Command {
+    private static final boolean APPROVED = true;
+
     private final Logger logger = Logger.getLogger(ConfirmApplicationCommand.class);
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        final boolean IS_APPROVED = true;
         ApplicationService applicationService = ServiceFactory.getInstance().getApplicationService();
         int applicationId = Integer.parseInt(request.getParameter(RequestParameter.APPLICATION_ID));
 
         try {
-            applicationService.updateConfirmStatusOfApplication(applicationId, IS_APPROVED, null);
-
+            applicationService.updateConfirmStatusOfApplication(applicationId, APPROVED, null);
             session.setAttribute(SessionAttribute.NOT_RESPONDED_APPLICATIONS, applicationService.getAllNotConfirmedApplications());
             response.sendRedirect((String) session.getAttribute(SessionAttribute.URL));
-        } catch (ServiceException e) {
-            logger.error("Exception in time confirmation of Application.", e);
+        } catch (ServiceException exception) {
+            logger.error("Exception in time confirmation of application.", exception);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }

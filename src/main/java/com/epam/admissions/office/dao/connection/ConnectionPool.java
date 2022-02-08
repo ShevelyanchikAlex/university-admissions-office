@@ -25,6 +25,7 @@ public final class ConnectionPool {
     private final String url;
     private final String user;
     private final String password;
+
     private int poolSize;
 
     private ConnectionPool() {

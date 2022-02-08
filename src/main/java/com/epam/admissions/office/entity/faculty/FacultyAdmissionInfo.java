@@ -6,10 +6,10 @@ import java.util.Objects;
 
 public class FacultyAdmissionInfo implements Serializable {
     private int facultyAdmissionInfoId;
-    private double passingScore;
     private int places;
-    private Date year;
     private int facultyId;
+    private double passingScore;
+    private Date year;
 
     public FacultyAdmissionInfo() {
     }

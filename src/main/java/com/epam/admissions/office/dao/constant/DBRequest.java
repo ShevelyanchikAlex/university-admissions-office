@@ -209,6 +209,10 @@ public final class DBRequest {
             "SELECT * FROM %s",
             DBTable.FACULTY_TABLE);
 
+    public static final String GET_SUBJECTS_ID_OF_FACULTY_QUERY = String.format(
+            "SELECT * FROM %s WHERE %s=?",
+            DBTable.FACULTY_HAS_SUBJECT_TABLE,
+            DBColumn.FACULTY_ID);
 
     //FacultyAdmissionInfo
     public final static String INSERT_FACULTY_ADMISSION_INFO_QUERY = String.format(
@@ -303,7 +307,12 @@ public final class DBRequest {
 
     public static final String COUNT_ALL_APPLICATIONS_QUERY = String.format(
             "SELECT COUNT(*) FROM %s",
-            DBTable.FACULTY_ADMISSION_INFO_TABLE);
+            DBTable.APPLICATION_TABLE);
+
+    public static final String COUNT_ALL_RESPONDED_APPLICATIONS_QUERY = String.format(
+            "SELECT COUNT(*) FROM %s WHERE %s=true",
+            DBTable.APPLICATION_TABLE,
+            DBColumn.APPLICATION_IS_APPROVED);
 
     public static final String GET_ALL_APPLICATIONS_QUERY = String.format(
             "SELECT * FROM %s",

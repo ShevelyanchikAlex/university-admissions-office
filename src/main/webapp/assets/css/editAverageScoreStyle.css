@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+}
+
+.prev-text {
+    color: #808B96;
+    text-align: left;
+    width: 65%;
+}
+
+.input-hint-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: whitesmoke;
+    height: auto;
+    width: 60%;
+    margin: 20px auto auto;
+    border-radius: 20px;
+    box-shadow: 15px 15px 20px  #2E4053;
+}
+
+.input-hint-header {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+    color: #2E4053;
+    font-size: 3rem;
+}
+
+
+.input-hint-message {
+    display: flex;
+    flex-direction: column;
+    color: #2E4053;
+    font-size: 1.5rem;
+    padding: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: justify;
+}
+
+.container {
+    display: flex;
+    height: 450px;
+    width: 800px;
+    margin: 50px auto auto;
+    box-shadow: 15px 15px 20px #2E4053;
+    border-radius: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 7px 0 0 7px;
+}
+
+.form h1 {
+    font-size: 3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 40px;
+    color: #283747;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+
+.box {
+    padding: 12px;
+    width: 65%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    outline: none;
+    border-radius: 10px;
+}
+
+.input-hint-row .column-input-hint-bottom {
+    float: left;
+}
+
+.show-input-hint-button {
+    color: #808B96;
+    text-align: left;
+    text-decoration: none;
+    width: 60%;
+    padding-bottom: 7px;
+}
+
+.show-input-hint-button:hover {
+    color: #45B39D;
+}
+
+#submit {
+    padding: 20px 30px;
+    width: 40%;
+    margin-top: 40px;
+    background-color: #2460da;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background-color: #17A589;
+}
+
+.form a {
+    text-decoration: none;
+    color: #283747;
+    margin-top: 20px;
+}
+
+.form a:hover {
+    color: #45B39D;
+}
+
+.side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    background-color: whitesmoke;
+    border-radius: 0 7px 7px 0;
+}
+
+.image {
+    width: 250px;
+    height: 250px;
+}

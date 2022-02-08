@@ -15,9 +15,9 @@ public class ContextListener implements ServletContextListener {
         logger.info("Application started working");
         try {
             ConnectionPool.getInstance().initPoolData();
-        } catch (ConnectionPoolException e) {
-            logger.error("Exception at initialize connection pool", e);
-            throw new RuntimeException("Exception at initialize connection pool", e);
+        } catch (ConnectionPoolException exception) {
+            logger.error("Exception at initialize connection pool", exception);
+            throw new RuntimeException("Exception at initialize connection pool", exception);
         }
     }
 

@@ -27,7 +27,6 @@ public class Controller extends HttpServlet {
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Command command = commandProvider.getCommand(request.getParameter(RequestParameter.COMMAND));
-
         if (command == null) {
             command = commandProvider.getCommand(CommandName.GO_TO_ERROR_404_PAGE);
         }

@@ -5,13 +5,12 @@ import java.util.Objects;
 
 public class Result implements Serializable {
     private int resultId;
-    private double score;
     private int certificateId;
-    private String certificateImageUrl;
-    private boolean isCertificateConfirmed;
     private int applicationId;
     private int subjectId;
-
+    private double score;
+    private boolean isCertificateConfirmed;
+    private String certificateImageUrl;
 
     public Result() {
     }
@@ -110,5 +109,4 @@ public class Result implements Serializable {
                 ", subjectId=" + subjectId +
                 '}';
     }
-
 }

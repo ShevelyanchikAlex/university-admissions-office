@@ -17,8 +17,8 @@ public class GoToAdminPage implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
 
+        session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ADMIN_PAGE);
         requestDispatcher.forward(request, response);
     }

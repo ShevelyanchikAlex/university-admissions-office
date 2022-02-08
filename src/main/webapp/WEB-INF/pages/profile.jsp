@@ -6,9 +6,9 @@
 <head>
     <fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'en'}"/>
     <fmt:setBundle basename="locale"/>
+    <title><fmt:message key="profile.title"/></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><fmt:message key="profile.title"/></title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fontawesome.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/profileStyle.css">
 </head>
@@ -50,13 +50,13 @@
                         <td class="personal-data-value">
                             <c:choose>
                                 <c:when test="${sessionScope.application.facultyId == 1}">
-                                    EECS
+                                    <fmt:message key="faculties.EECS.short_name"/>
                                 </c:when>
                                 <c:when test="${sessionScope.application.facultyId == 2}">
-                                    MECHE
+                                    <fmt:message key="faculties.MECHE.short_name"/>
                                 </c:when>
                                 <c:when test="${sessionScope.application.facultyId == 3}">
-                                    DSS
+                                    <fmt:message key="faculties.DSS.short_name"/>
                                 </c:when>
                             </c:choose>
                         </td>

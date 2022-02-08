@@ -62,5 +62,4 @@ public class Subject implements Serializable {
                 ", subjectShortName='" + subjectShortName + '\'' +
                 '}';
     }
-
 }

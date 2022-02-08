@@ -18,7 +18,5 @@ public interface QueryOperator<T> {
 
     int executeCountQuery(String query, Object... params) throws DaoException;
 
-    int executeTransaction(List<ParamQuery> queries) throws DaoException;
-
     void setStatementParams(PreparedStatement statement, Object... params) throws SQLException;
 }

@@ -18,5 +18,7 @@ public interface FacultyAdmissionInfoService {
 
     int deleteById(int id) throws ServiceException;
 
+    boolean updateFacultyAdmissionInfo(int facultyAdmissionInfoId, double passingScore) throws ServiceException;
+
     int countAllAdmissionInfos() throws ServiceException;
 }

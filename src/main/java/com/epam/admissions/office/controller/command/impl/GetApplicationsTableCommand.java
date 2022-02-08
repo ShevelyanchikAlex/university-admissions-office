@@ -5,11 +5,8 @@ import com.epam.admissions.office.controller.constant.CommandName;
 import com.epam.admissions.office.controller.constant.PagePath;
 import com.epam.admissions.office.controller.constant.SessionAttribute;
 import com.epam.admissions.office.controller.constant.SessionAttributeValue;
-import com.epam.admissions.office.entity.Application;
-import com.epam.admissions.office.entity.user.User;
 import com.epam.admissions.office.service.ApplicationService;
 import com.epam.admissions.office.service.ServiceFactory;
-import com.epam.admissions.office.service.UserService;
 import com.epam.admissions.office.service.exception.ServiceException;
 import org.apache.log4j.Logger;
 
@@ -19,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 public class GetApplicationsTableCommand implements Command {
     private final Logger logger = Logger.getLogger(GetApplicationsTableCommand.class);
@@ -30,13 +26,11 @@ public class GetApplicationsTableCommand implements Command {
         ApplicationService applicationService = ServiceFactory.getInstance().getApplicationService();
 
         try {
-            List<Application> applications = applicationService.getAllNotConfirmedApplications();
-
-            session.setAttribute(SessionAttribute.NOT_RESPONDED_APPLICATIONS, applications);
+            session.setAttribute(SessionAttribute.NOT_RESPONDED_APPLICATIONS, applicationService.getAllNotConfirmedApplications());
             session.setAttribute(SessionAttribute.ADMIN_TABLE, SessionAttributeValue.APPLICATIONS_TABLE);
             response.sendRedirect(SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
-        } catch (ServiceException e) {
-            logger.error("It is not possible to get Administrators.", e);
+        } catch (ServiceException exception) {
+            logger.error("It is not possible to get Administrators.", exception);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }

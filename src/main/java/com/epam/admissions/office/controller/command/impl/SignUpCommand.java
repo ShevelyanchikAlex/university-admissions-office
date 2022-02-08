@@ -30,24 +30,15 @@ public class SignUpCommand implements Command {
         String passportId = request.getParameter(RequestParameter.USER_PASSPORT_ID);
 
         try {
-            if (userService.getByEmail(email) != null) {
-                session.setAttribute(SessionAttribute.ERROR, session.getAttribute(SessionAttribute.LOCALE) == SessionAttributeValue.LOCALE_RU
-                        ? SessionAttributeValue.ALERT_MESSAGE_INCORRECT_EMAIL_RU : SessionAttributeValue.ALERT_MESSAGE_INCORRECT_EMAIL_EN);
-
-                response.sendRedirect((String) session.getAttribute(SessionAttribute.URL));
-            } else if (!userService.signUp(name, surname, email, passportId, password, confirmPassword)) {
-                session.setAttribute(SessionAttribute.ERROR, session.getAttribute(SessionAttribute.LOCALE) == SessionAttributeValue.LOCALE_RU
-                        ? SessionAttributeValue.ALERT_MESSAGE_INCORRECT_DATA_RU : SessionAttributeValue.ALERT_MESSAGE_INCORRECT_DATA_EN);
-
+            if (userService.getByEmail(email) != null || !userService.signUp(name, surname, email, passportId, password, confirmPassword)) {
                 response.sendRedirect((String) session.getAttribute(SessionAttribute.URL));
             } else {
                 session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_LOG_IN_PAGE);
-
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.LOG_IN_PAGE);
                 requestDispatcher.forward(request, response);
             }
-        } catch (ServiceException e) {
-            logger.error("Exception in SignUpCommand: unable to register new user.", e);
+        } catch (ServiceException exception) {
+            logger.error("Exception in SignUpCommand: unable to register new user.", exception);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }

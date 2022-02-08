@@ -17,8 +17,8 @@ public class SubjectServiceImpl implements SubjectService {
 
         try {
             return subjectDao.getSubjectById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -28,8 +28,8 @@ public class SubjectServiceImpl implements SubjectService {
 
         try {
             return subjectDao.getAllSubjects();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -39,8 +39,8 @@ public class SubjectServiceImpl implements SubjectService {
 
         try {
             return subjectDao.deleteById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -50,8 +50,8 @@ public class SubjectServiceImpl implements SubjectService {
 
         try {
             return subjectDao.countAllSubjects();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 }

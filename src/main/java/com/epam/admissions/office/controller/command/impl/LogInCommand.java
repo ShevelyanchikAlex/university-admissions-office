@@ -41,30 +41,24 @@ public class LogInCommand implements Command {
                 session.setAttribute(SessionAttribute.USER_ROLE, user.getUserRole());
 
                 if (user.getUserRole() == UserRole.USER) {
-                    initUserApplicationData(session, user.getUserId());
+                    initUserApplicationDataInSession(session, user.getUserId());
                 }
-                logger.info("User " + email + "was log in.");
-
                 session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_HOME_PAGE);
 
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.HOME_PAGE);
                 requestDispatcher.forward(request, response);
             } else {
-                session.setAttribute(SessionAttribute.ERROR, session.getAttribute(SessionAttribute.LOCALE) == SessionAttributeValue.LOCALE_RU
-                        ? SessionAttributeValue.ALERT_MESSAGE_INCORRECT_LOGIN_DATA_RU : SessionAttributeValue.ALERT_MESSAGE_INCORRECT_LOGIN_DATA_EN);
-
                 response.sendRedirect((String) session.getAttribute(SessionAttribute.URL));
             }
-
-        } catch (ServiceException e) {
-            logger.error("It is not possible to check user data at login.", e);
+        } catch (ServiceException exception) {
+            logger.error("It is not possible to check user data at login.", exception);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(PagePath.ERROR_500_PAGE);
             requestDispatcher.forward(request, response);
         }
     }
 
 
-    private void initUserApplicationData(HttpSession session, int userId) throws ServiceException {
+    private void initUserApplicationDataInSession(HttpSession session, int userId) throws ServiceException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         ApplicationService applicationService = serviceFactory.getApplicationService();
         ResultService resultService = serviceFactory.getResultService();

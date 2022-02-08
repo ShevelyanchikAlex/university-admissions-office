@@ -6,19 +6,17 @@
 <head>
     <fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'en'}"/>
     <fmt:setBundle basename="locale"/>
+    <title><fmt:message key="addition_application.title"/></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><fmt:message key="addition_application.title"/></title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/additionApplicationStyle.css">
 </head>
 <body>
 <jsp:include page="../general/header.jsp"/>
-<c:if test="${sessionScope.error != null}">
-    <div class="alert-block">
-        <label class="alert-message"><p class="alert-header"><fmt:message key="signup.alert_header"/></p>
-                ${sessionScope.error}
-        </label>
-            ${sessionScope.remove("error")}
+<c:if test="${sessionScope.input_hint_status == 'SHOW'}">
+    <div class="input-hint-block">
+        <h1 class="input-hint-header"><fmt:message key="addition_application.input_hint.title"/></h1>
+        <p class="input-hint-message"><fmt:message key="addition_application.input_hint.message"/></p>
     </div>
 </c:if>
 <div class="container">
@@ -56,6 +54,19 @@
         <input type="number" name="points_third_subject" class="box"
                placeholder="<fmt:message key="addition_application.points_third_subject_placeholder"/>" min="0"
                max="100" required/>
+
+        <div class="input-hint-row">
+            <div class="column-input-hint-bottom">
+                <a href="<c:url value="/controller?command=change_input_hint_status" />" class="show-input-hint-button">
+                    <c:if test="${sessionScope.input_hint_status == null || sessionScope.input_hint_status == 'HIDE'}">
+                        <fmt:message key="addition_application.input_hint.show_input_hint_button"/>
+                    </c:if>
+                    <c:if test="${sessionScope.input_hint_status == 'SHOW'}">
+                        <fmt:message key="addition_application.input_hint.hide_input_hint_button"/>
+                    </c:if>
+                </a>
+            </div>
+        </div>
         <input type="submit" value="<fmt:message key="addition_application.create_button"/>" id="submit"/>
     </form>
     <div class="side">

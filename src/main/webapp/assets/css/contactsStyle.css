@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+}
+
+
+.header-text {
+    min-height: 16vh;
+    width: 100%;
+    position: relative;
+}
+
+.text-box {
+    width: 90%;
+    color: #2E4053;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 62px;
+}
+
+.contacts-row {
+    display: grid;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #2E4053;
+    margin: 3%;
+    padding: 2%;
+}
+
+
+.contacts-container .contacts-data {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.contacts-container .contacts-data i {
+    font-size: 1.8rem;
+    padding-right: 15px;
+}
+
+
+.contacts-container .contacts-data .faculty-value-name {
+    height: 30px;
+    color: #2E4053;
+    font-size: 25px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.contacts-container .contacts-data .contacts-value {
+    height: 30px;
+    font-size: 25px;
+    padding: 5px;
+    color: #2E4053;
+    font-weight: normal;
+}
+
+
+.campus-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    background: white;
+    margin: auto;
+    padding: 1%;
+}
+
+.campus-image {
+    width: 40%;
+    height: 25%;
+    margin: 1%;
+    box-shadow: 3px 3px 7px #2E4053;
+    border-radius: 20px;
+}

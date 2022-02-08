@@ -25,28 +25,37 @@ body {
     border-radius: 20px;
 }
 
-.alert-block {
-    align-items: center;
-    background: #f66868;
+.input-hint-block {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: whitesmoke;
     height: auto;
-    width: 40%;
+    width: 60%;
     margin: 20px auto auto;
     border-radius: 20px;
-    box-shadow: 15px 15px 20px #decacd;
+    box-shadow: 15px 15px 20px  #2E4053;
 }
 
-.alert-header {
-    font-size: 2rem;
+.input-hint-header {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     text-align: center;
-    color: whitesmoke;
+    color: #2E4053;
+    font-size: 3rem;
 }
 
-.alert-message {
-    padding: 10px;
-    text-align: center;
-    color: whitesmoke;
+
+.input-hint-message {
+    display: flex;
+    flex-direction: column;
+    color: #2E4053;
+    font-size: 1.5rem;
+    padding: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: justify;
 }
 
 .form {
@@ -100,6 +109,21 @@ body {
     background-color: #17A589;
 }
 
+.input-hint-row .column-input-hint-bottom {
+    float: left;
+}
+
+.show-input-hint-button {
+    color: #808B96;
+    text-align: left;
+    text-decoration: none;
+    width: 60%;
+    padding-bottom: 7px;
+}
+
+.show-input-hint-button:hover {
+    color: #45B39D;
+}
 
 .column {
     float: left;

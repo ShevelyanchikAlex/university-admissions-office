@@ -10,14 +10,16 @@ import com.epam.admissions.office.service.exception.ServiceException;
 import java.util.List;
 
 public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoService {
+    private static final int SUCCESSFUL_OPERATION = 1;
+
     @Override
     public FacultyAdmissionInfo getFacultyAdmissionInfoById(int id) throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
 
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfoById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -27,8 +29,8 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfoByFacultyId(facultyId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -38,8 +40,8 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
         try {
             return facultyAdmissionInfoDao.getAllFacultyAdmissionInfos();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -49,8 +51,8 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfosByPassingScore(passingScore);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -60,8 +62,8 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfosByPlaces(places);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -71,8 +73,21 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
         try {
             return facultyAdmissionInfoDao.deleteById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
+        }
+    }
+
+    @Override
+    public boolean updateFacultyAdmissionInfo(int facultyAdmissionInfoId, double passingScore) throws ServiceException {
+        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
+        try {
+            FacultyAdmissionInfo facultyAdmissionInfo = facultyAdmissionInfoDao.getFacultyAdmissionInfoByFacultyId(facultyAdmissionInfoId);
+            facultyAdmissionInfo.setPassingScore(passingScore);
+            return facultyAdmissionInfoDao.updateFacultyAdmissionInfo(facultyAdmissionInfo) == SUCCESSFUL_OPERATION;
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 
@@ -82,8 +97,8 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
 
         try {
             return facultyAdmissionInfoDao.countAllAdmissionInfos();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
+        } catch (DaoException exception) {
+            throw new ServiceException(exception);
         }
     }
 }
