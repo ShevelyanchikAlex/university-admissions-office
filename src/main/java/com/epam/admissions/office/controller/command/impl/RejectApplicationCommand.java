@@ -14,6 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command reject application.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class RejectApplicationCommand implements Command {
     private static final boolean APPROVED = false;
 

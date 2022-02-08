@@ -17,6 +17,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 
+/**
+ * Command logout.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class LogOutCommand implements Command {
 
     @Override

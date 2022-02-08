@@ -14,6 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command signup.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class SignUpCommand implements Command {
     private final Logger logger = Logger.getLogger(SignUpCommand.class);
 

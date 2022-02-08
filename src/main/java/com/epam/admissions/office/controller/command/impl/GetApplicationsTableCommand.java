@@ -17,6 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command get applications table.
+ * To get information about applications.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class GetApplicationsTableCommand implements Command {
     private final Logger logger = Logger.getLogger(GetApplicationsTableCommand.class);
 

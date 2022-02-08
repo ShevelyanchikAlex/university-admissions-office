@@ -7,6 +7,13 @@ import com.epam.admissions.office.controller.constant.CommandName;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * CommandProvider class.
+ * Provides command with given name.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class CommandProvider {
     private final Map<String, Command> commands = new HashMap<>();
 

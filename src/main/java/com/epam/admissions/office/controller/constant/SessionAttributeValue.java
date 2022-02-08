@@ -1,5 +1,12 @@
 package com.epam.admissions.office.controller.constant;
 
+/**
+ * SessionAttributeValue class.
+ * Contains session attribute values.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class SessionAttributeValue {
     public static final String CONTROLLER_COMMAND = "controller?command=";
 

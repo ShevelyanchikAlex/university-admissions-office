@@ -17,6 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command get responded applications table.
+ * To get information about responded applications.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class GetRespondedApplicationsTableCommand implements Command {
     private final Logger logger = Logger.getLogger(GetRespondedApplicationsTableCommand.class);
 

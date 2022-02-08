@@ -1,5 +1,12 @@
 package com.epam.admissions.office.controller.constant;
 
+/**
+ * SessionAttribute class.
+ * Contains session attributes.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class SessionAttribute {
     public static final String URL = "url";
     public static final String LOCALE = "locale";

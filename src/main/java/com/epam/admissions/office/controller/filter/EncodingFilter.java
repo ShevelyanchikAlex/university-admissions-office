@@ -3,6 +3,13 @@ package com.epam.admissions.office.controller.filter;
 import javax.servlet.*;
 import java.io.IOException;
 
+/**
+ * CacheFilter class.
+ * Filter, that sets request and response encoding.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class EncodingFilter implements Filter {
     private static final String CHARACTER_ENCODING = "encoding";
 

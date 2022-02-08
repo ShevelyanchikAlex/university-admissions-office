@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command change locale.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ChangeLocaleCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

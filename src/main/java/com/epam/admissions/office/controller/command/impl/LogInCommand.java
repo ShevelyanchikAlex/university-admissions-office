@@ -18,7 +18,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-
+/**
+ * Command login.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class LogInCommand implements Command {
     private final Logger logger = Logger.getLogger(LogInCommand.class);
 

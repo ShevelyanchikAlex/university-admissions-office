@@ -16,6 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command delete application.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class DeleteApplicantCommand implements Command {
     private final Logger logger = Logger.getLogger(DeleteApplicantCommand.class);
 

@@ -7,6 +7,13 @@ import org.apache.log4j.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+/**
+ * ContextListener class.
+ * Gets notified about ServletContext lifecycle changes.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ContextListener implements ServletContextListener {
     private final Logger logger = Logger.getLogger(ContextListener.class);
 

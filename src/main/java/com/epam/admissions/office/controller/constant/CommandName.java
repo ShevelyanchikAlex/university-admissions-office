@@ -1,5 +1,12 @@
 package com.epam.admissions.office.controller.constant;
 
+/**
+ * CommandName class.
+ * Contains command names.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class CommandName {
     public static final String GO_TO_HOME_PAGE = "go_to_home_page";
     public static final String GO_TO_LOG_IN_PAGE = "go_to_log_in_page";

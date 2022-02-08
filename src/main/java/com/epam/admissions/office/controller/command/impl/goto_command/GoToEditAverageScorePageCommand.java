@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command go to edit average score page.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class GoToEditAverageScorePageCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

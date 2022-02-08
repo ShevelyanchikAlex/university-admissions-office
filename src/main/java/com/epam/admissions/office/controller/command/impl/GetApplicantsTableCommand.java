@@ -17,6 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command get applicants table.
+ * To get information about applicants.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class GetApplicantsTableCommand implements Command {
     private final Logger logger = Logger.getLogger(GetApplicantsTableCommand.class);
 

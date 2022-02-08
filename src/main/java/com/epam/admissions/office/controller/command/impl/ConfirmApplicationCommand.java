@@ -16,6 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command confirm application.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ConfirmApplicationCommand implements Command {
     private static final boolean APPROVED = true;
 

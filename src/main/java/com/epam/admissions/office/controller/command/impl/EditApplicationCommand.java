@@ -20,6 +20,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Command edit application.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class EditApplicationCommand implements Command {
     private static final int FIRST_SUBJECT_INDEX = 0;
     private static final int SECOND_SUBJECT_INDEX = 1;

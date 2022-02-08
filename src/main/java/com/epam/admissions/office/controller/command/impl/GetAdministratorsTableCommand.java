@@ -17,6 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Command get administrators table.
+ * To get information about administrators.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class GetAdministratorsTableCommand implements Command {
     private final Logger logger = Logger.getLogger(GetApplicantsTableCommand.class);
 

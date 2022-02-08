@@ -1,5 +1,12 @@
 package com.epam.admissions.office.controller.constant;
 
+/**
+ * PagePath class.
+ * Contains page path.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class PagePath {
     public static final String HOME_PAGE = "/WEB-INF/pages/home.jsp";
     public static final String ABOUT_PAGE = "/WEB-INF/pages/about.jsp";

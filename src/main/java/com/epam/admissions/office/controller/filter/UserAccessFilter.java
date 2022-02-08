@@ -15,6 +15,13 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * CacheFilter class.
+ * Filter, that controls access of users with different roles to commands.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class UserAccessFilter implements Filter {
     private final CommandProvider commandProvider = new CommandProvider();
     private final Map<UserRole, List<String>> availableToUserRolesCommands = new EnumMap<>(UserRole.class);

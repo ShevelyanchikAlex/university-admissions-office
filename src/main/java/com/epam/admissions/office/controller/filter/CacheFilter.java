@@ -4,6 +4,13 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * CacheFilter class.
+ * Filter, that sets headers to disable browser caching.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class CacheFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

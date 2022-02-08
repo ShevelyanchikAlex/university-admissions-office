@@ -1,5 +1,12 @@
 package com.epam.admissions.office.controller.constant;
 
+/**
+ * RequestParameter class.
+ * Contains request parameters.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class RequestParameter {
     public static final String COMMAND = "command";
     public static final String LOCALE = "locale";
