@@ -13,6 +13,12 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
+/**
+ * ConnectionPool class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class ConnectionPool {
     private final Logger logger = LogManager.getLogger(ConnectionPool.class);
 

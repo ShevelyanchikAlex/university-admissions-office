@@ -6,9 +6,18 @@ import com.epam.admissions.office.service.util.digest.PasswordDigest;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * PasswordDigestImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class PasswordDigestImpl implements PasswordDigest {
     private static final String HASH_ALGORITHM = "SHA-256";
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getDigestPassword(String password) throws ServiceException {
         String digestPassword;

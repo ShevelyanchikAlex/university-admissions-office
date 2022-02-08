@@ -2,6 +2,12 @@ package com.epam.admissions.office.dao.mapper;
 
 import com.epam.admissions.office.dao.mapper.impl.*;
 
+/**
+ * RowMapperFactory class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class RowMapperFactory {
     public static final UserRowMapper userRowMapper = new UserRowMapper();
     public static final FacultiesAdmissionInfoRowMapper facultiesAdmissionInfoRowMapper = new FacultiesAdmissionInfoRowMapper();

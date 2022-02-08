@@ -11,6 +11,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * QueryOperatorImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class QueryOperatorImpl<T> implements QueryOperator<T> {
     private static final int COLUMN_INDEX = 1;
     private static final String COLUMN_LABEL = "COUNT(*)";
@@ -21,6 +27,9 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         this.mapper = mapper;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<T> executeQuery(String query, Object... params) throws DaoException {
         List<T> resultList = new ArrayList<>();
@@ -40,6 +49,9 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         return resultList;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int executeUpdate(String query, Object... params) throws DaoException {
         try (Connection connection = ConnectionPool.getInstance().takeConnection();
@@ -53,6 +65,9 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int executeUpdateWithGeneratedKeys(String query, Object... params) throws DaoException {
         try (Connection connection = ConnectionPool.getInstance().takeConnection();
@@ -72,6 +87,9 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int executeCountQuery(String query, Object... params) throws DaoException {
         try (Connection connection = ConnectionPool.getInstance().takeConnection();
@@ -87,6 +105,9 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setStatementParams(PreparedStatement statement, Object... params) throws SQLException {
         for (int i = 0; i < params.length; i++) {
@@ -94,6 +115,9 @@ public class QueryOperatorImpl<T> implements QueryOperator<T> {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public T executeSingleEntityQuery(String query, Object... params) throws DaoException {
         List<T> result = executeQuery(query, params);

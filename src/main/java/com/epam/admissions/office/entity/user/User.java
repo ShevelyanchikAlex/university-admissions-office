@@ -3,6 +3,12 @@ package com.epam.admissions.office.entity.user;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * User class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class User implements Serializable {
     private int userId;
     private String name;

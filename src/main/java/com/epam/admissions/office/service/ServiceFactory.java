@@ -2,6 +2,12 @@ package com.epam.admissions.office.service;
 
 import com.epam.admissions.office.service.impl.*;
 
+/**
+ * ServiceFactory class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
 

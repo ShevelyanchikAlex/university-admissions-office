@@ -11,6 +11,12 @@ import com.epam.admissions.office.entity.faculty.FacultyHasSubject;
 
 import java.util.List;
 
+/**
+ * FacultiesHasSubjectsDaoImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class FacultiesHasSubjectsDaoImpl implements FacultiesHasSubjectsDao {
     private final QueryOperator<FacultyHasSubject> queryOperator;
 
@@ -19,6 +25,9 @@ public class FacultiesHasSubjectsDaoImpl implements FacultiesHasSubjectsDao {
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<FacultyHasSubject> getSubjectsIdOfFacultyById(int facultyId) throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_SUBJECTS_ID_OF_FACULTY_QUERY, facultyId);

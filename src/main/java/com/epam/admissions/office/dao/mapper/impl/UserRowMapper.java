@@ -8,7 +8,16 @@ import com.epam.admissions.office.entity.user.UserRole;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * UserRowMapper class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class UserRowMapper implements RowMapper<User> {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User map(ResultSet resultSet) throws SQLException {
         User user = new User();

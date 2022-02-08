@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
-
+/**
+ * Application class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class Application implements Serializable {
     private int applicationId;
     private int userId;

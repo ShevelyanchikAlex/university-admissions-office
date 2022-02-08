@@ -5,6 +5,12 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
+/**
+ * FacultyHasSubject class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class FacultyHasSubject implements Serializable {
     private int facultyId;
     private int subjectId;

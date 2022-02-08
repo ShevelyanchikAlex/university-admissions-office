@@ -14,12 +14,21 @@ import com.epam.admissions.office.service.validator.ValidatorFactory;
 
 import java.util.List;
 
+/**
+ * UserServiceImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class UserServiceImpl implements UserService {
     private static final int SUCCESSFUL_OPERATION = 1;
     private static final int DEFAULT_USER_ID = 0;
     private static final boolean DEFAULT_IS_USER_DELETED = false;
     private static final boolean UNSUCCESSFUL_OPERATION = false;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User login(String email, String password) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -37,6 +46,9 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean signUp(String name, String surname, String email, String passportId, String password, String confirmPassword) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -63,6 +75,9 @@ public class UserServiceImpl implements UserService {
         return passwordValidator.validate(password) && password.equals(confirmPassword) && userValidator.validate(user);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User getById(int id) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -74,6 +89,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User getByEmail(String email) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -85,6 +103,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int deleteById(int id) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -96,6 +117,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int restoreById(int id) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -107,6 +131,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getAllUsers() throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -118,6 +145,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countAllUsers() throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -129,6 +159,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getAllApplicants() throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -140,6 +173,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getAllAdministrators() throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -151,7 +187,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean editPersonalData(int id, String name, String surname, String email, String passportId) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -178,6 +216,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean changeUserRole(int id, UserRole userRole) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -192,6 +233,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getUsersByRoleId(int roleId) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -203,6 +247,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getUsersByStatus(String status) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
@@ -214,6 +261,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countByUserRole(UserRole userRole) throws ServiceException {
         UserDao userDao = DaoFactory.getInstance().getUserDao();

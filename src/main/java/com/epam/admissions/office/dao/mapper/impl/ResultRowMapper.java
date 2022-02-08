@@ -7,7 +7,16 @@ import com.epam.admissions.office.entity.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * ResultRowMapper class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ResultRowMapper implements RowMapper<Result> {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Result map(ResultSet resultSet) throws SQLException {
         Result result = new Result();

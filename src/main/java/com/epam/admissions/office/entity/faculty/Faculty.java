@@ -3,6 +3,12 @@ package com.epam.admissions.office.entity.faculty;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Faculty class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class Faculty implements Serializable {
     private int facultyId;
     private String facultyShortName;

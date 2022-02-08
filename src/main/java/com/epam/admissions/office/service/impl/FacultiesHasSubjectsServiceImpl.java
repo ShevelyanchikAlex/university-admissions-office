@@ -9,7 +9,16 @@ import com.epam.admissions.office.service.exception.ServiceException;
 
 import java.util.List;
 
+/**
+ * FacultiesHasSubjectsServiceImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class FacultiesHasSubjectsServiceImpl implements FacultiesHasSubjectsService {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<FacultyHasSubject> getSubjectsIdOfFacultyById(int facultyId) throws ServiceException {
         FacultiesHasSubjectsDao facultiesHasSubjectsDao = DaoFactory.getInstance().getFacultiesHasSubjectsDao();

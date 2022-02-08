@@ -1,5 +1,11 @@
 package com.epam.admissions.office.service.validator.constant;
 
+/**
+ * ValidPattern class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class ValidPattern {
     public static final String NAME_PATTERN = "^([А-Я][а-яё]{1,49}|[A-Z][a-z]{1,49})$";
     public static final String EMAIL_PATTERN = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";

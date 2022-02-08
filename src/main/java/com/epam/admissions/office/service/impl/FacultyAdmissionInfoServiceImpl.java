@@ -9,9 +9,18 @@ import com.epam.admissions.office.service.exception.ServiceException;
 
 import java.util.List;
 
+/**
+ * FacultyAdmissionInfoServiceImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoService {
     private static final int SUCCESSFUL_OPERATION = 1;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FacultyAdmissionInfo getFacultyAdmissionInfoById(int id) throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
@@ -23,6 +32,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FacultyAdmissionInfo getFacultyAdmissionInfoByFacultyId(int facultyId) throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
@@ -34,6 +46,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<FacultyAdmissionInfo> getAllFacultyAdmissionInfos() throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
@@ -45,6 +60,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<FacultyAdmissionInfo> getFacultyAdmissionInfosByPassingScore(double passingScore) throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
@@ -56,6 +74,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<FacultyAdmissionInfo> getFacultyAdmissionInfosByPlaces(double places) throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
@@ -67,6 +88,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int deleteById(int id) throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
@@ -78,6 +102,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean updateFacultyAdmissionInfo(int facultyAdmissionInfoId, double passingScore) throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
@@ -91,6 +118,9 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countAllAdmissionInfos() throws ServiceException {
         FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();

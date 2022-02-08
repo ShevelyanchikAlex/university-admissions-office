@@ -4,6 +4,12 @@ import com.epam.admissions.office.entity.user.User;
 import com.epam.admissions.office.service.validator.impl.PasswordValidator;
 import com.epam.admissions.office.service.validator.impl.UserValidator;
 
+/**
+ * ValidatorFactory class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ValidatorFactory {
     private static final ValidatorFactory instance = new ValidatorFactory();
 

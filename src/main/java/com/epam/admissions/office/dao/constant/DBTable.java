@@ -1,5 +1,11 @@
 package com.epam.admissions.office.dao.constant;
 
+/**
+ * DBTable class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class DBTable {
     public static final String ROLE_TABLE = "roles";
     public static final String USER_TABLE = "users";

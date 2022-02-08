@@ -1,5 +1,11 @@
 package com.epam.admissions.office.service.exception;
 
+/**
+ * ServiceException class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ServiceException extends Exception {
     public ServiceException() {
     }

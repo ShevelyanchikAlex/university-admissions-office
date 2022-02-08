@@ -12,6 +12,12 @@ import com.epam.admissions.office.entity.user.UserRole;
 
 import java.util.List;
 
+/**
+ * UserDaoImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class UserDaoImpl implements UserDao {
     private final QueryOperator<User> queryOperator;
 
@@ -20,6 +26,9 @@ public class UserDaoImpl implements UserDao {
         this.queryOperator = new QueryOperatorImpl<>(mapper);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int createUser(User user) throws DaoException {
         return queryOperator.executeUpdate(
@@ -33,6 +42,9 @@ public class UserDaoImpl implements UserDao {
                 user.getUserRole().ordinal());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int updateUser(User user) throws DaoException {
         return queryOperator.executeUpdate(
@@ -47,18 +59,27 @@ public class UserDaoImpl implements UserDao {
                 user.getUserId());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User getUserById(int id) throws DaoException {
         return queryOperator.executeSingleEntityQuery(DBRequest.GET_USER_BY_ID_QUERY, id);
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User getByEmail(String email) throws DaoException {
         return queryOperator.executeSingleEntityQuery(DBRequest.GET_USER_BY_EMAIL_QUERY, email);
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User getByUserRole(UserRole userRole) throws DaoException {
         return queryOperator.executeSingleEntityQuery(DBRequest.GET_USER_BY_USER_ROLE_ID_QUERY, userRole);
@@ -69,41 +90,65 @@ public class UserDaoImpl implements UserDao {
         return queryOperator.executeQuery(DBRequest.GET_ALL_USERS_QUERY);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getAllApplicants() throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_ALL_APPLICANTS_QUERY);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getAllAdministrators() throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_ALL_ADMINISTRATORS_QUERY);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getUsersByRoleId(int roleId) throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_USER_BY_USER_ROLE_ID_QUERY, roleId);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> getUsersByStatus(String status) throws DaoException {
         return queryOperator.executeQuery(DBRequest.GET_ALL_USERS_QUERY, status);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int deleteById(int id) throws DaoException {
         return queryOperator.executeUpdate(DBRequest.DELETE_USER_QUERY, id);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int restoreById(int id) throws DaoException {
         return queryOperator.executeUpdate(DBRequest.RESTORE_USER_QUERY, id);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countAllUsers() throws DaoException {
         return queryOperator.executeCountQuery(DBRequest.COUNT_ALL_USERS_QUERY);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countByUserRole(UserRole userRole) throws DaoException {
         return queryOperator.executeCountQuery(DBRequest.COUNT_USERS_BY_ROLE_ID_QUERY, userRole.ordinal());

@@ -7,7 +7,16 @@ import com.epam.admissions.office.entity.faculty.FacultyHasSubject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * FacultiesHasSubjectsRowMapper class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class FacultiesHasSubjectsRowMapper implements RowMapper<FacultyHasSubject> {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FacultyHasSubject map(ResultSet resultSet) throws SQLException {
         FacultyHasSubject facultyHasSubject = new FacultyHasSubject();

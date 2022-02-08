@@ -6,7 +6,16 @@ import com.epam.admissions.office.service.validator.constant.ValidPattern;
 
 import java.util.regex.Pattern;
 
+/**
+ * UserValidator class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class UserValidator implements Validator<User> {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean validate(User user) {
         return user != null &&

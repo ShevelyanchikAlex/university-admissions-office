@@ -10,11 +10,20 @@ import com.epam.admissions.office.service.exception.ServiceException;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * ApplicationServiceImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ApplicationServiceImpl implements ApplicationService {
     private static final int SUCCESSFUL_OPERATION = 1;
     private static final int DEFAULT_APPLICATION_ID = 0;
     private static final boolean DEFAULT_IS_APPROVED = false;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Application getApplicationById(int id) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -26,6 +35,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Application getApplicationByUserId(int userId) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -37,6 +49,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Application> getAllApplications() throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -48,6 +63,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Application> getAllConfirmedApplications() throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -59,6 +77,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Application> getAllNotConfirmedApplications() throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -70,6 +91,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Application> getApplicationsByFacultyId(int facultyId) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -81,6 +105,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int createApplication(int userId, int facultyId) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -95,6 +122,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean updateFacultyIdOfApplication(int applicationId, int facultyId) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -108,6 +138,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean updateConfirmStatusOfApplication(int applicationId, boolean status, String rejectionReason) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -123,6 +156,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Application> getApplicationsByApplyDate(Date applyDate) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -134,6 +170,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Application> getApplicationsByDecisionDate(Date decisionDate) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -145,6 +184,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int deleteById(int id) throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -156,6 +198,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countAllApplication() throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
@@ -167,6 +212,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countAllRespondedApplication() throws ServiceException {
         ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();

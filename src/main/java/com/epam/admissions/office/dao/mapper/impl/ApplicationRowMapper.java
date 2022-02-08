@@ -7,7 +7,16 @@ import com.epam.admissions.office.entity.Application;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * ApplicationRowMapper class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ApplicationRowMapper implements RowMapper<Application> {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Application map(ResultSet resultSet) throws SQLException {
         Application application = new Application();

@@ -7,7 +7,16 @@ import com.epam.admissions.office.entity.Subject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * SubjectRowMapper class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class SubjectRowMapper implements RowMapper<Subject> {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Subject map(ResultSet resultSet) throws SQLException {
         Subject subject = new Subject();

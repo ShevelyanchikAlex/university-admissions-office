@@ -2,6 +2,12 @@ package com.epam.admissions.office.dao.connection;
 
 import java.util.ResourceBundle;
 
+/**
+ * DBResourceManager class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class DBResourceManager {
     private final String DB = "db";
 

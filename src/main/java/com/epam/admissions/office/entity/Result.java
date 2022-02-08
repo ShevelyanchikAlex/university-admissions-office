@@ -3,6 +3,12 @@ package com.epam.admissions.office.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Result class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class Result implements Serializable {
     private int resultId;
     private int certificateId;

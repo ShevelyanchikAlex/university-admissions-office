@@ -1,5 +1,11 @@
 package com.epam.admissions.office.dao.constant;
 
+/**
+ * DBColumn class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class DBColumn {
     public static final String USER_ID = "user_id";
     public static final String USER_PASSWORD_HASH = "password";
@@ -43,7 +49,6 @@ public final class DBColumn {
     public static final String SUBJECT_ID = "subject_id";
     public static final String SUBJECT_NAME = "subject_name";
     public static final String SUBJECT_SHORT_NAME = "subject_short_name";
-
 
     private DBColumn() {
     }

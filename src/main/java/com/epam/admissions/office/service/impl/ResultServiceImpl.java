@@ -9,12 +9,21 @@ import com.epam.admissions.office.service.exception.ServiceException;
 
 import java.util.List;
 
+/**
+ * ResultServiceImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class ResultServiceImpl implements ResultService {
     private static final int SUCCESSFUL_OPERATION = 1;
     private static final int DEFAULT_RESULT_ID = 0;
     private static final int DEFAULT_CERTIFICATE_ID = 0;
     private static final boolean DEFAULT_IS_CERTIFICATE_CONFIRMED = true;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean createResult(double score, int applicationId, int subjectId) throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -28,6 +37,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean updateResult(int resultId, double score, int subjectId) throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -42,6 +54,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Result getResultById(int id) throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -53,6 +68,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Result> getResultsByScore(double score) throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -64,6 +82,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Result> getResultsByApplicationId(int applicationId) throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -75,6 +96,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Result> getResultsBySubjectId(int subjectId) throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -86,6 +110,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Result> getAllResults() throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -97,6 +124,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int deleteById(int id) throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();
@@ -108,6 +138,9 @@ public class ResultServiceImpl implements ResultService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countAllResults() throws ServiceException {
         ResultDao resultDao = DaoFactory.getInstance().getResultDao();

@@ -3,6 +3,12 @@ package com.epam.admissions.office.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Subject class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class Subject implements Serializable {
     private int subjectId;
     private String subjectName;

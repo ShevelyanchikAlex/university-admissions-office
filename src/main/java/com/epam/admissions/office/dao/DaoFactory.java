@@ -2,6 +2,12 @@ package com.epam.admissions.office.dao;
 
 import com.epam.admissions.office.dao.impl.*;
 
+/**
+ * DaoFactory class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class DaoFactory {
     private static final DaoFactory instance = new DaoFactory();
 

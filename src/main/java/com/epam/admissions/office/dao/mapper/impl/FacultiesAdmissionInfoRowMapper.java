@@ -7,7 +7,16 @@ import com.epam.admissions.office.entity.faculty.FacultyAdmissionInfo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * FacultiesAdmissionInfoRowMapper class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class FacultiesAdmissionInfoRowMapper implements RowMapper<FacultyAdmissionInfo> {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FacultyAdmissionInfo map(ResultSet resultSet) throws SQLException {
         FacultyAdmissionInfo facultyAdmissionInfo = new FacultyAdmissionInfo();

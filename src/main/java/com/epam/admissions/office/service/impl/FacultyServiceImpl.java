@@ -10,7 +10,16 @@ import com.epam.admissions.office.service.exception.ServiceException;
 
 import java.util.List;
 
+/**
+ * FacultyServiceImpl class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public class FacultyServiceImpl implements FacultyService {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Faculty getFacultyById(int id) throws ServiceException {
         FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
@@ -22,6 +31,9 @@ public class FacultyServiceImpl implements FacultyService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Faculty> getAllFaculties() throws ServiceException {
         FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
@@ -33,6 +45,9 @@ public class FacultyServiceImpl implements FacultyService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int deleteById(int id) throws ServiceException {
         FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();
@@ -44,6 +59,9 @@ public class FacultyServiceImpl implements FacultyService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int countAllFaculties() throws ServiceException {
         FacultyDao facultyDao = DaoFactory.getInstance().getFacultyDao();

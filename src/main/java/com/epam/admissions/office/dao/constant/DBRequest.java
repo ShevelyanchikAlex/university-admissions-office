@@ -1,5 +1,11 @@
 package com.epam.admissions.office.dao.constant;
 
+/**
+ * DBRequest class.
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
 public final class DBRequest {
     //USER
     public final static String INSERT_USER_QUERY = String.format(
