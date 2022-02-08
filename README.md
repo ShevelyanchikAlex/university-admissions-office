@@ -63,3 +63,6 @@ Web-application of the University with the presence of the Admissions Office.
 - Reject Application
 - Delete Applicant
 - Edit Passing Score of Faculty
+
+## Database Diagram
+<img width="746" alt="Снимок экрана 2022-02-08 в 17 41 51" src="https://user-images.githubusercontent.com/74743036/153009777-ba2480c5-1b3d-4780-b469-26e7983710bb.png">
