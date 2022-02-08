@@ -1,7 +1,7 @@
-#Web University Admissions Office
+# Web University Admissions Office
 Web-application of the University with the presence of the Admissions Office.
-##Roles
-###Guest
+## Roles
+### Guest
 - Log in
 - Sign up
 - View "Home" page
@@ -10,7 +10,7 @@ Web-application of the University with the presence of the Admissions Office.
 - View "Faculties" page
 - View "Passing Scores" page
 
-###User without Application
+### User without Application
 - Log in
 - Sign up
 - Log out
@@ -24,7 +24,7 @@ Web-application of the University with the presence of the Admissions Office.
 - Edit Personal Data
 - Submit Application
 - 
-###User
+### User
 - Log in
 - Sign up
 - Log out
@@ -39,7 +39,7 @@ Web-application of the University with the presence of the Admissions Office.
 - Edit Personal Data
 - Edit Application
 
-###Admin
+### Admin
 - Log in
 - Sign up
 - Log out
