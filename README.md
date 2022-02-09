@@ -23,7 +23,7 @@ Web-application of the University with the presence of the Admissions Office.
 - View "Edit Personal Data" page
 - Edit Personal Data
 - Submit Application
-- 
+
 ### User
 - Log in
 - Sign up
