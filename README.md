@@ -1,7 +1,7 @@
-#Web University Admissions Office
+# Web University Admissions Office
 Web-application of the University with the presence of the Admissions Office.
-##Roles
-###Guest
+## Roles
+### Guest
 - Log in
 - Sign up
 - View "Home" page
@@ -10,7 +10,7 @@ Web-application of the University with the presence of the Admissions Office.
 - View "Faculties" page
 - View "Passing Scores" page
 
-###User without Application
+### User without Application
 - Log in
 - Sign up
 - Log out
@@ -24,7 +24,7 @@ Web-application of the University with the presence of the Admissions Office.
 - Edit Personal Data
 - Submit Application
 - 
-###User
+### User
 - Log in
 - Sign up
 - Log out
@@ -39,7 +39,7 @@ Web-application of the University with the presence of the Admissions Office.
 - Edit Personal Data
 - Edit Application
 
-###Admin
+### Admin
 - Log in
 - Sign up
 - Log out
@@ -63,3 +63,6 @@ Web-application of the University with the presence of the Admissions Office.
 - Reject Application
 - Delete Applicant
 - Edit Passing Score of Faculty
+
+## Database Diagram
+<img width="746" alt="Снимок экрана 2022-02-08 в 17 41 51" src="https://user-images.githubusercontent.com/74743036/153009777-ba2480c5-1b3d-4780-b469-26e7983710bb.png">
