@@ -26,7 +26,6 @@ public class EditPersonalDataCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        UserService userService = ServiceFactory.getInstance().getUserService();
 
         int userId = (int) session.getAttribute(SessionAttribute.USER_ID);
         String name = request.getParameter(RequestParameter.USER_NAME);
@@ -35,7 +34,7 @@ public class EditPersonalDataCommand implements Command {
         String passportId = request.getParameter(RequestParameter.USER_PASSPORT_ID);
 
         try {
-            if (userService.editPersonalData(userId, name, surname, email, passportId)) {
+            if (ServiceFactory.getInstance().getUserService().editPersonalData(userId, name, surname, email, passportId)) {
                 session.setAttribute(SessionAttribute.USER_NAME, name);
                 session.setAttribute(SessionAttribute.USER_SURNAME, surname);
                 session.setAttribute(SessionAttribute.USER_EMAIL, email);

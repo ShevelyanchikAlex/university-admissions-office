@@ -30,10 +30,9 @@ public class GetAdministratorsTableCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        UserService userService = ServiceFactory.getInstance().getUserService();
 
         try {
-            session.setAttribute(SessionAttribute.ADMINISTRATORS, userService.getAllAdministrators());
+            session.setAttribute(SessionAttribute.ADMINISTRATORS, ServiceFactory.getInstance().getUserService().getAllAdministrators());
             session.setAttribute(SessionAttribute.ADMIN_TABLE, SessionAttributeValue.ADMINISTRATORS_TABLE);
             response.sendRedirect(SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
         } catch (ServiceException exception) {

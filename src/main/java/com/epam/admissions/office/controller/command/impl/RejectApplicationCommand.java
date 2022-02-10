@@ -28,11 +28,12 @@ public class RejectApplicationCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ApplicationService applicationService = ServiceFactory.getInstance().getApplicationService();
 
         try {
             int applicationId = Integer.parseInt(request.getParameter(RequestParameter.APPLICATION_ID));
             String rejectionReason = request.getParameter(RequestParameter.REJECTION_REASON);
+
+            ApplicationService applicationService = ServiceFactory.getInstance().getApplicationService();
             applicationService.updateConfirmStatusOfApplication(applicationId, APPROVED, rejectionReason);
 
             session.setAttribute(SessionAttribute.NOT_RESPONDED_APPLICATIONS, applicationService.getAllNotConfirmedApplications());

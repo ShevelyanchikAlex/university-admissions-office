@@ -35,10 +35,6 @@ public class AddApplicationCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        ApplicationService applicationService = serviceFactory.getApplicationService();
-        FacultiesHasSubjectsService facultiesHasSubjectsService = serviceFactory.getFacultiesHasSubjectsService();
-        ResultService resultService = serviceFactory.getResultService();
-        UserService userService = serviceFactory.getUserService();
 
         int userId = (int) session.getAttribute(SessionAttribute.USER_ID);
         int facultyId = Integer.parseInt(request.getParameter(RequestParameter.SELECTED_FACULTY_ID));
@@ -47,14 +43,15 @@ public class AddApplicationCommand implements Command {
         double thirdSubjectPoints = Double.parseDouble(request.getParameter(RequestParameter.POINTS_THIRD_SUBJECT));
 
         try {
-            int applicationId = applicationService.createApplication(userId, facultyId);
+            int applicationId = serviceFactory.getApplicationService().createApplication(userId, facultyId);
             if (applicationId > 0) {
-                List<FacultyHasSubject> facultyHasSubjectList = facultiesHasSubjectsService.getSubjectsIdOfFacultyById(facultyId);
+                List<FacultyHasSubject> facultyHasSubjectList = serviceFactory.getFacultiesHasSubjectsService().getSubjectsIdOfFacultyById(facultyId);
+                ResultService resultService = serviceFactory.getResultService();
                 if (resultService.createResult(firstSubjectPoints, applicationId, facultyHasSubjectList.get(FIRST_SUBJECT_INDEX).getSubjectId())
                         && resultService.createResult(secondSubjectPoints, applicationId, facultyHasSubjectList.get(SECOND_SUBJECT_INDEX).getSubjectId())
                         && resultService.createResult(thirdSubjectPoints, applicationId, facultyHasSubjectList.get(THIRD_SUBJECT_INDEX).getSubjectId())) {
                     initUserApplicationDataInSession(session, applicationId);
-                    userService.changeUserRole(userId, UserRole.USER);
+                    serviceFactory.getUserService().changeUserRole(userId, UserRole.USER);
                     session.setAttribute(SessionAttribute.USER_ROLE, UserRole.USER);
                     session.setAttribute(SessionAttribute.URL, SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_PROFILE_PAGE);
 
@@ -73,11 +70,8 @@ public class AddApplicationCommand implements Command {
 
     private void initUserApplicationDataInSession(HttpSession session, int applicationId) throws ServiceException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        ApplicationService applicationService = serviceFactory.getApplicationService();
-        ResultService resultService = serviceFactory.getResultService();
-
-        Application application = applicationService.getApplicationById(applicationId);
-        List<Result> resultList = resultService.getResultsByApplicationId(application.getApplicationId());
+        Application application = serviceFactory.getApplicationService().getApplicationById(applicationId);
+        List<Result> resultList = serviceFactory.getResultService().getResultsByApplicationId(application.getApplicationId());
 
         session.setAttribute(SessionAttribute.APPLICATION, application);
         session.setAttribute(SessionAttribute.POINTS_FIRST_SUBJECT, resultList.get(SessionAttributeValue.FIRST_SUBJECT_INDEX).getScore());

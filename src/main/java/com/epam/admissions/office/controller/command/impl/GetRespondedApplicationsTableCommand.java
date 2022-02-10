@@ -30,10 +30,9 @@ public class GetRespondedApplicationsTableCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ApplicationService applicationService = ServiceFactory.getInstance().getApplicationService();
 
         try {
-            session.setAttribute(SessionAttribute.RESPONDED_APPLICATIONS, applicationService.getAllConfirmedApplications());
+            session.setAttribute(SessionAttribute.RESPONDED_APPLICATIONS, ServiceFactory.getInstance().getApplicationService().getAllConfirmedApplications());
             session.setAttribute(SessionAttribute.ADMIN_TABLE, SessionAttributeValue.RESPONDED_APPLICATIONS_TABLE);
             response.sendRedirect(SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
         } catch (ServiceException exception) {

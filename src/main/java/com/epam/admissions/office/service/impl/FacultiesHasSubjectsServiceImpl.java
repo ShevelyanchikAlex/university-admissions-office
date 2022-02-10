@@ -16,13 +16,13 @@ import java.util.List;
  * @version 1.0
  */
 public class FacultiesHasSubjectsServiceImpl implements FacultiesHasSubjectsService {
+    private final FacultiesHasSubjectsDao facultiesHasSubjectsDao = DaoFactory.getInstance().getFacultiesHasSubjectsDao();
+
     /**
      * {@inheritDoc}
      */
     @Override
     public List<FacultyHasSubject> getSubjectsIdOfFacultyById(int facultyId) throws ServiceException {
-        FacultiesHasSubjectsDao facultiesHasSubjectsDao = DaoFactory.getInstance().getFacultiesHasSubjectsDao();
-
         try {
             return facultiesHasSubjectsDao.getSubjectsIdOfFacultyById(facultyId);
         } catch (DaoException exception) {

@@ -36,10 +36,6 @@ public class EditApplicationCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        ApplicationService applicationService = serviceFactory.getApplicationService();
-        FacultiesHasSubjectsService facultiesHasSubjectsService = serviceFactory.getFacultiesHasSubjectsService();
-        ResultService resultService = serviceFactory.getResultService();
 
         try {
             Application application = (Application) session.getAttribute(SessionAttribute.APPLICATION);
@@ -48,8 +44,11 @@ public class EditApplicationCommand implements Command {
             double secondSubjectPoints = Double.parseDouble(request.getParameter(RequestParameter.POINTS_SECOND_SUBJECT));
             double thirdSubjectPoints = Double.parseDouble(request.getParameter(RequestParameter.POINTS_THIRD_SUBJECT));
 
+            ServiceFactory serviceFactory = ServiceFactory.getInstance();
+            ApplicationService applicationService = serviceFactory.getApplicationService();
+            ResultService resultService = serviceFactory.getResultService();
             List<Result> resultList = resultService.getResultsByApplicationId(application.getApplicationId());
-            List<FacultyHasSubject> facultyHasSubjectList = facultiesHasSubjectsService.getSubjectsIdOfFacultyById(facultyId);
+            List<FacultyHasSubject> facultyHasSubjectList = serviceFactory.getFacultiesHasSubjectsService().getSubjectsIdOfFacultyById(facultyId);
 
             if (applicationService.updateFacultyIdOfApplication(application.getApplicationId(), facultyId)
                     && resultService.updateResult(resultList.get(SessionAttributeValue.FIRST_SUBJECT_INDEX).getResultId(),

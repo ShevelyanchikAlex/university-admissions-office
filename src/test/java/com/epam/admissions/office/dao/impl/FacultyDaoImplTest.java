@@ -2,17 +2,13 @@ package com.epam.admissions.office.dao.impl;
 
 import com.epam.admissions.office.dao.DaoFactory;
 import com.epam.admissions.office.dao.FacultyDao;
-import com.epam.admissions.office.dao.UserDao;
 import com.epam.admissions.office.dao.connection.ConnectionPool;
 import com.epam.admissions.office.dao.connection.exception.ConnectionPoolException;
 import com.epam.admissions.office.dao.exception.DaoException;
 import com.epam.admissions.office.entity.faculty.Faculty;
-import com.epam.admissions.office.service.util.UtilFactory;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FacultyDaoImplTest {
     private FacultyDao facultyDao;

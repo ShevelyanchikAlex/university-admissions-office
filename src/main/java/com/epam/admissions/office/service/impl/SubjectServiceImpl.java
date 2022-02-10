@@ -16,13 +16,13 @@ import java.util.List;
  * @version 1.0
  */
 public class SubjectServiceImpl implements SubjectService {
+    private final SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
+
     /**
      * {@inheritDoc}
      */
     @Override
     public Subject getSubjectById(int id) throws ServiceException {
-        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
-
         try {
             return subjectDao.getSubjectById(id);
         } catch (DaoException exception) {
@@ -35,8 +35,6 @@ public class SubjectServiceImpl implements SubjectService {
      */
     @Override
     public List<Subject> getAllSubjects() throws ServiceException {
-        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
-
         try {
             return subjectDao.getAllSubjects();
         } catch (DaoException exception) {
@@ -49,8 +47,6 @@ public class SubjectServiceImpl implements SubjectService {
      */
     @Override
     public int deleteById(int id) throws ServiceException {
-        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
-
         try {
             return subjectDao.deleteById(id);
         } catch (DaoException exception) {
@@ -63,8 +59,6 @@ public class SubjectServiceImpl implements SubjectService {
      */
     @Override
     public int countAllSubjects() throws ServiceException {
-        SubjectDao subjectDao = DaoFactory.getInstance().getSubjectDao();
-
         try {
             return subjectDao.countAllSubjects();
         } catch (DaoException exception) {

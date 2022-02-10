@@ -26,12 +26,13 @@ public class UserServiceImpl implements UserService {
     private static final boolean DEFAULT_IS_USER_DELETED = false;
     private static final boolean UNSUCCESSFUL_OPERATION = false;
 
+    private final UserDao userDao = DaoFactory.getInstance().getUserDao();
+
     /**
      * {@inheritDoc}
      */
     @Override
     public User login(String email, String password) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
         PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
         User user = null;
 
@@ -51,7 +52,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean signUp(String name, String surname, String email, String passportId, String password, String confirmPassword) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
         PasswordDigest passwordDigest = UtilFactory.getInstance().getPasswordDigest();
 
         User user = new User(DEFAULT_USER_ID, name, surname, passwordDigest.getDigestPassword(password), email, passportId, DEFAULT_IS_USER_DELETED, UserRole.USER_WITHOUT_APPLICATION);
@@ -69,10 +69,8 @@ public class UserServiceImpl implements UserService {
 
     private boolean isUserDataValid(String password, String confirmPassword, User user) {
         ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
-        Validator<User> userValidator = validatorFactory.getUserValidator();
-        Validator<String> passwordValidator = validatorFactory.getPasswordValidator();
-
-        return passwordValidator.validate(password) && password.equals(confirmPassword) && userValidator.validate(user);
+        return validatorFactory.getPasswordValidator().validate(password)
+                && password.equals(confirmPassword) && validatorFactory.getUserValidator().validate(user);
     }
 
     /**
@@ -80,8 +78,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User getById(int id) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.getUserById(id);
         } catch (DaoException exception) {
@@ -94,8 +90,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User getByEmail(String email) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.getByEmail(email);
         } catch (DaoException exception) {
@@ -108,8 +102,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int deleteById(int id) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.deleteById(id);
         } catch (DaoException exception) {
@@ -122,8 +114,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int restoreById(int id) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.restoreById(id);
         } catch (DaoException exception) {
@@ -136,8 +126,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> getAllUsers() throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.getAllUsers();
         } catch (DaoException exception) {
@@ -150,8 +138,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int countAllUsers() throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.countAllUsers();
         } catch (DaoException exception) {
@@ -164,8 +150,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> getAllApplicants() throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.getAllApplicants();
         } catch (DaoException exception) {
@@ -178,8 +162,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> getAllAdministrators() throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.getAllAdministrators();
         } catch (DaoException exception) {
@@ -192,7 +174,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean editPersonalData(int id, String name, String surname, String email, String passportId) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
         Validator<User> userValidator = ValidatorFactory.getInstance().getUserValidator();
 
         try {
@@ -221,8 +202,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean changeUserRole(int id, UserRole userRole) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             User user = userDao.getUserById(id);
             user.setUserRole(userRole);
@@ -238,8 +217,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> getUsersByRoleId(int roleId) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.getUsersByRoleId(roleId);
         } catch (DaoException exception) {
@@ -252,8 +229,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> getUsersByStatus(String status) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.getUsersByStatus(status);
         } catch (DaoException exception) {
@@ -266,8 +241,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int countByUserRole(UserRole userRole) throws ServiceException {
-        UserDao userDao = DaoFactory.getInstance().getUserDao();
-
         try {
             return userDao.countByUserRole(userRole);
         } catch (DaoException exception) {

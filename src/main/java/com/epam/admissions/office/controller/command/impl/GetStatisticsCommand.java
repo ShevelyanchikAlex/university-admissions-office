@@ -34,16 +34,15 @@ public class GetStatisticsCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        UserService userService = serviceFactory.getUserService();
         ApplicationService applicationService = serviceFactory.getApplicationService();
-        FacultyAdmissionInfoService facultyAdmissionInfoService = serviceFactory.getFacultyAdmissionInfoService();
+        UserService userService = serviceFactory.getUserService();
 
         try {
             session.setAttribute(SessionAttribute.COUNT_OF_APPLICATIONS, applicationService.countAllApplication());
             session.setAttribute(SessionAttribute.COUNT_OF_RESPONDED_APPLICATIONS, applicationService.countAllRespondedApplication());
             session.setAttribute(SessionAttribute.COUNT_OF_ADMINISTRATORS, userService.countByUserRole(UserRole.ADMIN));
             session.setAttribute(SessionAttribute.COUNT_OF_APPLICANTS, userService.countByUserRole(UserRole.USER));
-            session.setAttribute(SessionAttribute.FACULTIES_ADMISSION_INFO_LIST, facultyAdmissionInfoService.getAllFacultyAdmissionInfos());
+            session.setAttribute(SessionAttribute.FACULTIES_ADMISSION_INFO_LIST, serviceFactory.getFacultyAdmissionInfoService().getAllFacultyAdmissionInfos());
             session.setAttribute(SessionAttribute.ADMIN_TABLE, SessionAttributeValue.STATISTICS);
             response.sendRedirect(SessionAttributeValue.CONTROLLER_COMMAND + CommandName.GO_TO_ADMIN_PAGE);
         } catch (ServiceException exception) {

@@ -18,13 +18,13 @@ import java.util.List;
 public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoService {
     private static final int SUCCESSFUL_OPERATION = 1;
 
+    private final FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
+
     /**
      * {@inheritDoc}
      */
     @Override
     public FacultyAdmissionInfo getFacultyAdmissionInfoById(int id) throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfoById(id);
         } catch (DaoException exception) {
@@ -37,8 +37,6 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
      */
     @Override
     public FacultyAdmissionInfo getFacultyAdmissionInfoByFacultyId(int facultyId) throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfoByFacultyId(facultyId);
         } catch (DaoException exception) {
@@ -51,8 +49,6 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
      */
     @Override
     public List<FacultyAdmissionInfo> getAllFacultyAdmissionInfos() throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             return facultyAdmissionInfoDao.getAllFacultyAdmissionInfos();
         } catch (DaoException exception) {
@@ -65,8 +61,6 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
      */
     @Override
     public List<FacultyAdmissionInfo> getFacultyAdmissionInfosByPassingScore(double passingScore) throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfosByPassingScore(passingScore);
         } catch (DaoException exception) {
@@ -79,8 +73,6 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
      */
     @Override
     public List<FacultyAdmissionInfo> getFacultyAdmissionInfosByPlaces(double places) throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             return facultyAdmissionInfoDao.getFacultyAdmissionInfosByPlaces(places);
         } catch (DaoException exception) {
@@ -93,8 +85,6 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
      */
     @Override
     public int deleteById(int id) throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             return facultyAdmissionInfoDao.deleteById(id);
         } catch (DaoException exception) {
@@ -107,8 +97,6 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
      */
     @Override
     public boolean updateFacultyAdmissionInfo(int facultyAdmissionInfoId, double passingScore) throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             FacultyAdmissionInfo facultyAdmissionInfo = facultyAdmissionInfoDao.getFacultyAdmissionInfoByFacultyId(facultyAdmissionInfoId);
             facultyAdmissionInfo.setPassingScore(passingScore);
@@ -123,8 +111,6 @@ public class FacultyAdmissionInfoServiceImpl implements FacultyAdmissionInfoServ
      */
     @Override
     public int countAllAdmissionInfos() throws ServiceException {
-        FacultyAdmissionInfoDao facultyAdmissionInfoDao = DaoFactory.getInstance().getFacultyAdmissionInfoDao();
-
         try {
             return facultyAdmissionInfoDao.countAllAdmissionInfos();
         } catch (DaoException exception) {

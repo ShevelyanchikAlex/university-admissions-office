@@ -21,13 +21,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     private static final int DEFAULT_APPLICATION_ID = 0;
     private static final boolean DEFAULT_IS_APPROVED = false;
 
+    private final ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
+
     /**
      * {@inheritDoc}
      */
     @Override
     public Application getApplicationById(int id) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getApplicationById(id);
         } catch (DaoException exception) {
@@ -40,8 +40,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public Application getApplicationByUserId(int userId) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getApplicationByUserId(userId);
         } catch (DaoException exception) {
@@ -54,8 +52,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public List<Application> getAllApplications() throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getAllApplications();
         } catch (DaoException exception) {
@@ -68,8 +64,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public List<Application> getAllConfirmedApplications() throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getAllConfirmedApplications();
         } catch (DaoException exception) {
@@ -82,8 +76,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public List<Application> getAllNotConfirmedApplications() throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getAllNotConfirmedApplications();
         } catch (DaoException exception) {
@@ -96,8 +88,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public List<Application> getApplicationsByFacultyId(int facultyId) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getApplicationsByFacultyId(facultyId);
         } catch (DaoException exception) {
@@ -110,8 +100,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public int createApplication(int userId, int facultyId) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         Application application = new Application(DEFAULT_APPLICATION_ID, new Date(System.currentTimeMillis()),
                 DEFAULT_IS_APPROVED, null, null, userId, facultyId);
 
@@ -127,8 +115,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public boolean updateFacultyIdOfApplication(int applicationId, int facultyId) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             Application application = applicationDao.getApplicationById(applicationId);
             application.setFacultyId(facultyId);
@@ -143,8 +129,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public boolean updateConfirmStatusOfApplication(int applicationId, boolean status, String rejectionReason) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             Application application = applicationDao.getApplicationById(applicationId);
             application.setApproved(status);
@@ -161,8 +145,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public List<Application> getApplicationsByApplyDate(Date applyDate) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getApplicationsByApplyDate(applyDate);
         } catch (DaoException exception) {
@@ -175,8 +157,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public List<Application> getApplicationsByDecisionDate(Date decisionDate) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.getApplicationsByDecisionDate(decisionDate);
         } catch (DaoException exception) {
@@ -189,8 +169,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public int deleteById(int id) throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.deleteById(id);
         } catch (DaoException exception) {
@@ -203,8 +181,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public int countAllApplication() throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.countAllApplication();
         } catch (DaoException exception) {
@@ -217,8 +193,6 @@ public class ApplicationServiceImpl implements ApplicationService {
      */
     @Override
     public int countAllRespondedApplication() throws ServiceException {
-        ApplicationDao applicationDao = DaoFactory.getInstance().getApplicationDao();
-
         try {
             return applicationDao.countAllRespondedApplication();
         } catch (DaoException exception) {

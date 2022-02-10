@@ -30,13 +30,12 @@ public class LogInCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        UserService userService = ServiceFactory.getInstance().getUserService();
 
         String email = request.getParameter(RequestParameter.USER_EMAIL);
         String password = request.getParameter((RequestParameter.USER_PASSWORD));
 
         try {
-            User user = userService.login(email, password);
+            User user = ServiceFactory.getInstance().getUserService().login(email, password);
             if (user != null) {
                 session.setAttribute(SessionAttribute.USER_ID, user.getUserId());
                 session.setAttribute(SessionAttribute.USER_NAME, user.getName());
@@ -65,11 +64,8 @@ public class LogInCommand implements Command {
 
     private void initUserApplicationDataInSession(HttpSession session, int userId) throws ServiceException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        ApplicationService applicationService = serviceFactory.getApplicationService();
-        ResultService resultService = serviceFactory.getResultService();
-
-        Application application = applicationService.getApplicationByUserId(userId);
-        List<Result> resultList = resultService.getResultsByApplicationId(application.getApplicationId());
+        Application application = serviceFactory.getApplicationService().getApplicationByUserId(userId);
+        List<Result> resultList = serviceFactory.getResultService().getResultsByApplicationId(application.getApplicationId());
 
         session.setAttribute(SessionAttribute.APPLICATION, application);
         session.setAttribute(SessionAttribute.POINTS_FIRST_SUBJECT, resultList.get(SessionAttributeValue.FIRST_SUBJECT_INDEX).getScore());
