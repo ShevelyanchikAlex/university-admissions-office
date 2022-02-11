@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * CacheFilter class.
+ * UserAccessFilter class.
  * Filter, that controls access of users with different roles to commands.
  *
  * @author Alex Shevelyanchik

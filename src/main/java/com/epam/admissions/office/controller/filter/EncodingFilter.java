@@ -4,7 +4,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * CacheFilter class.
+ * EncodingFilter class.
  * Filter, that sets request and response encoding.
  *
  * @author Alex Shevelyanchik
